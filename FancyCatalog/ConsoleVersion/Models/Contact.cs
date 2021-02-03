@@ -6,6 +6,18 @@ namespace ConsoleVersion.Models
 {
     public class Contact
     {
+        public Contact()
+        {
+
+        }
+
+        public Contact(int id, string email, string phone)
+        {
+            Id = id;
+            Email = email;
+            Phone = phone;
+        }
+
         public int Id { get; set; }
 
         public string Email { get; set; }

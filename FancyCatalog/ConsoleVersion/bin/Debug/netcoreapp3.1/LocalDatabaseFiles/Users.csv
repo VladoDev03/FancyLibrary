@@ -1,6 +1,6 @@
-﻿Id,Username,Password,FirstName,MiddleName,LastName,Age,BirthdayDate
-1,vladsto,1234567,Vladimir,Rumenov,Stoyanov,17,2003-05-20
-2,ansto,1234567,Anna,Rumenova,Stoyanova,15,2005-09-06
-3,dansto,1234567,Yordan,Emilov,Stoyanov,10,2010-05-05
-4,rumsto,1234567,Rumen,Yordanov,Stoyanov,50,1970-03-22
-5,nadesto,1234567,Nadejda,Ignatova,Stoyanova,41,1979-03-15
+﻿Id,Username,Password,FirstName,MiddleName,LastName,Age,BirthdayDate, LastTimeLoggedIn, IsOnline, ContactId
+1,vladsto,1234567,Vladimir,Rumenov,Stoyanov,17,2003-05-20,0000-00-00,false,1
+2,ansto,1234567,Anna,Rumenova,Stoyanova,15,2005-09-06,0000-00-00,false,2
+3,dansto,1234567,Yordan,Emilov,Stoyanov,10,2010-05-05,0000-00-00,false,3
+4,rumsto,1234567,Rumen,Yordanov,Stoyanov,50,1970-03-22,0000-00-00,false,4
+5,nadesto,1234567,Nadejda,Ignatova,Stoyanova,41,1979-03-15,0000-00-00,false,5

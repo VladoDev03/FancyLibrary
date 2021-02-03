@@ -8,10 +8,14 @@ using System.Text;
 
 namespace ConsoleVersion.Models
 {
-    public class LocalDatabase
+    public class LocalDatabase : IDatabase
     {
         public LocalDatabase()
         {
+            Authors = new List<Author>();
+            Books = new List<Book>();
+            Contacts = new List<Contact>();
+            Users = new List<User>();
             FillAuthors();
             FillBooks();
             FillContacts();

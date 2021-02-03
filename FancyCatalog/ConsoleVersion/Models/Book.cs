@@ -6,6 +6,20 @@ namespace ConsoleVersion.Models
 {
     public class Book
     {
+        public Book()
+        {
+
+        }
+
+        public Book(int id, string title, string genre, int year, string linkToInternet)
+        {
+            Id = id;
+            Title = title;
+            Genre = genre;
+            Year = year;
+            LinkToInternet = linkToInternet;
+        }
+
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -15,6 +29,8 @@ namespace ConsoleVersion.Models
         public int Year { get; set; }
 
         public string LinkToInternet { get; set; }
+
+        public Author Author { get; set; }
 
         public override string ToString()
         {

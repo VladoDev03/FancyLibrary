@@ -12,9 +12,9 @@ namespace ConsoleVersion
     {
         static void Main(string[] args)
         {
-            LocalDatabase localDatabase = new LocalDatabase();
+            IDatabase remoteDatabase = new RemoteDatabase();
 
-            localDatabase.PrintAll();
+            remoteDatabase.PrintAll();
         }
     }
 }

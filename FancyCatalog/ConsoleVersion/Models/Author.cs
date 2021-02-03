@@ -6,6 +6,20 @@ namespace ConsoleVersion.Models
 {
     public class Author
     {
+        public Author()
+        {
+
+        }
+
+        public Author(int id, string firstName, string middleName, string lastName, DateTime birthdayDate)
+        {
+            Id = id;
+            FirstName = firstName;
+            MiddleName = middleName;
+            LastName = lastName;
+            BirthdayDate = birthdayDate;
+        }
+
         public int Id { get; set; }
 
         public string FirstName { get; set; }
