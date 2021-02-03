@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "V6G1J1tZ3Krt2rQiyjsZTYAnRFYv5oLGqlzxTvJk9hPwBSsKVchJjVv/ZH4uAV4KV7Y6ZiP6YzynHbQnOebGdA==",
+  "success": true,
+  "projectFilePath": "C:\\ItCarrerProjectRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\csvhelper\\22.1.1\\csvhelper.22.1.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
