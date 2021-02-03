@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "V6G1J1tZ3Krt2rQiyjsZTYAnRFYv5oLGqlzxTvJk9hPwBSsKVchJjVv/ZH4uAV4KV7Y6ZiP6YzynHbQnOebGdA==",
+  "dgSpecHash": "Zpfdff+nxr5P+GlM9Tvwa/N2G+4nMKVvpbEM4MfRl87/VUukUUUGxZUqrLL3J0xPAXG6E4QVkkndks6MHPsc1Q==",
   "success": true,
-  "projectFilePath": "C:\\ItCarrerProjectRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj",
+  "projectFilePath": "E:\\FancyCatalogGitRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ASUS\\.nuget\\packages\\csvhelper\\22.1.1\\csvhelper.22.1.1.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512"
+    "C:\\Users\\Vladrig\\.nuget\\packages\\csvhelper\\22.1.1\\csvhelper.22.1.1.nupkg.sha512",
+    "C:\\Users\\Vladrig\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

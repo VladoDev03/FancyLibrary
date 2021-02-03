@@ -14,16 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Authors.csv">
+    <None Update="LocalDatabaseFiles\Authors.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Books.csv">
+    <None Update="LocalDatabaseFiles\Books.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Contacts.csv">
+    <None Update="LocalDatabaseFiles\Contacts.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Users.csv">
+    <None Update="LocalDatabaseFiles\Users.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

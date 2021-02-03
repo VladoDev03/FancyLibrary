@@ -28,28 +28,28 @@ namespace ConsoleVersion.Models
 
         public void FillAuthors()
         {
-            string path = "Authors.csv";
+            string path = Path.Combine("LocalDatabaseFiles", "Authors.csv");
             using CsvReader csvReader = new CsvReader(new StreamReader(path), CultureInfo.InvariantCulture);
             Authors = csvReader.GetRecords<Author>().ToList();
         }
 
         public void FillBooks()
         {
-            string path = "Books.csv";
+            string path = Path.Combine("LocalDatabaseFiles", "Books.csv");
             using CsvReader csvReader = new CsvReader(new StreamReader(path), CultureInfo.InvariantCulture);
             Books = csvReader.GetRecords<Book>().ToList();
         }
 
         public void FillContacts()
         {
-            string path = "Contacts.csv";
+            string path = Path.Combine("LocalDatabaseFiles", "Contacts.csv");
             using CsvReader csvReader = new CsvReader(new StreamReader(path), CultureInfo.InvariantCulture);
             Contacts = csvReader.GetRecords<Contact>().ToList();
         }
 
         public void FillUsers()
         {
-            string path = "Users.csv";
+            string path = Path.Combine("LocalDatabaseFiles", "Users.csv");
             using CsvReader csvReader = new CsvReader(new StreamReader(path), CultureInfo.InvariantCulture);
             Users = csvReader.GetRecords<User>().ToList();
         }

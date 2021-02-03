@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ItCarrerProjectRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj": {}
+    "E:\\FancyCatalogGitRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj": {}
   },
   "projects": {
-    "C:\\ItCarrerProjectRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj": {
+    "E:\\FancyCatalogGitRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ItCarrerProjectRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj",
+        "projectUniqueName": "E:\\FancyCatalogGitRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj",
         "projectName": "ConsoleVersion",
-        "projectPath": "C:\\ItCarrerProjectRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\ItCarrerProjectRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\obj\\",
+        "projectPath": "E:\\FancyCatalogGitRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\ConsoleVersion.csproj",
+        "packagesPath": "C:\\Users\\Vladrig\\.nuget\\packages\\",
+        "outputPath": "E:\\FancyCatalogGitRepository\\FancyCatalog\\FancyCatalog\\ConsoleVersion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vladrig\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
