@@ -19,7 +19,7 @@ namespace ConsoleVersion.Models
 
         //TODO
         //To be tested
-        public string EncodePassword(string username)
+        public string EncodePassword(string password)
         {
             throw new NotImplementedException();
         }
@@ -33,7 +33,11 @@ namespace ConsoleVersion.Models
                 throw new ArgumentException(ExceptionsText.AlreadyLoggedIn);
             }
 
-            User user = Database.Users.FirstOrDefault(u => u.Username == CurrentLoggedInUser.Username);
+            string username = input[0];
+            string password = input[1];
+
+            //User user = Database.Users.FirstOrDefault(u => u.Username == CurrentLoggedInUser.Username);
+            User user = Database.Users.FirstOrDefault(u => u.Username == username);
 
             if (user == null)
             {
@@ -41,6 +45,11 @@ namespace ConsoleVersion.Models
             }
 
             //TODO: add checker for password!
+
+            if (EncodePassword(password) != user.Password)
+            {
+                throw new ArgumentException(ExceptionsText.WrongPassword);
+            }
 
             return MessagesToUser.WelcomeMessage;
         }

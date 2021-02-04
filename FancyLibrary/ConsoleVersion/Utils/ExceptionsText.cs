@@ -9,5 +9,6 @@ namespace ConsoleVersion.Utils
         public const string NotUserLoggedIn = "You cannot logout before logging in!";
         public const string NotExistingUser = "User with this username does not exist!";
         public const string AlreadyLoggedIn = "You are already logged in!";
+        public const string WrongPassword = "Invalid username or password!";
     }
 }
