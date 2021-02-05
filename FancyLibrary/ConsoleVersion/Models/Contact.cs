@@ -6,6 +6,11 @@ namespace ConsoleVersion.Models
 {
     public class Contact
     {
+        //private const int PhoneLength = 10;
+
+        private string email;
+        private string phone;
+
         public Contact()
         {
 
@@ -20,9 +25,41 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        public string Email { get; set; }
+        //TODO: add exception message.
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+            private set
+            {
+                if (!value.Contains("@") || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException();
+                }
 
-        public string Phone { get; set; }
+                email = value;
+            }
+        }
+
+        //TODO: add exception message.
+        public string Phone
+        {
+            get
+            {
+                return phone;
+            }
+            private set
+            {
+                //if (value != null && value.Length != PhoneLength)
+                //{
+                //    throw new ArgumentException();
+                //}
+
+                phone = value;
+            }
+        }
 
         public override string ToString()
         {

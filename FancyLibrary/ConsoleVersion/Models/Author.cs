@@ -6,6 +6,12 @@ namespace ConsoleVersion.Models
 {
     public class Author
     {
+        private const int MinNameLength = 3;
+
+        private string firstName;
+        private string middleName;
+        private string lastName;
+
         public Author()
         {
 
@@ -22,11 +28,59 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        public string FirstName { get; set; }
+        //TODO: add exception message.
+        public string FirstName
+        {
+            get
+            {
+                return firstName;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException();
+                }
 
-        public string MiddleName { get; set; }
+                firstName = value;
+            }
+        }
 
-        public string LastName { get; set; }
+        //TODO: add exception message.
+        public string MiddleName
+        {
+            get
+            {
+                return middleName;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength)
+                {
+                    throw new ArgumentException();
+                }
+
+                middleName = value;
+            }
+        }
+
+        //TODO: add exception message.
+        public string LastName
+        {
+            get
+            {
+                return lastName;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength)
+                {
+                    throw new ArgumentException();
+                }
+
+                lastName = value;
+            }
+        }
 
         public DateTime BirthdayDate { get; set; }
 

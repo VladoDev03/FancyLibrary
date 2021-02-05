@@ -1,11 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ConsoleVersion.Models
 {
     public class User
     {
+        private const int MinNameLength = 3;
+        private const int MinAge = 7;
+
+        private const int MinPasswordLength = 7;
+        private const int MinSymbolsCount = 1;
+        private const int MinNumbersCount = 1;
+        private const int MinUpperCaseLettersCount = 1;
+        private const int MinLowerCaseLettersCount = 1;
+
+        private string username;
+        private string firstName;
+        private string middleName;
+        private string lastName;
+        private string password;
+        private int age;
+
         public User()
         {
 
@@ -27,17 +44,129 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        public string Username { get; set; }
+        //TODO: add exception message.
+        public string Username
+        {
+            get
+            {
+                return username;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException();
+                }
 
-        public string Password { get; set; }
+                username = value;
+            }
+        }
 
-        public string FirstName { get; set; }
+        //TODO: add exception message.
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+            private set
+            {
+                if (value.Length < MinPasswordLength)
+                {
+                    throw new ArgumentException($"Password must be atleast {MinPasswordLength} symbols long!");
+                }
+                if (value.Where(x => char.IsUpper(x)).ToArray().Length < MinUpperCaseLettersCount)
+                {
+                    throw new ArgumentException($"Password must contain at least {MinUpperCaseLettersCount} upper case letter!");
+                }
+                if (value.Where(x => char.IsLower(x)).ToArray().Length < MinLowerCaseLettersCount)
+                {
+                    throw new ArgumentException($"Password must contain at least {MinLowerCaseLettersCount} lower case letter!");
+                }
+                if (value.Where(x => char.IsDigit(x)).ToArray().Length < MinNumbersCount)
+                {
+                    throw new ArgumentException($"Password must contain at least {MinNumbersCount} digit!");
+                }
+                if (value.Where(x => char.IsSymbol(x)).ToArray().Length < MinSymbolsCount)
+                {
+                    throw new ArgumentException($"Password must contain at least {MinSymbolsCount} symbol!");
+                }
 
-        public string MiddleName { get; set; }
+                password = value;
+            }
+        }
 
-        public string LastName { get; set; }
+        //TODO: add exception message.
+        public string FirstName
+        {
+            get
+            {
+                return firstName;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException();
+                }
 
-        public int Age { get; set; }
+                firstName = value;
+            }
+        }
+
+        //TODO: add exception message.
+        public string MiddleName
+        {
+            get
+            {
+                return middleName;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength)
+                {
+                    throw new ArgumentException();
+                }
+
+                middleName = value;
+            }
+        }
+
+        //TODO: add exception message.
+        public string LastName
+        {
+            get
+            {
+                return lastName;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength)
+                {
+                    throw new ArgumentException();
+                }
+
+                lastName = value;
+            }
+        }
+
+        //TODO: add exception message.
+        public int Age
+        {
+            get
+            {
+                return age;
+            }
+            private set
+            {
+                if (value < MinAge)
+                {
+                    throw new ArgumentException();
+                }
+
+                age = value;
+            }
+        }
 
         public DateTime BirthdayDate { get; set; }
 
