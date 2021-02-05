@@ -7,7 +7,7 @@ namespace ConsoleVersion.Models
 {
     public class RemoteDatabase : IDatabase
     {
-        private const string connectionString = "Server=.;Database=MyFancyCatalog;Integrated Security=true;";
+        private const string ConnectionString = "Server=.;Database=MyFancyCatalog;Integrated Security=true;";
 
         public RemoteDatabase()
         {
@@ -28,7 +28,7 @@ namespace ConsoleVersion.Models
 
         public void FillAuthors()
         {
-            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
             using SqlCommand command = new SqlCommand("SELECT Id, FirstName, MiddleName, LastName, BirthdayDate FROM Authors", connection);
@@ -50,7 +50,7 @@ namespace ConsoleVersion.Models
 
         public void FillBooks()
         {
-            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
             using SqlCommand command = new SqlCommand("SELECT Id, Title, Genre, [Year], LinkToInternet FROM Books", connection);
@@ -72,7 +72,7 @@ namespace ConsoleVersion.Models
 
         public void FillContacts()
         {
-            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
             using SqlCommand command = new SqlCommand("SELECT Id, Email, Phone FROM Contacts", connection);
@@ -92,7 +92,7 @@ namespace ConsoleVersion.Models
 
         public void FillUsers()
         {
-            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
             StringBuilder sb = new StringBuilder();

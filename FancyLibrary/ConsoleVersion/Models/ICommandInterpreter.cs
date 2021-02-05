@@ -14,7 +14,7 @@ namespace ConsoleVersion.Models
 
         string RegisterUser(List<string> input);
 
-        string LogoutUser(string username);
+        string LogoutUser(User user);
 
         string EncodePassword(string username);
     }

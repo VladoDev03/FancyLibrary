@@ -1,4 +1,5 @@
-﻿using ConsoleVersion.Utils;
+﻿using ConsoleVersion.Controllers;
+using ConsoleVersion.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,12 @@ namespace ConsoleVersion.Models
 {
     public class CommandInterpreter : ICommandInterpreter
     {
+        private UserController userController;
+
         public CommandInterpreter(IDatabase database)
         {
             Database = database;
+            //userController = new UserController();
         }
 
         public IDatabase Database { get; private set; }
@@ -36,7 +40,6 @@ namespace ConsoleVersion.Models
             string username = input[0];
             string password = input[1];
 
-            //User user = Database.Users.FirstOrDefault(u => u.Username == CurrentLoggedInUser.Username);
             User user = Database.Users.FirstOrDefault(u => u.Username == username);
 
             if (user == null)
@@ -44,27 +47,29 @@ namespace ConsoleVersion.Models
                 throw new ArgumentException(ExceptionsText.NotExistingUser);
             }
 
-            //TODO: add checker for password!
-
             if (EncodePassword(password) != user.Password)
             {
                 throw new ArgumentException(ExceptionsText.WrongPassword);
             }
 
+            userController.ChangeUserStatus(user);
+            userController.SetLoginTime(user);
+
             return MessagesToUser.WelcomeMessage;
         }
 
         //To be tested
-        public string LogoutUser(string username)
+        public string LogoutUser(User user)
         {
             if (CurrentLoggedInUser == null)
             {
                 throw new ArgumentException(ExceptionsText.NotUserLoggedIn);
             }
 
+            userController.ChangeUserStatus(user);
+
             CurrentLoggedInUser = null;
             return MessagesToUser.LogOutMessage;
-            //return $"Have a nice day {CurrentLoggedInUser.Username}! We hope to see you soon!";
         }
 
         //TODO
