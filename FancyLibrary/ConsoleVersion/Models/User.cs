@@ -10,17 +10,10 @@ namespace ConsoleVersion.Models
         private const int MinNameLength = 3;
         private const int MinAge = 7;
 
-        private const int MinPasswordLength = 7;
-        private const int MinSymbolsCount = 1;
-        private const int MinNumbersCount = 1;
-        private const int MinUpperCaseLettersCount = 1;
-        private const int MinLowerCaseLettersCount = 1;
-
         private string username;
         private string firstName;
         private string middleName;
         private string lastName;
-        private string password;
         private int age;
 
         public User()
@@ -28,9 +21,8 @@ namespace ConsoleVersion.Models
 
         }
 
-        public User(int id, string username, string password, string firstName, string middleName, string lastName, int age, DateTime birthdayDate, DateTime lastTimeLoggedIn, bool isOnline)
+        public User(string username, string password, string firstName, string middleName, string lastName, int age, DateTime birthdayDate, DateTime lastTimeLoggedIn, bool isOnline)
         {
-            Id = id;
             Username = username;
             Password = password;
             FirstName = firstName;
@@ -40,6 +32,12 @@ namespace ConsoleVersion.Models
             BirthdayDate = birthdayDate;
             LastTimeLoggedIn = lastTimeLoggedIn;
             IsOnline = isOnline;
+        }
+
+        public User(int id, string username, string password, string firstName, string middleName, string lastName, int age, DateTime birthdayDate, DateTime lastTimeLoggedIn, bool isOnline)
+            : this(username, password, firstName, middleName, lastName, age, birthdayDate, lastTimeLoggedIn, isOnline)
+        {
+            Id = id;
         }
 
         public int Id { get; set; }
@@ -63,38 +61,7 @@ namespace ConsoleVersion.Models
         }
 
         //TODO: add exception message.
-        public string Password
-        {
-            get
-            {
-                return password;
-            }
-            private set
-            {
-                if (value.Length < MinPasswordLength)
-                {
-                    throw new ArgumentException($"Password must be atleast {MinPasswordLength} symbols long!");
-                }
-                if (value.Where(x => char.IsUpper(x)).ToArray().Length < MinUpperCaseLettersCount)
-                {
-                    throw new ArgumentException($"Password must contain at least {MinUpperCaseLettersCount} upper case letter!");
-                }
-                if (value.Where(x => char.IsLower(x)).ToArray().Length < MinLowerCaseLettersCount)
-                {
-                    throw new ArgumentException($"Password must contain at least {MinLowerCaseLettersCount} lower case letter!");
-                }
-                if (value.Where(x => char.IsDigit(x)).ToArray().Length < MinNumbersCount)
-                {
-                    throw new ArgumentException($"Password must contain at least {MinNumbersCount} digit!");
-                }
-                if (value.Where(x => char.IsSymbol(x)).ToArray().Length < MinSymbolsCount)
-                {
-                    throw new ArgumentException($"Password must contain at least {MinSymbolsCount} symbol!");
-                }
-
-                password = value;
-            }
-        }
+        public string Password { get; set; }
 
         //TODO: add exception message.
         public string FirstName

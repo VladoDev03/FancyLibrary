@@ -86,22 +86,22 @@ namespace ConsoleVersion.Models
         }
 
         //TODO: add exception message.
-        public Author Author
-        {
-            get
-            {
-                return author;
-            }
-            private set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentException();
-                }
+        //public Author Author
+        //{
+        //    get
+        //    {
+        //        return author;
+        //    }
+        //    private set
+        //    {
+        //        if (value == null)
+        //        {
+        //            throw new ArgumentException();
+        //        }
 
-                author = value;
-            }
-        }
+        //        author = value;
+        //    }
+        //}
 
         public string LinkToInternet { get; set; }
 

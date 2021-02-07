@@ -12,9 +12,17 @@ namespace ConsoleVersion
     {
         static void Main(string[] args)
         {
-            IDatabase remoteDatabase = new RemoteDatabase();
+            LocalDatabase localDatabase = new LocalDatabase();
+            CommandInterpreter commandInterpreter = new CommandInterpreter(localDatabase);
 
-            remoteDatabase.PrintAll();
+            List<string> input = Console.ReadLine().Split().ToList();
+            Console.WriteLine(commandInterpreter.RegisterUser(input));
+
+            input = Console.ReadLine().Split().ToList();
+            Console.WriteLine(commandInterpreter.LoginUser(input));
+
+            //vlad111 Salamur$12 vlad vlado vladeto 17 2021-02-07
+            //vlad111 Salamur$12
         }
     }
 }

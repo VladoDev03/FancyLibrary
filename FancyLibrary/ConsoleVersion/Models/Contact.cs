@@ -17,8 +17,13 @@ namespace ConsoleVersion.Models
         }
 
         public Contact(int id, string email, string phone)
+            : this(email, phone)
         {
             Id = id;
+        }
+
+        public Contact(string email, string phone)
+        {
             Email = email;
             Phone = phone;
         }
