@@ -18,8 +18,12 @@ namespace ConsoleVersion
             List<string> input = Console.ReadLine().Split().ToList();
             Console.WriteLine(commandInterpreter.RegisterUser(input));
 
+            Console.WriteLine(commandInterpreter.LogoutUser());
+
             input = Console.ReadLine().Split().ToList();
             Console.WriteLine(commandInterpreter.LoginUser(input));
+
+            Console.WriteLine(commandInterpreter.LogoutUser());
 
             //vlad111 Salamur$12 vlad vlado vladeto 17 2021-02-07
             //vlad111 Salamur$12

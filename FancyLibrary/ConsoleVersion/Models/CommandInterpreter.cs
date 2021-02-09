@@ -76,11 +76,12 @@ namespace ConsoleVersion.Models
                 throw new ArgumentException(ExceptionsText.WrongPassword);
             }
 
+            CurrentLoggedInUser = user;
             return MessagesToUser.WelcomeMessage;
         }
 
         //To be tested
-        public string LogoutUser(User user)
+        public string LogoutUser()
         {
             if (CurrentLoggedInUser == null)
             {
