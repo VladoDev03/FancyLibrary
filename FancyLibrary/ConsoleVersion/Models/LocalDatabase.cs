@@ -55,11 +55,11 @@ namespace ConsoleVersion.Models
 
         public void FillUsers()
         {
-            Users.Add(new User("vladsto", "Salamur$12", "Vladimir", "Rumenov", "Stoyanov", 17, DateTime.Parse("2003-05-20"), DateTime.Parse("2021-01-01"), false));
-            Users.Add(new User("ansto", "Salamur$12", "Anna", "Rumenova", "Stoyanova", 15, DateTime.Parse("2005-09-06"), DateTime.Parse("2021-01-01"), false));
-            Users.Add(new User("dansto", "Salamur$12", "Yordan", "Emilov", "Stoyanov", 10, DateTime.Parse("2010-05-05"), DateTime.Parse("2021-01-01"), false));
-            Users.Add(new User("rumsto", "Salamur$12", "Rumen", "Yordanov", "Stoyanov", 50, DateTime.Parse("1970-03-22"), DateTime.Parse("2021-01-01"), false));
-            Users.Add(new User("nadesto", "Salamur$12", "Nadejda", "Ignatova", "Stoyanova", 41, DateTime.Parse("1979-03-15"), DateTime.Parse("2021-01-01"), false));
+            Users.Add(new User("vladsto", "42)snncmfT", "Vladimir", "Rumenov", "Stoyanov", 17, DateTime.Parse("2003-05-20"), DateTime.Parse("2021-01-01"), false));
+            Users.Add(new User("ansto", "42)snncmfT", "Anna", "Rumenova", "Stoyanova", 15, DateTime.Parse("2005-09-06"), DateTime.Parse("2021-01-01"), false));
+            Users.Add(new User("dansto", "42)snncmfT", "Yordan", "Emilov", "Stoyanov", 10, DateTime.Parse("2010-05-05"), DateTime.Parse("2021-01-01"), false));
+            Users.Add(new User("rumsto", "42)snncmfT", "Rumen", "Yordanov", "Stoyanov", 50, DateTime.Parse("1970-03-22"), DateTime.Parse("2021-01-01"), false));
+            Users.Add(new User("nadesto", "42)snncmfT", "Nadejda", "Ignatova", "Stoyanova", 41, DateTime.Parse("1979-03-15"), DateTime.Parse("2021-01-01"), false));
         }
 
         public void PrintAll()
