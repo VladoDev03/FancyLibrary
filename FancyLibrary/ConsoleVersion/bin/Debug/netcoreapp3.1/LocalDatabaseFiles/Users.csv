@@ -1,0 +1,6 @@
+﻿Id,Username,Password,FirstName,MiddleName,LastName,Age,BirthdayDate,LastTimeLoggedIn,IsOnline,ContactId
+1,vladsto,Salamur$12,Vladimir,Rumenov,Stoyanov,17,2003-05-20,0000-00-00,0,1
+2,ansto,Salamur$12,Anna,Rumenova,Stoyanova,15,2005-09-06,0000-00-00,0,2
+3,dansto,Salamur$12,Yordan,Emilov,Stoyanov,10,2010-05-05,0000-00-00,0,3
+4,rumsto,Salamur$12,Rumen,Yordanov,Stoyanov,50,1970-03-22,0000-00-00,0,4
+5,nadesto,Salamur$12,Nadejda,Ignatova,Stoyanova,41,1979-03-15,0000-00-00,0,5

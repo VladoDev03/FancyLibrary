@@ -18,7 +18,14 @@ namespace ConsoleVersion
             List<string> input = Console.ReadLine().Split().ToList();
             Console.WriteLine(commandInterpreter.RegisterUser(input));
 
-            Console.WriteLine(commandInterpreter.LogoutUser());
+            try
+            {
+                Console.WriteLine(commandInterpreter.LogoutUser());
+            }
+            catch (ArgumentException ae)
+            {
+                Console.WriteLine(ae.Message);
+            }
 
             input = Console.ReadLine().Split().ToList();
             Console.WriteLine(commandInterpreter.LoginUser(input));
