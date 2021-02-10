@@ -51,8 +51,6 @@ namespace ConsoleVersion.Models
             return sb.ToString();
         }
 
-        //TODO
-        //To be tested
         public string LoginUser(List<string> input)
         {
             if (CurrentLoggedInUser != null)
@@ -94,6 +92,11 @@ namespace ConsoleVersion.Models
         //To be tested
         public string RegisterUser(List<string> input)
         {
+            if (CurrentLoggedInUser != null)
+            {
+                throw new ArgumentException(ExceptionsText.LogInCannotRegister);
+            }
+
             string username = input[0];
             string password = input[1];
             string firstName = input[2];
@@ -103,19 +106,20 @@ namespace ConsoleVersion.Models
             DateTime birthdayDate = DateTime.Parse(input[6]);
 
             IsPasswordValid(password);
-            password = EncodePassword(password);
 
             if (Database.Users.Exists(u => u.Username == username))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(ExceptionsText.TakenUsername);
             }
 
-            User user = new User(username, password, firstName, middleName, lastName, age, birthdayDate, DateTime.Now.Date, true);
+            User user = new User(username, EncodePassword(password), firstName, middleName, lastName, age, birthdayDate, DateTime.Now.Date, true);
             Database.Users.Add(user);
+
+            LoginUser(new List<string> { username, password });
+
             return MessagesToUser.RegisterMessage;
         }
 
-        // TODO: to be tested
         public bool IsPasswordValid(string password)
         {
             if (password.Length < MinPasswordLength)
