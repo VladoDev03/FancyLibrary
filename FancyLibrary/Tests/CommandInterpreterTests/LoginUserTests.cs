@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace Tests
+namespace Tests.CommandInterpreterTests
 {
     public class LoginUserTests
     {

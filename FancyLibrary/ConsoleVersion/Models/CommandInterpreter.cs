@@ -24,7 +24,6 @@ namespace ConsoleVersion.Models
 
         public User CurrentLoggedInUser { get; private set; }
 
-        //To be tested
         public string EncodePassword(string password)
         {
             StringBuilder sb = new StringBuilder();
@@ -80,7 +79,6 @@ namespace ConsoleVersion.Models
             return MessagesToUser.WelcomeMessage;
         }
 
-        //To be tested
         public string LogoutUser()
         {
             if (CurrentLoggedInUser == null)
@@ -117,13 +115,12 @@ namespace ConsoleVersion.Models
             return MessagesToUser.RegisterMessage;
         }
 
-        // TODO: tobe tested
-        // TODO: add exceptions
-        private bool IsPasswordValid(string password)
+        // TODO: to be tested
+        public bool IsPasswordValid(string password)
         {
             if (password.Length < MinPasswordLength)
             {
-                throw new ArgumentException($"Password must be atleast {MinPasswordLength} symbols long!");
+                throw new ArgumentException($"Password must be atleast {MinPasswordLength} characters long!");
             }
             if (password.Where(x => char.IsUpper(x)).ToArray().Length < MinUpperCaseLettersCount)
             {

@@ -17,5 +17,7 @@ namespace ConsoleVersion.Models
         string LogoutUser();
 
         string EncodePassword(string username);
+
+        bool IsPasswordValid(string password);
     }
 }

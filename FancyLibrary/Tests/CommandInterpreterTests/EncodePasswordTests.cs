@@ -1,7 +1,7 @@
 ﻿using ConsoleVersion.Models;
 using NUnit.Framework;
 
-namespace EncodePasswordTests
+namespace Tests.CommandInterpreterTests
 {
     public class EncodePasswordTests
     {

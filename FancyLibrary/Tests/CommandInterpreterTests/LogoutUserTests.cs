@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace Tests
+namespace Tests.CommandInterpreterTests
 {
     public class LogoutUserTests
     {
@@ -13,7 +13,7 @@ namespace Tests
         }
 
         [Test]
-        public void ThrowsExceptionWhenTryingToLogInWhenUserIsAlreadyLoggedIn()
+        public void ThrowsExceptionWhenTryingToLogOutBeforeLoggingIn()
         {
             CommandInterpreter commandInterpreter = new CommandInterpreter(new LocalDatabase());
 
@@ -22,9 +22,8 @@ namespace Tests
                 .With.Message
                 .EqualTo("You cannot logout before logging in!"));
 
-            ArgumentException ex = Assert.Throws<ArgumentException>(() => commandInterpreter.LogoutUser());
-            Assert.That(ex.Message, Is.EqualTo("You cannot logout before logging in!"));
-
+            //ArgumentException ex = Assert.Throws<ArgumentException>(() => commandInterpreter.LogoutUser());
+            //Assert.That(ex.Message, Is.EqualTo("You cannot logout before logging in!"));
             //Assert.Throws<ArgumentException>(() => commandInterpreter.LogoutUser(), "You cannot logout before logging in!");
         }
 
