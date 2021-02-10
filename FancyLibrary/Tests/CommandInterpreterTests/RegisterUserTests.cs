@@ -1,8 +1,8 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Tests
 {
-    public class Tests
+    public class RegisterUserTests
     {
         [SetUp]
         public void Setup()

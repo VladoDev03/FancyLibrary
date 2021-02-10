@@ -12,7 +12,7 @@ namespace Tests
         }
 
         [Test]
-        public void ThrowsExceptionIfSomebodyIsLoggedIn()
+        public void ThrowsExceptionWhenTryingToLogInWhenAlreadyLoggedIn()
         {
 
         }

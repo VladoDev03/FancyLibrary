@@ -11,7 +11,7 @@ namespace EncodePasswordTests
         }
 
         [Test]
-        public void Test1()
+        public void IsPasswordBeingEncodedRight()
         {
             CommandInterpreter commandInterpreter = new CommandInterpreter(new LocalDatabase());
 
