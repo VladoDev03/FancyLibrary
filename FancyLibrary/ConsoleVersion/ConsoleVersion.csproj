@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Factories\" />
     <Folder Include="Views\" />
   </ItemGroup>
 

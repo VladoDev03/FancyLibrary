@@ -88,8 +88,6 @@ namespace ConsoleVersion.Models
             return MessagesToUser.LogOutMessage;
         }
 
-        //TODO
-        //To be tested
         public string RegisterUser(List<string> input)
         {
             if (CurrentLoggedInUser != null)
@@ -124,23 +122,23 @@ namespace ConsoleVersion.Models
         {
             if (password.Length < MinPasswordLength)
             {
-                throw new ArgumentException($"Password must be atleast {MinPasswordLength} characters long!");
+                throw new ArgumentException(string.Format(ExceptionsText.ShorterPassword, MinPasswordLength));
             }
             if (password.Where(x => char.IsUpper(x)).ToArray().Length < MinUpperCaseLettersCount)
             {
-                throw new ArgumentException($"Password must contain at least {MinUpperCaseLettersCount} upper case letter!");
+                throw new ArgumentException(string.Format(ExceptionsText.LessUpperCase, MinUpperCaseLettersCount));
             }
             if (password.Where(x => char.IsLower(x)).ToArray().Length < MinLowerCaseLettersCount)
             {
-                throw new ArgumentException($"Password must contain at least {MinLowerCaseLettersCount} lower case letter!");
+                throw new ArgumentException(string.Format(ExceptionsText.LessLowerCase, MinLowerCaseLettersCount));
             }
             if (password.Where(x => char.IsDigit(x)).ToArray().Length < MinNumbersCount)
             {
-                throw new ArgumentException($"Password must contain at least {MinNumbersCount} digit!");
+                throw new ArgumentException(string.Format(ExceptionsText.LessDigits, MinNumbersCount));
             }
             if (password.Where(x => char.IsSymbol(x)).ToArray().Length < MinSymbolsCount)
             {
-                throw new ArgumentException($"Password must contain at least {MinSymbolsCount} symbol!");
+                throw new ArgumentException(string.Format(ExceptionsText.LessSymbols, MinSymbolsCount));
             }
 
             return true;

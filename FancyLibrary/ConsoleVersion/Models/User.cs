@@ -11,6 +11,7 @@ namespace ConsoleVersion.Models
         private const int MinAge = 7;
 
         private string username;
+        private string password;
         private string firstName;
         private string middleName;
         private string lastName;
@@ -61,7 +62,22 @@ namespace ConsoleVersion.Models
         }
 
         //TODO: add exception message.
-        public string Password { get; set; }
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+            private set
+            {
+                if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException();
+                }
+
+                password = value;
+            }
+        }
 
         //TODO: add exception message.
         public string FirstName

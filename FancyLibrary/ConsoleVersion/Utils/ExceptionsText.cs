@@ -13,5 +13,11 @@ namespace ConsoleVersion.Utils
         public const string WrongPassword = "Invalid username or password!";
         public const string TakenUsername = "This username is taken!";
         public const string LogInCannotRegister = "Log out before register new profile!";
+
+        public const string ShorterPassword = "Password must be atleast {0} characters long!";
+        public const string LessUpperCase = "Password must contain at least {0} upper case letter!";
+        public const string LessLowerCase = "Password must contain at least {0} lower case letter!";
+        public const string LessDigits = "Password must contain at least {0} digit!";
+        public const string LessSymbols = "Password must contain at least {0} symbol!";
     }
 }
