@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleVersion.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,7 +55,7 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsText.UsernameException, MinNameLength));
                 }
 
                 username = value;
@@ -90,7 +91,7 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsText.FirstNameException, MinNameLength));
                 }
 
                 firstName = value;
@@ -108,7 +109,7 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsText.MiddleNameException, MinNameLength));
                 }
 
                 middleName = value;
@@ -126,7 +127,7 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsText.LastNameException, MinNameLength));
                 }
 
                 lastName = value;
@@ -144,7 +145,7 @@ namespace ConsoleVersion.Models
             {
                 if (value < MinAge)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsText.AgeException, MinAge));
                 }
 
                 age = value;
