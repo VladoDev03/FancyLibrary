@@ -60,6 +60,7 @@ namespace ConsoleVersion.Models
             Users.Add(new User("dansto", "42)snncmfT", "Yordan", "Emilov", "Stoyanov", 10, DateTime.Parse("2010-05-05"), DateTime.Parse("2021-01-01"), false));
             Users.Add(new User("rumsto", "42)snncmfT", "Rumen", "Yordanov", "Stoyanov", 50, DateTime.Parse("1970-03-22"), DateTime.Parse("2021-01-01"), false));
             Users.Add(new User("nadesto", "42)snncmfT", "Nadejda", "Ignatova", "Stoyanova", 41, DateTime.Parse("1979-03-15"), DateTime.Parse("2021-01-01"), false));
+            Users.Add(new User("afaf", "42)snncmfT", "seg", null, "segseg", 12, DateTime.Parse("1989-03-15"), DateTime.Parse("2021-01-01"), false));
         }
 
         public void PrintAll()

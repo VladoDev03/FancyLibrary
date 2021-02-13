@@ -87,7 +87,7 @@ namespace ConsoleVersion.Models
             }
             private set
             {
-                if ((value != null && value.Length < MinNameLength) || value.All(char.IsWhiteSpace))
+                if ((value != null && value.Length < MinNameLength))
                 {
                     throw new ArgumentException(string.Format(ExceptionsTexts.MiddleNameException, MinNameLength));
                 }
