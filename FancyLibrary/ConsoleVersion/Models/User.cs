@@ -12,7 +12,6 @@ namespace ConsoleVersion.Models
         private const int MinAge = 7;
 
         private string username;
-        private string password;
         private string firstName;
         private string middleName;
         private string lastName;
@@ -44,7 +43,6 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        //TODO: add exception message.
         public string Username
         {
             get
@@ -55,32 +53,15 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException(string.Format(ExceptionsText.UsernameException, MinNameLength));
+                    throw new ArgumentException(string.Format(ExceptionsTexts.UsernameException, MinNameLength));
                 }
 
                 username = value;
             }
         }
 
-        //TODO: add exception message.
-        public string Password
-        {
-            get
-            {
-                return password;
-            }
-            private set
-            {
-                if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException();
-                }
+        public string Password { get; private set; }
 
-                password = value;
-            }
-        }
-
-        //TODO: add exception message.
         public string FirstName
         {
             get
@@ -91,14 +72,13 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException(string.Format(ExceptionsText.FirstNameException, MinNameLength));
+                    throw new ArgumentException(string.Format(ExceptionsTexts.FirstNameException, MinNameLength));
                 }
 
                 firstName = value;
             }
         }
 
-        //TODO: add exception message.
         public string MiddleName
         {
             get
@@ -107,16 +87,15 @@ namespace ConsoleVersion.Models
             }
             private set
             {
-                if (value.Length < MinNameLength)
+                if ((value != null && value.Length < MinNameLength) || value.All(char.IsWhiteSpace))
                 {
-                    throw new ArgumentException(string.Format(ExceptionsText.MiddleNameException, MinNameLength));
+                    throw new ArgumentException(string.Format(ExceptionsTexts.MiddleNameException, MinNameLength));
                 }
 
                 middleName = value;
             }
         }
 
-        //TODO: add exception message.
         public string LastName
         {
             get
@@ -127,14 +106,13 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength)
                 {
-                    throw new ArgumentException(string.Format(ExceptionsText.LastNameException, MinNameLength));
+                    throw new ArgumentException(string.Format(ExceptionsTexts.LastNameException, MinNameLength));
                 }
 
                 lastName = value;
             }
         }
 
-        //TODO: add exception message.
         public int Age
         {
             get
@@ -145,7 +123,7 @@ namespace ConsoleVersion.Models
             {
                 if (value < MinAge)
                 {
-                    throw new ArgumentException(string.Format(ExceptionsText.AgeException, MinAge));
+                    throw new ArgumentException(string.Format(ExceptionsTexts.AgeException, MinAge));
                 }
 
                 age = value;

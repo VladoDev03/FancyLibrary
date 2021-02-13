@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tests.UserTests
+namespace Tests.ModelsTests
 {
     public class UserTests
     {
@@ -49,7 +49,7 @@ namespace Tests.UserTests
         }
 
         [Test]
-        public void IsThrowingCorrectExceptionWhenWideSpace()
+        public void IsThrowingCorrectExceptionWhenWiteSpace()
         {
             User user = null;
 
@@ -154,6 +154,46 @@ namespace Tests.UserTests
                 false));
 
             Assert.That(ae.Message, Is.EqualTo("You have to be at least 7 years old!"));
+        }
+
+        [Test]
+        public void IsMiddleNameThrowingExceptionWhenNotNullButShorter()
+        {
+            User user = null;
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+                user = new User(
+                "vlad111",
+                "Salamur$12",
+                "vlad",
+                "a",
+                "vladeto",
+                12,
+                DateTime.Parse("1010-10-10"),
+                DateTime.Parse("2020-02-20"),
+                false));
+
+            Assert.That(ae.Message, Is.EqualTo("Middle name must be atleast 3 characters long!"));
+        }
+
+        [Test]
+        public void IsMiddleNameThrowingExceptionWhenNotNullButWiteSpace()
+        {
+            User user = null;
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+                user = new User(
+                "vlad111",
+                "Salamur$12",
+                "vlad",
+                "        ",
+                "vladeto",
+                12,
+                DateTime.Parse("1010-10-10"),
+                DateTime.Parse("2020-02-20"),
+                false));
+
+            Assert.That(ae.Message, Is.EqualTo("Middle name must be atleast 3 characters long!"));
         }
     }
 }

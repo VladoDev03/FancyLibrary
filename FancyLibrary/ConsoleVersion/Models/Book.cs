@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleVersion.Utils;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,7 @@ namespace ConsoleVersion.Models
 {
     public class Book
     {
+        //private static readonly int LatestYear = DateTime.Now.Year;
         private const int MinYear = 0;
         private const int MinLengthForTitle = 3;
         private const int MinLengthForGenre = 3;
@@ -13,7 +15,7 @@ namespace ConsoleVersion.Models
         private string title;
         private string genre;
         private int year;
-        private Author author;
+        //private Author author;
 
         public Book()
         {
@@ -31,7 +33,6 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        //TODO: add exception message.
         public string Title
         {
             get
@@ -42,14 +43,13 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinLengthForTitle || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsTexts.TitleException, MinLengthForTitle));
                 }
 
                 title = value;
             }
         }
 
-        //TODO: add exception message.
         public string Genre
         {
             get
@@ -60,14 +60,13 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinLengthForGenre || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsTexts.GenreException, MinLengthForGenre));
                 }
 
                 genre = value;
             }
         }
 
-        //TODO: add exception message.
         public int Year
         {
             get
@@ -76,9 +75,13 @@ namespace ConsoleVersion.Models
             }
             private set
             {
-                if (value < MinYear/* || value > DateTime.Now.Year*/)
+                if (value < MinYear)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsTexts.TooOldYear, MinYear));
+                }
+                else if (value > DateTime.Now.Year)
+                {
+                    throw new ArgumentException(string.Format(ExceptionsTexts.FutureYear, DateTime.Now.Year));
                 }
 
                 year = value;

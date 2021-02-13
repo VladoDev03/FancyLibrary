@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleVersion.Utils;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace ConsoleVersion.Models
 {
     public class Contact
     {
-        //private const int PhoneLength = 10;
+        private const int PhoneLength = 10;
 
         private string email;
         private string phone;
@@ -30,7 +31,6 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        //TODO: add exception message.
         public string Email
         {
             get
@@ -39,16 +39,15 @@ namespace ConsoleVersion.Models
             }
             private set
             {
-                if (!value.Contains("@") || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                if (!value.Contains("@") && value != null)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsTexts.NotValidEmail));
                 }
 
                 email = value;
             }
         }
 
-        //TODO: add exception message.
         public string Phone
         {
             get
@@ -57,10 +56,10 @@ namespace ConsoleVersion.Models
             }
             private set
             {
-                //if (value != null && value.Length != PhoneLength)
-                //{
-                //    throw new ArgumentException();
-                //}
+                if (value != null && value.Length != PhoneLength)
+                {
+                    throw new ArgumentException(string.Format(ExceptionsTexts.NotValidPhone));
+                }
 
                 phone = value;
             }

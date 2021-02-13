@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ConsoleVersion.Utils;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ConsoleVersion.Models
@@ -28,7 +30,6 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        //TODO: add exception message.
         public string FirstName
         {
             get
@@ -39,14 +40,13 @@ namespace ConsoleVersion.Models
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsTexts.FirstNameException, MinNameLength));
                 }
 
                 firstName = value;
             }
         }
 
-        //TODO: add exception message.
         public string MiddleName
         {
             get
@@ -55,16 +55,15 @@ namespace ConsoleVersion.Models
             }
             private set
             {
-                if (value.Length < MinNameLength)
+                if ((value != null && value.Length < MinNameLength) || value.All(char.IsWhiteSpace))
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsTexts.MiddleNameException, MinNameLength));
                 }
 
                 middleName = value;
             }
         }
 
-        //TODO: add exception message.
         public string LastName
         {
             get
@@ -73,9 +72,9 @@ namespace ConsoleVersion.Models
             }
             private set
             {
-                if (value.Length < MinNameLength)
+                if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException(string.Format(ExceptionsTexts.LastNameException, MinNameLength));
                 }
 
                 lastName = value;

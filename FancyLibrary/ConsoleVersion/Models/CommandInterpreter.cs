@@ -55,7 +55,7 @@ namespace ConsoleVersion.Models
         {
             if (CurrentLoggedInUser != null)
             {
-                throw new ArgumentException(ExceptionsText.AlreadyLoggedIn);
+                throw new ArgumentException(ExceptionsTexts.AlreadyLoggedIn);
             }
 
             string username = input[0];
@@ -65,12 +65,12 @@ namespace ConsoleVersion.Models
 
             if (user == null)
             {
-                throw new ArgumentException(ExceptionsText.NotExistingUser);
+                throw new ArgumentException(ExceptionsTexts.NotExistingUser);
             }
 
             if (password != user.Password)
             {
-                throw new ArgumentException(ExceptionsText.WrongPassword);
+                throw new ArgumentException(ExceptionsTexts.WrongPassword);
             }
 
             CurrentLoggedInUser = user;
@@ -81,7 +81,7 @@ namespace ConsoleVersion.Models
         {
             if (CurrentLoggedInUser == null)
             {
-                throw new ArgumentException(ExceptionsText.NotUserLoggedIn);
+                throw new ArgumentException(ExceptionsTexts.NotUserLoggedIn);
             }
 
             CurrentLoggedInUser = null;
@@ -92,7 +92,7 @@ namespace ConsoleVersion.Models
         {
             if (CurrentLoggedInUser != null)
             {
-                throw new ArgumentException(ExceptionsText.LogInCannotRegister);
+                throw new ArgumentException(ExceptionsTexts.LogInCannotRegister);
             }
 
             string username = input[0];
@@ -107,7 +107,7 @@ namespace ConsoleVersion.Models
 
             if (Database.Users.Exists(u => u.Username == username))
             {
-                throw new ArgumentException(ExceptionsText.TakenUsername);
+                throw new ArgumentException(ExceptionsTexts.TakenUsername);
             }
 
             User user = new User(username, EncodePassword(password), firstName, middleName, lastName, age, birthdayDate, DateTime.Now.Date, true);
@@ -122,23 +122,23 @@ namespace ConsoleVersion.Models
         {
             if (password.Length < MinPasswordLength)
             {
-                throw new ArgumentException(string.Format(ExceptionsText.ShorterPassword, MinPasswordLength));
+                throw new ArgumentException(string.Format(ExceptionsTexts.ShorterPassword, MinPasswordLength));
             }
             if (password.Where(x => char.IsUpper(x)).ToArray().Length < MinUpperCaseLettersCount)
             {
-                throw new ArgumentException(string.Format(ExceptionsText.LessUpperCase, MinUpperCaseLettersCount));
+                throw new ArgumentException(string.Format(ExceptionsTexts.LessUpperCase, MinUpperCaseLettersCount));
             }
             if (password.Where(x => char.IsLower(x)).ToArray().Length < MinLowerCaseLettersCount)
             {
-                throw new ArgumentException(string.Format(ExceptionsText.LessLowerCase, MinLowerCaseLettersCount));
+                throw new ArgumentException(string.Format(ExceptionsTexts.LessLowerCase, MinLowerCaseLettersCount));
             }
             if (password.Where(x => char.IsDigit(x)).ToArray().Length < MinNumbersCount)
             {
-                throw new ArgumentException(string.Format(ExceptionsText.LessDigits, MinNumbersCount));
+                throw new ArgumentException(string.Format(ExceptionsTexts.LessDigits, MinNumbersCount));
             }
             if (password.Where(x => char.IsSymbol(x)).ToArray().Length < MinSymbolsCount)
             {
-                throw new ArgumentException(string.Format(ExceptionsText.LessSymbols, MinSymbolsCount));
+                throw new ArgumentException(string.Format(ExceptionsTexts.LessSymbols, MinSymbolsCount));
             }
 
             return true;
