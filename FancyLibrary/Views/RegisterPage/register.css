@@ -5,9 +5,12 @@ h1 {
     text-align: center;
     width: 275px;
     margin: auto;
-}
-.label-text {
-    text-transform: capitalize;
+    border-top: solid;
+    border-left: solid;
+    border-right: solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-color: rgb(179, 199, 92);
 }
 label {
     display: block;
@@ -17,9 +20,6 @@ label {
     display: inline-block;
     margin-bottom: 10px;
 }
-option {
-    text-transform: capitalize;
-}
 form {
     background-color: rgb(228, 210, 187);
     text-align: center;
@@ -27,7 +27,12 @@ form {
     padding: 10px;
     width: 275px;
     margin: auto;
+    margin: auto;
+    border: solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-color: rgb(179, 199, 92);
 }
 body {
-    margin-top: 200px;
+    margin-top: 100px;
 }
