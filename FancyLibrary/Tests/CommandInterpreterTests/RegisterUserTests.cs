@@ -63,8 +63,7 @@ namespace Tests.CommandInterpreterTests
                 "vlad",
                 "vlado",
                 "vladeto",
-                "27",
-                "1994-01-10",
+                "27"
             };
 
             Assert.That(commandInterpreter.RegisterUser(input),
@@ -83,8 +82,7 @@ namespace Tests.CommandInterpreterTests
                 "vlad",
                 "vlado",
                 "vladeto",
-                "27",
-                "1994-01-10",
+                "27"
             };
 
             commandInterpreter.RegisterUser(input);

@@ -16,45 +16,45 @@ namespace ConsoleVersion.Controllers
         //    database = new RemoteDatabase();
         //}
 
-        public void ChangeUserStatus(User user)
-        {
-            using SqlConnection connection = new SqlConnection(ConnectionString);
+        //public void ChangeUserStatus(User user)
+        //{
+        //    using SqlConnection connection = new SqlConnection(ConnectionString);
 
-            StringBuilder sb = new StringBuilder();
+        //    StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("UPDATE Users");
+        //    sb.AppendLine("UPDATE Users");
 
-            if (user.IsOnline)
-            {
-                sb.AppendLine($"SET IsOnline = 1");
-                user.IsOnline = true;
-            }
-            else
-            {
-                sb.AppendLine($"SET IsOnline = 0");
-                user.IsOnline = false;
-            }
+        //    if (user.IsOnline)
+        //    {
+        //        sb.AppendLine($"SET IsOnline = 1");
+        //        user.IsOnline = true;
+        //    }
+        //    else
+        //    {
+        //        sb.AppendLine($"SET IsOnline = 0");
+        //        user.IsOnline = false;
+        //    }
 
-            sb.AppendLine($"WHERE Id = {user.Id};");
+        //    sb.AppendLine($"WHERE Id = {user.Id};");
 
-            using SqlCommand command = new SqlCommand(sb.ToString().Trim(), connection);
-            command.ExecuteNonQuery();
-        }
+        //    using SqlCommand command = new SqlCommand(sb.ToString().Trim(), connection);
+        //    command.ExecuteNonQuery();
+        //}
 
-        public void SetLoginTime(User user)
-        {
-            user.LastTimeLoggedIn = DateTime.Now.Date;
-            using SqlConnection connection = new SqlConnection(ConnectionString);
+        //public void SetLoginTime(User user)
+        //{
+        //    user.LastTimeLoggedIn = DateTime.Now.Date;
+        //    using SqlConnection connection = new SqlConnection(ConnectionString);
 
-            StringBuilder sb = new StringBuilder();
+        //    StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("UPDATE Users");
-            sb.AppendLine($"SET IsOnline = {user.LastTimeLoggedIn}");
+        //    sb.AppendLine("UPDATE Users");
+        //    sb.AppendLine($"SET IsOnline = {user.LastTimeLoggedIn}");
 
-            sb.AppendLine($"WHERE Id = {user.Id};");
+        //    sb.AppendLine($"WHERE Id = {user.Id};");
 
-            using SqlCommand command = new SqlCommand(sb.ToString().Trim(), connection);
-            command.ExecuteNonQuery();
-        }
+        //    using SqlCommand command = new SqlCommand(sb.ToString().Trim(), connection);
+        //    command.ExecuteNonQuery();
+        //}
     }
 }

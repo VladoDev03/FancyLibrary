@@ -16,7 +16,11 @@ namespace Tests.ModelsTests
         {
             Contact contact = null;
 
-            ArgumentException ae = Assert.Throws<ArgumentException>(() => contact = new Contact("asdasdasdasd", "1234567890"));
+            ArgumentException ae = Assert.Throws<ArgumentException>(() => contact = new Contact
+            {
+                Email = "asdasdasdasd",
+                Phone = "1234567890"
+            });
 
             Assert.That(ae.Message, Is.EqualTo("This email is invalid, try with another one!"));
         }
@@ -26,7 +30,11 @@ namespace Tests.ModelsTests
         {
             Contact contact = null;
 
-            ArgumentException ae = Assert.Throws<ArgumentException>(() => contact = new Contact("asdasd@asdasd", "123456789"));
+            ArgumentException ae = Assert.Throws<ArgumentException>(() => contact = new Contact
+            {
+                Email = "asdasd@asdasd",
+                Phone = "123456789"
+            });
 
             Assert.That(ae.Message, Is.EqualTo("This phone number is invalid, try with another one!"));
         }

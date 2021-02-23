@@ -1,12 +1,15 @@
 ﻿using ConsoleVersion.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace ConsoleVersion.Models
 {
-    public class Author
+    public partial class Author
     {
         private const int MinNameLength = 3;
 
@@ -16,27 +19,17 @@ namespace ConsoleVersion.Models
 
         public Author()
         {
-
-        }
-
-        public Author(int id, string firstName, string middleName, string lastName, DateTime birthdayDate)
-        {
-            Id = id;
-            FirstName = firstName;
-            MiddleName = middleName;
-            LastName = lastName;
-            BirthdayDate = birthdayDate;
+            Books = new HashSet<Book>();
         }
 
         public int Id { get; set; }
-
         public string FirstName
         {
             get
             {
                 return firstName;
             }
-            private set
+            set
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
@@ -53,7 +46,7 @@ namespace ConsoleVersion.Models
             {
                 return middleName;
             }
-            private set
+            set
             {
                 if ((value != null && value.Length < MinNameLength))
                 {
@@ -70,7 +63,7 @@ namespace ConsoleVersion.Models
             {
                 return lastName;
             }
-            private set
+            set
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
@@ -80,8 +73,12 @@ namespace ConsoleVersion.Models
                 lastName = value;
             }
         }
+        public DateTime? Birthday { get; set; }
+        public string Nickname { get; set; }
+        public int? CountryId { get; set; }
 
-        public DateTime BirthdayDate { get; set; }
+        public virtual Countrie Country { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
 
         public override string ToString()
         {
@@ -91,7 +88,6 @@ namespace ConsoleVersion.Models
             sb.AppendLine($"First name - {FirstName}");
             sb.AppendLine($"Middle name - {MiddleName}");
             sb.AppendLine($"Last name - {LastName}");
-            sb.AppendLine($"Birthday date - {BirthdayDate.Day}-{BirthdayDate.Month}-{BirthdayDate.Year}");
 
             return sb.ToString().Trim();
         }

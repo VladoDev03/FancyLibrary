@@ -3,11 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
+
 namespace ConsoleVersion.Models
 {
-    public class Book
+    public partial class Book
     {
-        //private static readonly int LatestYear = DateTime.Now.Year;
         private const int MinYear = 0;
         private const int MinLengthForTitle = 3;
         private const int MinLengthForGenre = 3;
@@ -15,31 +18,20 @@ namespace ConsoleVersion.Models
         private string title;
         private string genre;
         private int year;
-        //private Author author;
 
         public Book()
         {
-
-        }
-
-        public Book(int id, string title, string genre, int year, string linkToInternet)
-        {
-            Id = id;
-            Title = title;
-            Genre = genre;
-            Year = year;
-            LinkToInternet = linkToInternet;
+            InverseInspiredBy = new HashSet<Book>();
         }
 
         public int Id { get; set; }
-
         public string Title
         {
             get
             {
                 return title;
             }
-            private set
+            set
             {
                 if (value.Length < MinLengthForTitle || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
@@ -56,7 +48,7 @@ namespace ConsoleVersion.Models
             {
                 return genre;
             }
-            private set
+            set
             {
                 if (value.Length < MinLengthForGenre || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
@@ -73,7 +65,7 @@ namespace ConsoleVersion.Models
             {
                 return year;
             }
-            private set
+            set
             {
                 if (value < MinYear)
                 {
@@ -87,26 +79,14 @@ namespace ConsoleVersion.Models
                 year = value;
             }
         }
+        public int? Pages { get; set; }
+        public int AuthorId { get; set; }
+        public int? InspiredById { get; set; }
 
-        //TODO: add exception message.
-        //public Author Author
-        //{
-        //    get
-        //    {
-        //        return author;
-        //    }
-        //    private set
-        //    {
-        //        if (value == null)
-        //        {
-        //            throw new ArgumentException();
-        //        }
-
-        //        author = value;
-        //    }
-        //}
-
-        public string LinkToInternet { get; set; }
+        public virtual Author Author { get; set; }
+        public virtual Book InspiredBy { get; set; }
+        public virtual UserBook UsersBooks { get; set; }
+        public virtual ICollection<Book> InverseInspiredBy { get; set; }
 
         public override string ToString()
         {
@@ -116,7 +96,6 @@ namespace ConsoleVersion.Models
             sb.AppendLine($"Title - {Title}");
             sb.AppendLine($"Genre - {Genre}");
             sb.AppendLine($"Year - {Year}");
-            sb.AppendLine($"Link to internet - {LinkToInternet}");
 
             return sb.ToString().Trim();
         }

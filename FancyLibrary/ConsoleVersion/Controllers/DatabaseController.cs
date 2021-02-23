@@ -42,7 +42,7 @@ namespace ConsoleVersion.Controllers
             addUserCommand.Parameters.AddWithValue("@middleName", user.MiddleName);
             addUserCommand.Parameters.AddWithValue("@lastName", user.LastName);
             addUserCommand.Parameters.AddWithValue("@age", user.Age);
-            addUserCommand.Parameters.AddWithValue("@birthdayDate", user.BirthdayDate);
+            //addUserCommand.Parameters.AddWithValue("@birthdayDate", user.BirthdayDate);
 
             addUserCommand.ExecuteNonQuery();
         }

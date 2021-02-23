@@ -14,16 +14,15 @@ namespace Tests.ModelsTests
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() => 
-                user = new User(
-                "12",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                12,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false));
+                user = new User
+                {
+                    Username = "12",
+                    Password = "Salamur$12",
+                    FirstName = "vlad",
+                    MiddleName = "vlado",
+                    LastName = "vladeto",
+                    Age = 12
+                });
 
             Assert.That(ae.Message, Is.EqualTo("Username must be atleast 3 characters long!"));
         }
@@ -34,16 +33,15 @@ namespace Tests.ModelsTests
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
-                user = new User(
-                "",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                12,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false));
+                user = new User
+                {
+                    Username = "",
+                    Password = "Salamur$12",
+                    FirstName = "vlad",
+                    MiddleName = "vlado",
+                    LastName = "vladeto",
+                    Age = 12
+                });
 
             Assert.That(ae.Message, Is.EqualTo("Username must be atleast 3 characters long!"));
         }
@@ -54,16 +52,15 @@ namespace Tests.ModelsTests
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
-                user = new User(
-                "    ",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                12,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false));
+                user = new User
+                {
+                    Username = "    ",
+                    Password = "Salamur$12",
+                    FirstName = "vlad",
+                    MiddleName = "vlado",
+                    LastName = "vladeto",
+                    Age = 12
+                });
 
             Assert.That(ae.Message, Is.EqualTo("Username must be atleast 3 characters long!"));
         }
@@ -74,16 +71,15 @@ namespace Tests.ModelsTests
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
-                user = new User(
-                "vlad111",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                1,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false));
+                user = new User
+                {
+                    Username = "vlad111",
+                    Password = "Salamur$12",
+                    FirstName = "vlad",
+                    MiddleName = "vlado",
+                    LastName = "vladeto",
+                    Age = 1
+                });
 
             Assert.That(ae.Message, Is.EqualTo("You have to be at least 7 years old!"));
         }
@@ -91,15 +87,15 @@ namespace Tests.ModelsTests
         [Test]
         public void SettingAgeWhenValueIsEqualToMinAge()
         {
-            User user = new User("vlad111",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                7,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false);
+            User user = new User
+            {
+                Username = "vlad111",
+                Password = "Salamur$12",
+                FirstName = "vlad",
+                MiddleName = "vlado",
+                LastName = "vladeto",
+                Age = 7
+            };
 
             Assert.That(user.Age, Is.EqualTo(7));
         }
@@ -107,15 +103,15 @@ namespace Tests.ModelsTests
         [Test]
         public void SettingAgeWhenValueIsMoreThanMinAge()
         {
-            User user = new User("vlad111",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                18,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false);
+            User user = new User
+            {
+                Username = "vlad111",
+                Password = "Salamur$12",
+                FirstName = "vlad",
+                MiddleName = "vlado",
+                LastName = "vladeto",
+                Age = 18
+            };
 
             Assert.That(user.Age, Is.EqualTo(18));
         }
@@ -123,15 +119,15 @@ namespace Tests.ModelsTests
         [Test]
         public void SettingAgeWhenValueIsOneMoreThanMinAge()
         {
-            User user = new User("vlad111",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                8,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false);
+            User user = new User
+            {
+                Username = "vlad111",
+                Password = "Salamur$12",
+                FirstName = "vlad",
+                MiddleName = "vlado",
+                LastName = "vladeto",
+                Age = 8
+            };
 
             Assert.That(user.Age, Is.EqualTo(8));
         }
@@ -142,16 +138,15 @@ namespace Tests.ModelsTests
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
-                user = new User(
-                "vlad111",
-                "Salamur$12",
-                "vlad",
-                "vlado",
-                "vladeto",
-                6,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false));
+                user = new User
+                {
+                    Username = "vlad111",
+                    Password = "Salamur$12",
+                    FirstName = "vlad",
+                    MiddleName = "vlado",
+                    LastName = "vladeto",
+                    Age = 6
+                });
 
             Assert.That(ae.Message, Is.EqualTo("You have to be at least 7 years old!"));
         }
@@ -162,16 +157,15 @@ namespace Tests.ModelsTests
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
-                user = new User(
-                "vlad111",
-                "Salamur$12",
-                "vlad",
-                "a",
-                "vladeto",
-                12,
-                DateTime.Parse("1010-10-10"),
-                DateTime.Parse("2020-02-20"),
-                false));
+                user = new User
+                {
+                    Username = "vlad111",
+                    Password = "Salamur$12",
+                    FirstName = "vlad",
+                    MiddleName = "a",
+                    LastName = "vladeto",
+                    Age = 12
+                });
 
             Assert.That(ae.Message, Is.EqualTo("Middle name must be atleast 3 characters long!"));
         }

@@ -1,12 +1,15 @@
 ﻿using ConsoleVersion.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace ConsoleVersion.Models
 {
-    public class User
+    public partial class User
     {
         private const int MinNameLength = 3;
         private const int MinAge = 7;
@@ -17,39 +20,14 @@ namespace ConsoleVersion.Models
         private string lastName;
         private int age;
 
-        public User()
-        {
-
-        }
-
-        public User(string username, string password, string firstName, string middleName, string lastName, int age, DateTime birthdayDate, DateTime lastTimeLoggedIn, bool isOnline)
-        {
-            Username = username;
-            Password = password;
-            FirstName = firstName;
-            MiddleName = middleName;
-            LastName = lastName;
-            Age = age;
-            BirthdayDate = birthdayDate;
-            LastTimeLoggedIn = lastTimeLoggedIn;
-            IsOnline = isOnline;
-        }
-
-        public User(int id, string username, string password, string firstName, string middleName, string lastName, int age, DateTime birthdayDate, DateTime lastTimeLoggedIn, bool isOnline)
-            : this(username, password, firstName, middleName, lastName, age, birthdayDate, lastTimeLoggedIn, isOnline)
-        {
-            Id = id;
-        }
-
         public int Id { get; set; }
-
         public string Username
         {
             get
             {
                 return username;
             }
-            private set
+            set
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
@@ -60,7 +38,7 @@ namespace ConsoleVersion.Models
             }
         }
 
-        public string Password { get; private set; }
+        public string Password { get; set; }
 
         public string FirstName
         {
@@ -68,7 +46,7 @@ namespace ConsoleVersion.Models
             {
                 return firstName;
             }
-            private set
+            set
             {
                 if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
@@ -85,7 +63,7 @@ namespace ConsoleVersion.Models
             {
                 return middleName;
             }
-            private set
+            set
             {
                 if ((value != null && value.Length < MinNameLength))
                 {
@@ -102,7 +80,7 @@ namespace ConsoleVersion.Models
             {
                 return lastName;
             }
-            private set
+            set
             {
                 if (value.Length < MinNameLength)
                 {
@@ -119,7 +97,7 @@ namespace ConsoleVersion.Models
             {
                 return age;
             }
-            private set
+            set
             {
                 if (value < MinAge)
                 {
@@ -129,14 +107,15 @@ namespace ConsoleVersion.Models
                 age = value;
             }
         }
+        public DateTime Birthday { get; set; }
+        public int? ContactId { get; set; }
+        public int LogDataId { get; set; }
+        public int? CountryId { get; set; }
 
-        public DateTime BirthdayDate { get; set; }
-
-        public DateTime LastTimeLoggedIn { get; set; }
-
-        public bool IsOnline { get; set; }
-
-        public Contact Contact { get; set; }
+        public virtual Contact Contact { get; set; }
+        public virtual Countrie Country { get; set; }
+        public virtual LogData LogData { get; set; }
+        public virtual UserBook UsersBooks { get; set; }
 
         public override string ToString()
         {
@@ -149,9 +128,6 @@ namespace ConsoleVersion.Models
             sb.AppendLine($"Middle name - {MiddleName}");
             sb.AppendLine($"Last name - {LastName}");
             sb.AppendLine($"Age - {Age}");
-            sb.AppendLine($"Birthday date - {BirthdayDate.Day}-{BirthdayDate.Month}-{BirthdayDate.Year}");
-            sb.AppendLine($"Last time logged in - {LastTimeLoggedIn.Day}-{LastTimeLoggedIn.Month}-{LastTimeLoggedIn.Year}");
-            sb.AppendLine($"Is online - {IsOnline}");
 
             return sb.ToString().Trim();
         }

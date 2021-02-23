@@ -101,7 +101,6 @@ namespace ConsoleVersion.Models
             string middleName = input[3];
             string lastName = input[4];
             int age = int.Parse(input[5]);
-            DateTime birthdayDate = DateTime.Parse(input[6]);
 
             IsPasswordValid(password);
 
@@ -110,7 +109,23 @@ namespace ConsoleVersion.Models
                 throw new ArgumentException(ExceptionsTexts.TakenUsername);
             }
 
-            User user = new User(username, EncodePassword(password), firstName, middleName, lastName, age, birthdayDate, DateTime.Now.Date, true);
+            User user = new User
+            {
+                Username = username,
+                Password = EncodePassword(password),
+                FirstName = firstName,
+                MiddleName = middleName,
+                LastName = lastName,
+                Age = age,
+                LogData = new LogData
+                {
+                    LastTimeLoggedIn = DateTime.Now,
+                    TimesLoggedIn = 1,
+                    RegisterDate = DateTime.Now,
+                    IsOnline = true
+                }
+            };
+
             Database.Users.Add(user);
 
             LoginUser(new List<string> { username, password });
