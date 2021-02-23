@@ -1,0 +1,16 @@
+ul li {
+    display: inline;
+}
+
+ul {
+    margin-left: 750px;
+}
+
+li {
+    padding-right: 10px;
+}
+
+a {
+    font-size: larger;
+    text-decoration: none;
+}
