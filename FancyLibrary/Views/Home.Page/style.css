@@ -1,16 +1,33 @@
-ul li {
-    display: inline;
-}
-
 ul {
-    margin-left: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(146, 247, 247);
+    width: 650px;
+    height: 35px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid;
+    border-color: rgb(179, 199, 92);
 }
 
 li {
-    padding-right: 10px;
+    padding: 20px;
+    display: inline;
 }
 
 a {
     font-size: larger;
     text-decoration: none;
+    border: solid;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: cornsilk
+}
+
+a:hover {
+    color: burlywood;
 }
