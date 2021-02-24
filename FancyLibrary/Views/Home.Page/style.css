@@ -2,7 +2,7 @@ ul {
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(146, 247, 247);
-    width: 650px;
+    width: 620px;
     height: 35px;
     text-align: center;
     padding: 10px;
@@ -12,11 +12,15 @@ ul {
 }
 
 li {
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     display: inline;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
-a {
+.page {
     font-size: larger;
     text-decoration: none;
     border: solid;
@@ -25,9 +29,17 @@ a {
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: cornsilk
+    background-color: cornsilk;
+    font-style: italic;
+    font-weight: bold;
 }
 
-a:hover {
+.page:hover {
     color: burlywood;
+}
+
+h1 {
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
 }
