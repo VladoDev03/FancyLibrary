@@ -34,3 +34,19 @@ tbody tr:hover {
 h1 {
     text-align: center;
 }
+
+.remove-book {
+    margin-bottom: 15px;
+}
+
+.profile-info {
+    background-color: darkkhaki;
+}
+
+.change-button {
+    margin-left: 10px;
+}
+
+.property {
+    margin-top: 2px;
+}

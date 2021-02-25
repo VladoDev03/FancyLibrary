@@ -9,69 +9,84 @@
 </head>
 <body>
     <h1>Your profile</h1>
+    <div class="profile-info">
+        <div class="property">
+            Username: vladsto<button class="change-button">Change</button>
+        </div><br>
+        <div class="property">
+            First name: Vladimir<button class="change-button">Change</button>
+        </div><br>
+        <div class="property">
+            Last name: Stoyanov<button class="change-button">Change</button>
+        </div><br>
+        <div>
+            Password: <a class="property-link" href="Change password">Change password</a>
+        </div><br>
+        <div class="property">
+            Books count: 7 <a class="property-link" href="../BookPage/book.html">All books</a>
+        </div><br>
+    </div>
     <div>
         <h2>Books</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Year</th>
-                    <th>LinkToInternet</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Matilda</td>
-                    <td>Children's literature Fantasy</td>
-                    <td>1988</td>
-                    <td>127.0.0.1</td>
-                <tr>
-                    <td>2</td>
-                    <td>The Secret Garden</td>
-                    <td>Children's novel</td>
-                    <td>1911</td>
-                    <td>127.0.0.1</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>The witches</td>
-                    <td>Children's fantasy Dark fantasy</td>
-                    <td>1983</td>
-                    <td>127.0.0.1</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>The Twits</td>
-                    <td>Children's novel</td>
-                    <td>1980</td>
-                    <td>127.0.0.1</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Around the World in Eighty Days</td>
-                    <td>Adventure novel</td>
-                    <td>1872</td>
-                    <td>127.0.0.1</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>George's Marvellous Medicine</td>
-                    <td>Children's novel</td>
-                    <td>1981</td>
-                    <td>127.0.0.1</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Charlie and the Chocolate Factory</td>
-                    <td>Children's fantasy novel</td>
-                    <td>1964</td>
-                    <td>127.0.0.1</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="remove-book">
+            <input type="search" name="title">
+            <button type="submit">Remove</button>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Year</th>
+                        <th>Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Matilda</td>
+                        <td>Children's literature Fantasy</td>
+                        <td>1988</td>
+                        <td>Roald Dahl</td>
+                    <tr>
+                        <td>The Secret Garden</td>
+                        <td>Children's novel</td>
+                        <td>1911</td>
+                        <td>Frances Hodgson Burnett</td>
+                    </tr>
+                    <tr>
+                        <td>The witches</td>
+                        <td>Children's fantasy Dark fantasy</td>
+                        <td>1983</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                    <tr>
+                        <td>The Twits</td>
+                        <td>Children's novel</td>
+                        <td>1980</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                    <tr>
+                        <td>Around the World in Eighty Days</td>
+                        <td>Adventure novel</td>
+                        <td>1872</td>
+                        <td>Jules Verne</td>
+                    </tr>
+                    <tr>
+                        <td>George's Marvellous Medicine</td>
+                        <td>Children's novel</td>
+                        <td>1981</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                    <tr>
+                        <td>Charlie and the Chocolate Factory</td>
+                        <td>Children's fantasy novel</td>
+                        <td>1964</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div>
         <h2>Contacts</h2>
