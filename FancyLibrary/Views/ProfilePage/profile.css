@@ -21,6 +21,8 @@ th {
     text-align: left;
     height: 35px;
     text-align: center;
+    font-style: italic;
+    font-size: 18px;
 }
 
 td, th {
@@ -42,6 +44,7 @@ h1 {
     font-style: italic;
     color: maroon;
     margin-bottom: 50px;
+    font-size: 35px;
 }
 
 h2 {
@@ -62,6 +65,7 @@ h2 {
     border-radius: 25px;
     border: solid;
     border-color: rgb(10, 163, 10);
+    font-weight: bold;
 }
 
 .profile-info {
@@ -79,12 +83,14 @@ h2 {
 
 .contact-title, .user-title {
     margin-top: 1px;
+    font-size: 25px;
 }
 
 .property-link {
     margin-left: 10px;
     color: rgb(149, 42, 250);
     text-decoration: none;
+    font-weight: bold;
 }
 
 .property-link:hover {

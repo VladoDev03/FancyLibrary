@@ -12,14 +12,17 @@ h1 {
     border-top-right-radius: 10px;
     border-color: rgb(179, 199, 92);
 }
+
 label {
     display: block;
     margin-bottom: 10px;
 }
+
 .inline-label {
     display: inline-block;
     margin-bottom: 10px;
 }
+
 form {
     background-color: rgb(228, 210, 187);
     text-align: center;
@@ -33,6 +36,14 @@ form {
     border-bottom-right-radius: 10px;
     border-color: rgb(179, 199, 92);
 }
+
 body {
     margin-top: 100px;
+}
+
+.label-text {
+    color: crimson;
+    font-style: italic;
+    font-weight: bold;
+    margin-right: 10px;
 }

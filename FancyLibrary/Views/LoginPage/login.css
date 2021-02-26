@@ -10,6 +10,7 @@ form {
     border-bottom-right-radius: 10px;
     border-color: rgb(179, 199, 92);
 }
+
 h1 {
     padding: 10px;
     background-color: rgb(169, 255, 226);
@@ -24,14 +25,24 @@ h1 {
     border-top-right-radius: 10px;
     border-color: rgb(179, 199, 92);
 }
+
 label {
     display: block;
     margin-bottom: 10px;
 }
+
 .inline-label {
     display: inline-block;
     margin-bottom: 10px;
 }
+
 body {
     margin-top: 150px;
+}
+
+.label-text {
+    color: crimson;
+    font-style: italic;
+    font-weight: bold;
+    margin-right: 10px;
 }
