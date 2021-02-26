@@ -9,17 +9,23 @@ body {
 }
 
 table {
-    width: 100%;
+    width: 65%;
     border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
 }
 
 th {
     background-color: rgb(221, 221, 221);
     text-align: left;
+    height: 35px;
+    text-align: center;
 }
 
 td, th {
     padding-left: 5px;
+    border: solid 1px;
 }
 
 tbody tr:nth-child(odd) {
@@ -33,20 +39,63 @@ tbody tr:hover {
 
 h1 {
     text-align: center;
+    font-style: italic;
+    color: maroon;
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-style: italic;
+    color: darkblue;
 }
 
 .remove-book {
     margin-bottom: 15px;
+    margin-left: 315px;
+}
+
+.profile-info, .contact-info {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(224, 218, 131);
+    padding-top: 20px;
+    border-radius: 25px;
+    border: solid;
+    border-color: rgb(10, 163, 10);
 }
 
 .profile-info {
-    background-color: darkkhaki;
+    width: 400px;
+    height: 265px;
+    text-align: center;
 }
 
-.change-button {
+.contact-info {
+    text-align: center;
+    margin-top: 50px;
+    width: 400px;
+    height: 145px;
+}
+
+.contact-title, .user-title {
+    margin-top: 1px;
+}
+
+.property-link {
     margin-left: 10px;
+    color: rgb(149, 42, 250);
+    text-decoration: none;
+}
+
+.property-link:hover {
+    text-decoration: underline;
+    color: darkblue;
 }
 
 .property {
     margin-top: 2px;
+    color: blue;
+    font-size: large;
+    text-align: center;
+    font-style: italic;
 }
