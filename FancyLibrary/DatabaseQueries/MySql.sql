@@ -27,7 +27,7 @@ CREATE TABLE contacts (
 
 CREATE TABLE log_data (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	last_time_logged_in DATE NOT NULL,
+	last_time_logged_in DATETIME NOT NULL,
 	is_online BIT NOT NULL,
 	register_date DATE NOT NULL,
 	times_logged_in INT NOT NULL

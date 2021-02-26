@@ -25,7 +25,7 @@ CREATE TABLE Contacts (
 
 CREATE TABLE LogData (
 	Id INT PRIMARY KEY IDENTITY(1, 1),
-	LastTimeLoggedIn DATE NOT NULL,
+	LastTimeLoggedIn DATETIME NOT NULL,
 	IsOnline BIT NOT NULL,
 	RegisterDate DATE NOT NULL,
 	TimesLoggedIn INT NOT NULL,
