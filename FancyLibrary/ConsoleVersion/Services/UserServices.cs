@@ -6,21 +6,21 @@ using System.Text;
 
 namespace ConsoleVersion.Services
 {
-    public static class UserServices
+    public class UserServices
     {
-        private static FancyLibraryContext db;
+        private FancyLibraryContext db;
 
-        static UserServices()
+        public UserServices(FancyLibraryContext db)
         {
-            db = new FancyLibraryContext();
+            this.db = db;
         }
 
-        public static List<User> GetAllUsers()
+        public List<User> GetAllUsers()
         {
             return db.Users.ToList();
         }
 
-        public static void AddUser(User user)
+        public void AddUser(User user)
         {
             db.Users.Add(user);
         }
