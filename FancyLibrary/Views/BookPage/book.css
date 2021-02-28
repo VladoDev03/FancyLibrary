@@ -8,6 +8,10 @@ body {
     padding: 50px 50px 0px 50px;
 }
 
+div table {
+    margin-top: 50px;
+}
+
 table {
     width: 65%;
     border-collapse: collapse;
@@ -37,4 +41,54 @@ tbody tr:nth-child(odd) {
 tbody tr:hover {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
+}
+
+form {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: solid;
+    border-radius: 25px;
+    border-color: chocolate;
+    width: 25%;
+    padding: 20px 30px;
+    background-color: yellowgreen;
+}
+
+form label {
+    display: block;
+    padding-bottom: 10px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(202, 94, 17);
+}
+
+div form button {
+    background-color: rgb(131, 174, 255);
+    color: rgb(228, 94, 50);
+    font-weight: bold;
+    border-color: rgb(228, 94, 50);
+    border: solid;
+    border-radius: 10px;
+    padding: 3px 7px;
+    font-style: italic;
+}
+
+div form button:hover {
+    text-decoration: underline;
+    background-color: rgb(228, 94, 50);
+    color: rgb(131, 174, 255);
+    font-weight: bold;
+    border-color: rgb(131, 174, 255);
+}
+
+form input {
+    background-color: tomato;
+    border: solid;
+    border-radius: 7px;
+}
+
+form input:hover {
+    background-color: rgb(255, 163, 147);
 }
