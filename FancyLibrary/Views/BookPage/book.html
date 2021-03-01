@@ -7,6 +7,7 @@
     <title>Books</title>
 </head>
 <body>
+    <h1>Books</h1>
     <div>
         <table>
             <thead>
@@ -64,9 +65,22 @@
     </div>
     <div>
         <form>
-            <label for="input">Type the title or the number of the book you want to add:</label>
+            <h3>Type the title or the number of the book you want to add.</h3>
+            <label for="input" id="title-input">Title<span id="bolder"> / </span>number</label>
             <input type="text number" id="input">
             <button type="submit">Add book</button>
+        </form>
+        <form>
+            <h3>If you don't find the book you want to add, type its data in the following page.</h3>
+            <label for="title">Title</label>
+            <input type="text" id="title">
+            <label for="genre">Genre</label>
+            <input type="text" id="genre">
+            <label for="year">Year</label>
+            <input type="text" id="year">
+            <label for="author">Author</label>
+            <input type="text" id="author">
+            <button type="submit" id="block-button">Add book</button>
         </form>
     </div>
 </body>

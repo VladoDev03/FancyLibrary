@@ -4,6 +4,20 @@ th {
     border: 1px solid rgb(221, 221, 221);
 }
 
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: rgb(145, 87, 0);
+    font-style: italic;
+    background-color: rgb(238, 205, 144);
+    width: 15%;
+    padding: 25px;
+    border-radius: 20px;
+    border: solid;
+    margin-bottom: 65px;
+}
+
 body {
     padding: 50px 50px 0px 50px;
 }
@@ -55,13 +69,14 @@ form {
     background-color: yellowgreen;
 }
 
-form label {
+form h3 {
     display: block;
+    margin-top: 2px;
     padding-bottom: 10px;
     font-style: italic;
     font-weight: bold;
-    font-size: large;
-    color: rgb(202, 94, 17);
+    font-size: 18px;
+    color: rgb(184, 82, 9);
 }
 
 div form button {
@@ -73,6 +88,7 @@ div form button {
     border-radius: 10px;
     padding: 3px 7px;
     font-style: italic;
+    margin-left: 7px;
 }
 
 div form button:hover {
@@ -91,4 +107,35 @@ form input {
 
 form input:hover {
     background-color: rgb(255, 163, 147);
+}
+
+form label {
+    display: block;
+}
+
+#title-input {
+    margin-right: 150px;
+}
+
+label {
+    color: rgb(23, 93, 139);
+    font-size: large;
+    font-style: italic;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+form {
+    margin-bottom: 100px;
+}
+
+#block-button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 25px;
+}
+
+#bolder {
+    font-weight: bolder;
 }

@@ -4,6 +4,20 @@ th {
     border: 1px solid rgb(221, 221, 221);
 }
 
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: indigo;
+    font-style: italic;
+    background-color: lightgreen;
+    width: 15%;
+    padding: 25px;
+    border-radius: 20px;
+    border: solid;
+    margin-bottom: 65px;
+}
+
 body {
     padding: 50px 50px 0px 50px;
 }
@@ -11,6 +25,7 @@ body {
 table {
     width: 65%;
     border-collapse: collapse;
+    margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
@@ -37,4 +52,59 @@ tbody tr:nth-child(odd) {
 tbody tr:hover {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
+}
+
+form {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aquamarine;
+    border: solid;
+    border-color: rgb(158, 64, 247);
+    border-radius: 25px;
+    padding: 20px 10px 15px 10px;
+    text-align: center;
+    width: 25%;
+}
+
+h3 {
+    margin-top: 3px;
+    color: rgb(94, 13, 170);
+    font-style: italic;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: rgb(201, 77, 255);
+    margin-bottom: 15px;
+    border: solid;
+    border-radius: 7px;
+}
+
+input:hover {
+    background-color: rgb(227, 161, 255);
+}
+
+form button {
+    margin: 5px auto 10px auto;
+    display: block;
+    background-color: rgb(255, 56, 162);
+    color: rgb(114, 8, 160);
+    font-style: italic;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: solid;
+    border-color: rgb(114, 8, 160);
+}
+
+form button:hover {
+    background-color: rgb(114, 8, 160);
+    color: rgb(255, 56, 162);
+    border: solid;
+    border-color: rgb(255, 56, 162);
+    text-decoration: underline;
 }
