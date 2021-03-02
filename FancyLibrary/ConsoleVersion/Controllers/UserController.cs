@@ -107,6 +107,7 @@ namespace ConsoleVersion.Controllers
             string middleName = input[3];
             string lastName = input[4];
             int age = int.Parse(input[5]);
+            DateTime birthday = DateTime.Parse(input[6]);
 
             IsPasswordValid(password);
 
@@ -123,6 +124,7 @@ namespace ConsoleVersion.Controllers
                 MiddleName = middleName,
                 LastName = lastName,
                 Age = age,
+                Birthday = birthday,
                 LogData = new LogData
                 {
                     LastTimeLoggedIn = DateTime.Now,
