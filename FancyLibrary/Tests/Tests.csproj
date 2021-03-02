@@ -17,4 +17,8 @@
     <ProjectReference Include="..\ConsoleVersion\ConsoleVersion.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ControllerTests\" />
+  </ItemGroup>
+
 </Project>

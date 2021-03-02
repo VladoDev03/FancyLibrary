@@ -25,33 +25,6 @@ namespace ConsoleVersion.Controllers
 
         public User CurrentLoggedInUser { get; private set; }
 
-        public string EncodePassword(string password)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = password.Length - 1; i >= 0; i--)
-            {
-                if (i % 2 == 0)
-                {
-                    sb.Append((char)(password[i] + 1));
-                }
-                else if (i % 3 == 0)
-                {
-                    sb.Append((char)(password[i] + 2));
-                }
-                else if (i % 5 == 0)
-                {
-                    sb.Append((char)(Math.Abs(password[i] - 7)));
-                }
-                else
-                {
-                    sb.Append((char)(password[i] + 5));
-                }
-            }
-
-            return sb.ToString();
-        }
-
         public string LoginUser(List<string> input)
         {
             if (CurrentLoggedInUser != null)
@@ -141,7 +114,21 @@ namespace ConsoleVersion.Controllers
             return MessagesToUser.RegisterMessage;
         }
 
-        public bool IsPasswordValid(string password)
+        public string GetFullName()
+        {
+            string firstName = CurrentLoggedInUser.FirstName;
+            string lastName = CurrentLoggedInUser.LastName;
+            string middleName = CurrentLoggedInUser.MiddleName;
+
+            if (middleName == null)
+            {
+                return $"{firstName} {lastName}";
+            }
+
+            return $"{firstName} {middleName} {lastName}";
+        }
+
+        private bool IsPasswordValid(string password)
         {
             if (password.Length < MinPasswordLength)
             {
@@ -165,6 +152,33 @@ namespace ConsoleVersion.Controllers
             }
 
             return true;
+        }
+
+        private string EncodePassword(string password)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = password.Length - 1; i >= 0; i--)
+            {
+                if (i % 2 == 0)
+                {
+                    sb.Append((char)(password[i] + 1));
+                }
+                else if (i % 3 == 0)
+                {
+                    sb.Append((char)(password[i] + 2));
+                }
+                else if (i % 5 == 0)
+                {
+                    sb.Append((char)(Math.Abs(password[i] - 7)));
+                }
+                else
+                {
+                    sb.Append((char)(password[i] + 5));
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }
