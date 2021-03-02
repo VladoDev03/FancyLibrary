@@ -74,11 +74,60 @@ namespace ConsoleVersion.Services
         public void ChangeUsername(User user, string username)
         {
             user.Username = username;
+
+            db.SaveChanges();
         }
 
         public void ChangePassword(User user, string password)
         {
             user.Password = password;
+
+            db.SaveChanges();
+        }
+
+        public void ChangesWhenLoggedIn(User user)
+        {
+            ChangeStatus(user);
+            IncreaseLogInCount(user);
+            ChangeLastLogIn(user);
+        }
+
+        public void ChangeStatus(User user)
+        {
+            LogData logData = FindLogData(user);
+
+            if (logData.IsOnline)
+            {
+                logData.IsOnline = false;
+            }
+            else
+            {
+                logData.IsOnline = true;
+            }
+
+            db.SaveChanges();
+        }
+
+        public void IncreaseLogInCount(User user)
+        {
+            LogData logData = FindLogData(user);
+            logData.TimesLoggedIn++;
+
+            db.SaveChanges();
+        }
+
+        public void ChangeLastLogIn(User user)
+        {
+            LogData logData = FindLogData(user);
+            logData.LastTimeLoggedIn = DateTime.Now;
+
+            db.SaveChanges();
+        }
+
+        private LogData FindLogData(User user)
+        {
+            LogData logData = db.LogData.FirstOrDefault(lg => lg.Id == user.LogDataId);
+            return logData;
         }
     }
 }

@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Factories\" />
     <Folder Include="Views\" />
   </ItemGroup>

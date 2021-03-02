@@ -5,6 +5,8 @@ using System.IO;
 using ConsoleVersion.Models;
 using CsvHelper;
 using System.Linq;
+using ConsoleVersion.Services;
+using ConsoleVersion.Controllers;
 
 namespace ConsoleVersion
 {
@@ -12,27 +14,23 @@ namespace ConsoleVersion
     {
         static void Main(string[] args)
         {
-            LocalDatabase localDatabase = new LocalDatabase();
-            CommandInterpreter commandInterpreter = new CommandInterpreter(localDatabase);
+            FancyLibraryContext db = new FancyLibraryContext();
+
+            UserServices userServices = new UserServices(db);
+            UserController userController = new UserController(userServices);
+
+            int n = int.Parse(Console.ReadLine());
 
             List<string> input = Console.ReadLine().Split().ToList();
-            Console.WriteLine(commandInterpreter.RegisterUser(input));
 
-            Console.WriteLine(commandInterpreter.CurrentLoggedInUser.Username);
-
-            //try
-            //{
-            //    Console.WriteLine(commandInterpreter.LogoutUser());
-            //}
-            //catch (ArgumentException ae)
-            //{
-            //    Console.WriteLine(ae.Message);
-            //}
-
-            //input = Console.ReadLine().Split().ToList();
-            //Console.WriteLine(commandInterpreter.LoginUser(input));
-
-            //Console.WriteLine(commandInterpreter.LogoutUser());
+            if (n == 1)
+            {
+                Console.WriteLine(userController.RegisterUser(input));
+            }
+            else
+            {
+                Console.WriteLine(userController.LoginUser(input));
+            }
 
             //vlad111 Salamur$12 vlad vlado vladeto 17 2021-02-07
             //vlad111 Salamur$12
