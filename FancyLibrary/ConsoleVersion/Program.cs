@@ -34,6 +34,7 @@ namespace ConsoleVersion
 
             //vlad111 Salamur$12 vlad vlado vladeto 17 2021-02-07
             //glad111 Salamur$12 vlad vlado vladeto 17 2001-02-07
+            //glad111 Salamur$12 vlad vladeto 2001-02-07
             //vlad111 Salamur$12
         }
     }

@@ -66,7 +66,7 @@ namespace ConsoleVersion.Models
             }
             set
             {
-                if ((value != null && value.Length < MinNameLength))
+                if (value != null && value.Length < MinNameLength)
                 {
                     throw new ArgumentException(string.Format(ExceptionsTexts.MiddleNameException, MinNameLength));
                 }

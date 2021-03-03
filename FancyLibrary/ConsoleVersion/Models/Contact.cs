@@ -42,7 +42,7 @@ namespace ConsoleVersion.Models
             }
             set
             {
-                if (value != null && value.Length != PhoneLength)
+                if (value.Length != PhoneLength && value != null)
                 {
                     throw new ArgumentException(string.Format(ExceptionsTexts.NotValidPhone));
                 }

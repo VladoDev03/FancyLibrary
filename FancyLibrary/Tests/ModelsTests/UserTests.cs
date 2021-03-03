@@ -9,7 +9,7 @@ namespace Tests.ModelsTests
     public class UserTests
     {
         [Test]
-        public void IsThrowingCorrectExceptionWhenShorterThanMinLength()
+        public void IsThrowingCorrectExceptionWhenUsernameShorterThanMinLength()
         {
             User user = null;
 
@@ -28,7 +28,7 @@ namespace Tests.ModelsTests
         }
 
         [Test]
-        public void IsThrowingCorrectExceptionWhenNullOrEmpty()
+        public void IsThrowingCorrectExceptionWhenUsernameNullOrEmpty()
         {
             User user = null;
 
@@ -47,7 +47,7 @@ namespace Tests.ModelsTests
         }
 
         [Test]
-        public void IsThrowingCorrectExceptionWhenWiteSpace()
+        public void IsThrowingCorrectExceptionWhenUsernameWiteSpace()
         {
             User user = null;
 
@@ -171,6 +171,38 @@ namespace Tests.ModelsTests
         }
 
         [Test]
+        public void IsSettingMiddleNameWhenNotNull()
+        {
+            User user = new User
+            {
+                Username = "LongUsername",
+                Password = "Salamur$12",
+                FirstName = "longFirstName",
+                MiddleName = "vlado",
+                LastName = "vladeto",
+                Age = 12
+            };
+
+            Assert.That(user.MiddleName, Is.EqualTo("vlado"));
+        }
+
+        [Test]
+        public void NotThrowingExceptionWhenMiddleNameIsNull()
+        {
+            User user = new User
+            {
+                Username = "LongUsername",
+                Password = "Salamur$12",
+                FirstName = "longFirstName",
+                MiddleName = null,
+                LastName = "vladeto",
+                Age = 12
+            };
+
+            Assert.That(null, Is.EqualTo(null));
+        }
+
+        [Test]
         public void ThrowingCorrectExceptionWhenBirthdayIsNull()
         {
             User user = null;
@@ -205,6 +237,82 @@ namespace Tests.ModelsTests
             };
                 
             Assert.That(user.Birthday, Is.EqualTo(DateTime.Parse("2003-05-20")));
+        }
+
+        [Test]
+        public void IsFirstNameThrowingExceptionWhenNull()
+        {
+            User user = null;
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+                user = new User
+                {
+                    Username = "LongUsername",
+                    Password = "Salamur$12",
+                    FirstName = "",
+                    MiddleName = "vlado",
+                    LastName = "SomeName",
+                    Age = 12
+                });
+
+            Assert.That(ae.Message, Is.EqualTo("First name must be atleast 3 characters long!"));
+        }
+
+        [Test]
+        public void IsFirstNameThrowingExceptionWhenShorter()
+        {
+            User user = null;
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+                user = new User
+                {
+                    Username = "LongUsername",
+                    Password = "Salamur$12",
+                    FirstName = "sh",
+                    MiddleName = "vlado",
+                    LastName = "vladeto",
+                    Age = 12
+                });
+
+            Assert.That(ae.Message, Is.EqualTo("First name must be atleast 3 characters long!"));
+        }
+
+        [Test]
+        public void IsLastNameThrowingExceptionWhenNull()
+        {
+            User user = null;
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+                user = new User
+                {
+                    Username = "LongUsername",
+                    Password = "Salamur$12",
+                    FirstName = "LongName",
+                    MiddleName = "vlado",
+                    LastName = "",
+                    Age = 12
+                });
+
+            Assert.That(ae.Message, Is.EqualTo("Last name must be atleast 3 characters long!"));
+        }
+
+        [Test]
+        public void IsLastNameThrowingExceptionWhenShorter()
+        {
+            User user = null;
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+                user = new User
+                {
+                    Username = "LongUsername",
+                    Password = "Salamur$12",
+                    FirstName = "shoooo",
+                    MiddleName = "vlado",
+                    LastName = "a",
+                    Age = 12
+                });
+
+            Assert.That(ae.Message, Is.EqualTo("Last name must be atleast 3 characters long!"));
         }
     }
 }

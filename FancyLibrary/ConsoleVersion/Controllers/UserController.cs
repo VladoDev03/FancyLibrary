@@ -77,9 +77,8 @@ namespace ConsoleVersion.Controllers
             string username = input[0];
             string password = input[1];
             string firstName = input[2];
-            string middleName = input[3];
-            string lastName = input[4];
-            DateTime birthday = DateTime.Parse(input[6]);
+            string lastName = input[3];
+            DateTime birthday = DateTime.Parse(input[4]);
 
             IsPasswordValid(password);
 
@@ -93,7 +92,6 @@ namespace ConsoleVersion.Controllers
                 Username = username,
                 Password = EncodePassword(password),
                 FirstName = MakeFirstLetterUpperCase(firstName),
-                MiddleName = MakeFirstLetterUpperCase(middleName),
                 LastName = MakeFirstLetterUpperCase(lastName),
                 Birthday = birthday,
                 LogData = new LogData
