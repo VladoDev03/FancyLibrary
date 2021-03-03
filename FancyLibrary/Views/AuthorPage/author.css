@@ -108,3 +108,45 @@ form button:hover {
     border-color: rgb(255, 56, 162);
     text-decoration: underline;
 }
+
+#order-by {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(22, 187, 216);
+    padding: 35px;
+    text-align: center;
+    width: 30%;
+    border: solid;
+    border-color: rgb(126, 0, 151);
+    border-radius: 25px;
+}
+
+#order-by h2 {
+    margin-top: 0;
+    font-style: italic;
+    color: rgb(20, 10, 112);
+}
+
+#order-by button {
+    margin-left: 15px;
+}
+
+#order-by button {
+    background-color: rgb(29, 243, 143);
+    color: rgb(13, 82, 212);
+    font-weight: bold;
+    border-color: rgb(13, 82, 212);
+    border: solid;
+    border-radius: 10px;
+    padding: 3px 7px;
+    font-style: italic;
+    margin-left: 12px;
+}
+
+#order-by button:hover {
+    text-decoration: underline;
+    background-color:rgb(13, 82, 212);
+    color: rgb(29, 243, 143);
+    border-color: rgb(29, 243, 143);
+}
