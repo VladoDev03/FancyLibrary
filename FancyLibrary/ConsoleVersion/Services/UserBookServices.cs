@@ -15,6 +15,12 @@ namespace ConsoleVersion.Services
             this.db = db;
         }
 
+        public List<UserBook> GetAllUserBook()
+        {
+            List<UserBook> usersBooks = db.UsersBooks.ToList();
+            return usersBooks;
+        }
+
         public void AddBookToUser(User user, Book book)
         {
             db.UsersBooks.Add(new UserBook
@@ -24,6 +30,17 @@ namespace ConsoleVersion.Services
             });
 
             db.SaveChanges();
+        }
+
+        public int GetUserBooksCount(User user)
+        {
+            int userId = user.Id;
+
+            int count = db.UsersBooks
+                .Where(ub => ub.UserId == userId)
+                .Count();
+
+            return count;
         }
 
         public void RemoveBookFromUser(User user, Book book)
@@ -58,17 +75,6 @@ namespace ConsoleVersion.Services
             }
 
             return books;
-        }
-
-        public int GetUserBooksCount(User user)
-        {
-            int userId = user.Id;
-
-            int count = db.UsersBooks
-                .Where(ub => ub.UserId == userId)
-                .Count();
-
-            return count;
         }
     }
 }
