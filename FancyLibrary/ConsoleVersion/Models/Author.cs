@@ -77,7 +77,7 @@ namespace ConsoleVersion.Models
         public string Nickname { get; set; }
         public int? CountryId { get; set; }
 
-        public virtual Countrie Country { get; set; }
+        public virtual Country Country { get; set; }
         public virtual ICollection<Book> Books { get; set; }
 
         public override string ToString()

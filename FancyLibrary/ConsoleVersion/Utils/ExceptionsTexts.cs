@@ -30,6 +30,7 @@ namespace ConsoleVersion.Utils
         // User exceptions
         public const string UsernameException = "Username must be atleast {0} characters long!";
         public const string AgeException = "You have to be at least {0} years old!";
+        public const string NullBirthday = "You have to give us your birthday date so we know how old you are!";
 
         // Book exceptions
         public const string TitleException = "Title must be at least {0} characters long!";

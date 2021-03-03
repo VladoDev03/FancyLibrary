@@ -18,6 +18,7 @@ namespace ConsoleVersion.Models
         private string firstName;
         private string middleName;
         private string lastName;
+        private DateTime birthday;
         private int age;
 
         public int Id { get; set; }
@@ -107,13 +108,29 @@ namespace ConsoleVersion.Models
                 age = value;
             }
         }
-        public DateTime Birthday { get; set; }
+        public DateTime Birthday
+        {
+            get
+            {
+                return birthday;
+            }
+            set
+            {
+                if (value == default)
+                {
+                    throw new ArgumentException(ExceptionsTexts.NullBirthday);
+                }
+
+                birthday = value;
+            }
+        }
+
         public int? ContactId { get; set; }
         public int LogDataId { get; set; }
         public int? CountryId { get; set; }
 
         public virtual Contact Contact { get; set; }
-        public virtual Countrie Country { get; set; }
+        public virtual Country Country { get; set; }
         public virtual LogData LogData { get; set; }
         public virtual UserBook UsersBooks { get; set; }
 

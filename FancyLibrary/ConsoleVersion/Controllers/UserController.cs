@@ -79,7 +79,6 @@ namespace ConsoleVersion.Controllers
             string firstName = input[2];
             string middleName = input[3];
             string lastName = input[4];
-            int age = int.Parse(input[5]);
             DateTime birthday = DateTime.Parse(input[6]);
 
             IsPasswordValid(password);
@@ -93,10 +92,9 @@ namespace ConsoleVersion.Controllers
             {
                 Username = username,
                 Password = EncodePassword(password),
-                FirstName = firstName,
-                MiddleName = middleName,
-                LastName = lastName,
-                Age = age,
+                FirstName = MakeFirstLetterUpperCase(firstName),
+                MiddleName = MakeFirstLetterUpperCase(middleName),
+                LastName = MakeFirstLetterUpperCase(lastName),
                 Birthday = birthday,
                 LogData = new LogData
                 {
@@ -106,6 +104,8 @@ namespace ConsoleVersion.Controllers
                     IsOnline = true
                 }
             };
+
+            userServices.SetAge(user);
 
             userServices.AddUser(user);
 
@@ -126,6 +126,32 @@ namespace ConsoleVersion.Controllers
             }
 
             return $"{firstName} {middleName} {lastName}";
+        }
+
+        public string MakeFirstLetterUpperCase(string name)
+        {
+            if (name == null)
+            {
+                return null;
+            }
+
+            name = name.ToLower();
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < name.Length; i++)
+            {
+                if (i == 0)
+                {
+                    sb.Append(char.ToUpper(name[0]));
+                }
+                else
+                {
+                    sb.Append(name[i]);
+                }
+            }
+
+            return sb.ToString();
         }
 
         private bool IsPasswordValid(string password)

@@ -36,13 +36,12 @@ namespace ConsoleVersion.Services
             db.SaveChanges();
         }
 
-        public void AddBookToUser(User user, Book book)
+        public void SetAge(User user)
         {
-            db.UsersBooks.Add(new UserBook
-            {
-                UserId = user.Id,
-                BookId = book.Id
-            });
+            TimeSpan timeSpan = DateTime.Today - user.Birthday;
+            int years = (new DateTime(1, 1, 1) + timeSpan).Year - 1;
+
+            user.Age = years;
 
             db.SaveChanges();
         }

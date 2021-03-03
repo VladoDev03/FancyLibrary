@@ -22,7 +22,7 @@ namespace ConsoleVersion.Models
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
-        public virtual DbSet<Countrie> Countries { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<LogData> LogData { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserBook> UsersBooks { get; set; }
@@ -150,7 +150,7 @@ namespace ConsoleVersion.Models
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<Countrie>(entity =>
+            modelBuilder.Entity<Country>(entity =>
             {
                 entity.ToTable("countries");
 

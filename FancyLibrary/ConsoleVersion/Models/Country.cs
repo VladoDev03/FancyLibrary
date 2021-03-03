@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace ConsoleVersion.Models
 {
-    public partial class Countrie
+    public partial class Country
     {
-        public Countrie()
+        public Country()
         {
             Authors = new HashSet<Author>();
             Users = new HashSet<User>();

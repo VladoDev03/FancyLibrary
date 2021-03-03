@@ -169,5 +169,42 @@ namespace Tests.ModelsTests
 
             Assert.That(ae.Message, Is.EqualTo("Middle name must be atleast 3 characters long!"));
         }
+
+        [Test]
+        public void ThrowingCorrectExceptionWhenBirthdayIsNull()
+        {
+            User user = null;
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+                user = new User
+                {
+                    Username = "vlad111",
+                    Password = "Salamur$12",
+                    FirstName = "vlad",
+                    MiddleName = "aaaa",
+                    LastName = "vladeto",
+                    Birthday = default,
+                    Age = 12
+                });
+
+            Assert.That(ae.Message, Is.EqualTo("You have to give us your birthday date so we know how old you are!"));
+        }
+
+        [Test]
+        public void SettingBirthdayCorrectWhenValueIsValid()
+        {
+            User user = new User
+            {
+                Username = "vlad111",
+                Password = "Salamur$12",
+                FirstName = "vlad",
+                MiddleName = "aaaa",
+                LastName = "vladeto",
+                Birthday = DateTime.Parse("2003-05-20"),
+                Age = 12
+            };
+                
+            Assert.That(user.Birthday, Is.EqualTo(DateTime.Parse("2003-05-20")));
+        }
     }
 }
