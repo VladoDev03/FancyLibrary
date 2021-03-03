@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ConsoleVersion.Controllers;
-using ConsoleVersion.Models;
+﻿using ConsoleVersion.Models;
 using ConsoleVersion.Services;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.InMemory;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
-namespace Tests.UserServicesTests
+namespace Tests.AddUserTests.UserBookServicesTests
 {
-    public class GetFullNameTests
+    public class AddUserTests
     {
         private DbContextOptions<FancyLibraryContext> options;
         private FancyLibraryContext db;
         private UserServices userServices;
         private List<User> users;
-        private UserController userController;
 
         [SetUp]
         public void Setup()
@@ -27,53 +26,36 @@ namespace Tests.UserServicesTests
             db = new FancyLibraryContext(options);
 
             userServices = new UserServices(db);
-            userController = new UserController(userServices);
 
             users = CreateInMemoryDb();
         }
 
         [Test]
-        public void ReturnTwoNamesIfMiddleIsNull()
+        public void IsControllerAddingUsers()
         {
-            var options = new DbContextOptionsBuilder<FancyLibraryContext>()
-                .UseInMemoryDatabase(databaseName: "fancy_library")
-                .Options;
-
-            var db = new FancyLibraryContext(options);
-
-            UserServices userServices = new UserServices(db);
-            UserController userController = new UserController(userServices);
-
-            List<User> users = CreateInMemoryDb();
+            int currCount = users.Count;
 
             db.Users.AddRange(users);
             db.SaveChanges();
 
-            userController.LoginUser(new List<string>() { "vladsto", "Salamur$12" });
+            userServices.AddUser(new User
+            {
+                Username = "programmer",
+                Password = "Sa12$15",
+                FirstName = "pro",
+                LastName = "grammer",
+                LogData = new LogData
+                {
+                    LastTimeLoggedIn = DateTime.Now,
+                    RegisterDate = DateTime.Now,
+                    TimesLoggedIn = 1,
+                    IsOnline = true
+                }
+            });
 
-            Assert.That(userController.GetFullName(), Is.EqualTo("Vladimir Stoyanov"));
-        }
-
-        [Test]
-        public void ReturnThreeNumbersWhenMiddleNameIsNotNull()
-        {
-            var options = new DbContextOptionsBuilder<FancyLibraryContext>()
-                .UseInMemoryDatabase(databaseName: "fancy_library")
-                .Options;
-
-            var db = new FancyLibraryContext(options);
-
-            UserServices userServices = new UserServices(db);
-            UserController userController = new UserController(userServices);
-
-            List<User> users = CreateInMemoryDb();
-
-            db.Users.AddRange(users);
             db.SaveChanges();
 
-            userController.LoginUser(new List<string>() { "hammer", "Salamur$12" });
-
-            Assert.That(userController.GetFullName(), Is.EqualTo("ham strong mer"));
+            Assert.That(currCount + 1, Is.EqualTo(db.Users.Count()));
         }
 
         public List<User> CreateInMemoryDb()

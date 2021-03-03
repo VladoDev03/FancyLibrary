@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tests.ControllerTests
+namespace Tests.ControllerTests.UserControllerTests
 {
     public class MakeFirstLetterUpperCaseTests
     {

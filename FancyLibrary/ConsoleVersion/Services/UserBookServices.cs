@@ -59,5 +59,16 @@ namespace ConsoleVersion.Services
 
             return books;
         }
+
+        public int GetUserBooksCount(User user)
+        {
+            int userId = user.Id;
+
+            int count = db.UsersBooks
+                .Where(ub => ub.UserId == userId)
+                .Count();
+
+            return count;
+        }
     }
 }

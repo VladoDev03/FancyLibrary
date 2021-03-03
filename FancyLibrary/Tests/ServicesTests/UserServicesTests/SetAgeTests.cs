@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tests.ServicesTests
+namespace Tests.ServicesTests.UserServicesTests
 {
     public class SetAgeTests
     {
