@@ -108,6 +108,7 @@ namespace ConsoleVersion.Models
                 age = value;
             }
         }
+
         public DateTime Birthday
         {
             get
@@ -126,12 +127,17 @@ namespace ConsoleVersion.Models
         }
 
         public int? ContactId { get; set; }
+
         public int LogDataId { get; set; }
+
         public int? CountryId { get; set; }
 
         public virtual Contact Contact { get; set; }
+
         public virtual Country Country { get; set; }
+
         public virtual LogData LogData { get; set; }
+
         public virtual UserBook UsersBooks { get; set; }
 
         public override string ToString()

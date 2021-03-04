@@ -314,5 +314,34 @@ namespace Tests.ModelsTests
 
             Assert.That(ae.Message, Is.EqualTo("Last name must be atleast 3 characters long!"));
         }
+
+        [Test]
+        public void IsToStringReturningCorrectInformation()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Id - {1}");
+            sb.AppendLine($"Username - LongUsername");
+            sb.AppendLine($"Password - Salamur$12");
+            sb.AppendLine($"First name - shoooo");
+            sb.AppendLine($"Middle name - vlado");
+            sb.AppendLine($"Last name - aaaa");
+            sb.AppendLine($"Age - 12");
+
+            string correct = sb.ToString().Trim();
+
+            User user = user = new User
+            {
+                Id = 1,
+                Username = "LongUsername",
+                Password = "Salamur$12",
+                FirstName = "shoooo",
+                MiddleName = "vlado",
+                LastName = "aaaa",
+                Age = 12
+            };
+
+            Assert.That(user.ToString(), Is.EqualTo(correct));
+        }
     }
 }

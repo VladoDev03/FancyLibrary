@@ -25,6 +25,7 @@ namespace ConsoleVersion.Models
         }
 
         public int Id { get; set; }
+
         public string Title
         {
             get
@@ -79,13 +80,19 @@ namespace ConsoleVersion.Models
                 year = value;
             }
         }
+
         public int? Pages { get; set; }
+
         public int AuthorId { get; set; }
+
         public int? InspiredById { get; set; }
 
         public virtual Author Author { get; set; }
+
         public virtual Book InspiredBy { get; set; }
+
         public virtual UserBook UsersBooks { get; set; }
+
         public virtual ICollection<Book> InverseInspiredBy { get; set; }
 
         public override string ToString()

@@ -48,24 +48,20 @@ namespace ConsoleVersion.Services
 
         public void AddEmail(User user, string email)
         {
-            if (user.Contact == null)
+            user.Contact = new Contact
             {
-                user.Contact = new Contact();
-            }
-
-            user.Contact.Email = email;
+                Email = email
+            };
 
             db.SaveChanges();
         }
 
         public void AddPhone(User user, string phone)
         {
-            if (user.Contact == null)
+            user.Contact = new Contact
             {
-                user.Contact = new Contact();
-            }
-
-            user.Contact.Phone = phone;
+                Phone = phone
+            };
 
             db.SaveChanges();
         }

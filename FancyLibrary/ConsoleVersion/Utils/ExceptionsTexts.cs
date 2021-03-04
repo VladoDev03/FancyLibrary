@@ -36,8 +36,8 @@ namespace ConsoleVersion.Utils
         public const string TitleException = "Title must be at least {0} characters long!";
         public const string GenreException = "Genre must be at least {0} characters long!";
         public const string AuthorException = "Book must have an author!";
-        public const string FutureYear = "Year must not be later than {0}!";
-        public const string TooOldYear = "Year must be before {0}!";
+        public const string FutureYear = "Year must be earlier than {0}!";
+        public const string TooOldYear = "Year must be after {0}!";
 
         // Contact exceptions
         public const string NotValidEmail = "This email is invalid, try with another one!";

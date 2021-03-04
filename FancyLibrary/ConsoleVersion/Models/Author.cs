@@ -23,6 +23,7 @@ namespace ConsoleVersion.Models
         }
 
         public int Id { get; set; }
+
         public string FirstName
         {
             get
@@ -73,11 +74,15 @@ namespace ConsoleVersion.Models
                 lastName = value;
             }
         }
+
         public DateTime? Birthday { get; set; }
+
         public string Nickname { get; set; }
+
         public int? CountryId { get; set; }
 
         public virtual Country Country { get; set; }
+
         public virtual ICollection<Book> Books { get; set; }
 
         public override string ToString()

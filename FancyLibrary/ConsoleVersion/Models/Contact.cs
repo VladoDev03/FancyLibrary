@@ -17,6 +17,7 @@ namespace ConsoleVersion.Models
         private string phone;
 
         public int Id { get; set; }
+
         public string Email
         {
             get
