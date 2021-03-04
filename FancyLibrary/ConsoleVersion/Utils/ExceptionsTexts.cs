@@ -42,5 +42,8 @@ namespace ConsoleVersion.Utils
         // Contact exceptions
         public const string NotValidEmail = "This email is invalid, try with another one!";
         public const string NotValidPhone = "This phone number is invalid, try with another one!";
+
+        // Country exceptions
+        public const string CountryNameException = "Country name must be atleast {0} characters long!";
     }
 }

@@ -25,8 +25,6 @@ namespace Tests.ControllerTests.UserControllerTests
         [Test]
         public void IsSettingFirstLetterToUpperWhenNotNull()
         {
-            
-
             string name = "gladen";
 
             name = userController.MakeFirstLetterUpperCase(name);

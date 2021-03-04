@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleVersion.Utils;
+using System;
 using System.Collections.Generic;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
@@ -9,6 +10,10 @@ namespace ConsoleVersion.Models
 {
     public partial class Country
     {
+        private const int MinNameLength = 3;
+
+        private string name;
+
         public Country()
         {
             Authors = new HashSet<Author>();
@@ -17,7 +22,22 @@ namespace ConsoleVersion.Models
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (value.Length < MinNameLength || string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(string.Format(ExceptionsTexts.CountryNameException, MinNameLength));
+                }
+
+                name = value;
+            }
+        }
 
         public virtual ICollection<Author> Authors { get; set; }
 

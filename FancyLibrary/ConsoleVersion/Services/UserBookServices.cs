@@ -15,7 +15,7 @@ namespace ConsoleVersion.Services
             this.db = db;
         }
 
-        public List<UserBook> GetAllUserBook()
+        public List<UserBook> GetAllUsersBooks()
         {
             List<UserBook> usersBooks = db.UsersBooks.ToList();
             return usersBooks;
@@ -54,7 +54,7 @@ namespace ConsoleVersion.Services
             db.SaveChanges();
         }
 
-        public List<Book> GetAllUserBooks(User user)
+        public List<Book> GetBooksOfUser(User user)
         {
             List<int> booksIds = db.UsersBooks
                 .Where(ub => ub.UserId == user.Id)
