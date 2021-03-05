@@ -10,12 +10,6 @@ namespace ConsoleVersion.Controllers
 {
     public class UserController
     {
-        private const int MinPasswordLength = 7;
-        private const int MinSymbolsCount = 1;
-        private const int MinNumbersCount = 1;
-        private const int MinUpperCaseLettersCount = 1;
-        private const int MinLowerCaseLettersCount = 1;
-
         private UserServices userServices;
 
         public UserController(UserServices userServices)
@@ -33,7 +27,7 @@ namespace ConsoleVersion.Controllers
             }
 
             string username = input[0];
-            string password = EncodePassword(input[1]);
+            string password = PasswordManager.EncodePassword(input[1]);
 
             User user = userServices.FindUser(username);
 
@@ -80,7 +74,7 @@ namespace ConsoleVersion.Controllers
             string lastName = input[3];
             DateTime birthday = DateTime.Parse(input[4]);
 
-            IsPasswordValid(password);
+            PasswordManager.IsPasswordValid(password);
 
             if (userServices.FindUser(username) != null)
             {
@@ -90,9 +84,9 @@ namespace ConsoleVersion.Controllers
             User user = new User
             {
                 Username = username,
-                Password = EncodePassword(password),
-                FirstName = MakeFirstLetterUpperCase(firstName),
-                LastName = MakeFirstLetterUpperCase(lastName),
+                Password = PasswordManager.EncodePassword(password),
+                FirstName = NameRefactorer.MakeFirstLetterUpperCase(firstName),
+                LastName = NameRefactorer.MakeFirstLetterUpperCase(lastName),
                 Birthday = birthday,
                 LogData = new LogData
                 {
@@ -110,99 +104,6 @@ namespace ConsoleVersion.Controllers
             LoginUser(new List<string> { username, password });
 
             return MessagesToUser.RegisterMessage;
-        }
-
-        public string GetFullName()
-        {
-            string firstName = CurrentLoggedInUser.FirstName;
-            string lastName = CurrentLoggedInUser.LastName;
-            string middleName = CurrentLoggedInUser.MiddleName;
-
-            if (middleName == null)
-            {
-                return $"{firstName} {lastName}";
-            }
-
-            return $"{firstName} {middleName} {lastName}";
-        }
-
-        public string MakeFirstLetterUpperCase(string name)
-        {
-            if (name == null)
-            {
-                return null;
-            }
-
-            name = name.ToLower();
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < name.Length; i++)
-            {
-                if (i == 0)
-                {
-                    sb.Append(char.ToUpper(name[0]));
-                }
-                else
-                {
-                    sb.Append(name[i]);
-                }
-            }
-
-            return sb.ToString();
-        }
-
-        private bool IsPasswordValid(string password)
-        {
-            if (password.Length < MinPasswordLength)
-            {
-                throw new ArgumentException(string.Format(ExceptionsTexts.ShorterPassword, MinPasswordLength));
-            }
-            if (password.Where(x => char.IsUpper(x)).ToArray().Length < MinUpperCaseLettersCount)
-            {
-                throw new ArgumentException(string.Format(ExceptionsTexts.LessUpperCase, MinUpperCaseLettersCount));
-            }
-            if (password.Where(x => char.IsLower(x)).ToArray().Length < MinLowerCaseLettersCount)
-            {
-                throw new ArgumentException(string.Format(ExceptionsTexts.LessLowerCase, MinLowerCaseLettersCount));
-            }
-            if (password.Where(x => char.IsDigit(x)).ToArray().Length < MinNumbersCount)
-            {
-                throw new ArgumentException(string.Format(ExceptionsTexts.LessDigits, MinNumbersCount));
-            }
-            if (password.Where(x => char.IsSymbol(x)).ToArray().Length < MinSymbolsCount)
-            {
-                throw new ArgumentException(string.Format(ExceptionsTexts.LessSymbols, MinSymbolsCount));
-            }
-
-            return true;
-        }
-
-        private string EncodePassword(string password)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = password.Length - 1; i >= 0; i--)
-            {
-                if (i % 2 == 0)
-                {
-                    sb.Append((char)(password[i] + 1));
-                }
-                else if (i % 3 == 0)
-                {
-                    sb.Append((char)(password[i] + 2));
-                }
-                else if (i % 5 == 0)
-                {
-                    sb.Append((char)(Math.Abs(password[i] - 7)));
-                }
-                else
-                {
-                    sb.Append((char)(password[i] + 5));
-                }
-            }
-
-            return sb.ToString();
         }
     }
 }
