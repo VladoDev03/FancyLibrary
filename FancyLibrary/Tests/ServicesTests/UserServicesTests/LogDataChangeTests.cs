@@ -9,8 +9,9 @@ using System.Text;
 
 namespace Tests.ServicesTests.UserServicesTests
 {
-    public class ChangeProfileTests
+    public class LogDataChangeTests
     {
+
         private DbContextOptions<FancyLibraryContext> options;
         private FancyLibraryContext db;
         private UserServices userServices;
@@ -21,7 +22,7 @@ namespace Tests.ServicesTests.UserServicesTests
         public void Setup()
         {
             options = new DbContextOptionsBuilder<FancyLibraryContext>()
-                   .UseInMemoryDatabase(databaseName: "fancy_library_change")
+                   .UseInMemoryDatabase(databaseName: "fancy_library_change_log_data")
                    .Options;
 
             db = new FancyLibraryContext(options);
@@ -32,23 +33,43 @@ namespace Tests.ServicesTests.UserServicesTests
             db.Users.AddRange(users);
             db.SaveChanges();
 
-            user = db.Users.FirstOrDefault();
+            user = users.FirstOrDefault();
         }
 
         [Test]
-        public void IsChangingPassword()
+        public void IsIncreasingLogTimesWithOne()
         {
-            userServices.ChangePassword(user, "P$roLa12");
+            userServices.IncreaseLogInCount(user);
 
-            Assert.That(user.Password, Is.EqualTo("P$roLa12"));
+            Assert.That(user.LogData.TimesLoggedIn, Is.EqualTo(2));
         }
 
         [Test]
-        public void IsChangingUsername()
+        public void IsChangingLastLogInTimeCorrectly()
         {
-            userServices.ChangeUsername(user, "vladrig");
+            userServices.ChangeLastLogIn(user);
 
-            Assert.That(user.Username, Is.EqualTo("vladrig"));
+            string actual = user.LogData.LastTimeLoggedIn.ToLongTimeString();
+            string expected = DateTime.Now.ToLongTimeString();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void IsChangingStatusFromOnlineToOffline()
+        {
+            userServices.ChangeStatus(user);
+
+            Assert.That(user.LogData.IsOnline, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void IsChangingStatusFromOfflineToOnline()
+        {
+            userServices.ChangeStatus(user);
+            userServices.ChangeStatus(user);
+
+            Assert.That(user.LogData.IsOnline, Is.EqualTo(true));
         }
 
         public List<User> CreateInMemoryDb()
