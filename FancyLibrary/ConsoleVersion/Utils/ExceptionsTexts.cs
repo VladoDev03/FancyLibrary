@@ -27,6 +27,9 @@ namespace ConsoleVersion.Utils
         public const string MiddleNameException = "Middle name must be atleast {0} characters long!";
         public const string LastNameException = "Last name must be atleast {0} characters long!";
 
+        // Author exceptions
+        public const string NicknameException = "Nickname must be atleast {0} characters long!";
+
         // User exceptions
         public const string UsernameException = "Username must be atleast {0} characters long!";
         public const string AgeException = "You have to be at least {0} years old!";

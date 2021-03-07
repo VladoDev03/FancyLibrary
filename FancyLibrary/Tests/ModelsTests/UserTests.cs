@@ -199,7 +199,7 @@ namespace Tests.ModelsTests
                 Age = 12
             };
 
-            Assert.That(null, Is.EqualTo(null));
+            Assert.That(user.MiddleName, Is.EqualTo(null));
         }
 
         [Test]

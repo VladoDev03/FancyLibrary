@@ -16,6 +16,7 @@ namespace ConsoleVersion.Models
         private string firstName;
         private string middleName;
         private string lastName;
+        private string nickname;
 
         public Author()
         {
@@ -49,7 +50,7 @@ namespace ConsoleVersion.Models
             }
             set
             {
-                if ((value != null && value.Length < MinNameLength))
+                if (value != null && value.Length < MinNameLength)
                 {
                     throw new ArgumentException(string.Format(ExceptionsTexts.MiddleNameException, MinNameLength));
                 }
@@ -77,7 +78,22 @@ namespace ConsoleVersion.Models
 
         public DateTime? Birthday { get; set; }
 
-        public string Nickname { get; set; }
+        public string Nickname
+        {
+            get
+            {
+                return nickname;
+            }
+            set
+            {
+                if (value != null && value.Length < MinNameLength)
+                {
+                    throw new ArgumentException(string.Format(ExceptionsTexts.NicknameException, MinNameLength));
+                }
+
+                nickname = value;
+            }
+        }
 
         public int? CountryId { get; set; }
 
