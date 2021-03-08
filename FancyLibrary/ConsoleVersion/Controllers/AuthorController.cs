@@ -1,5 +1,6 @@
 ﻿using ConsoleVersion.Models;
 using ConsoleVersion.Services;
+using ConsoleVersion.Services.Contracts;
 using ConsoleVersion.Utils;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace ConsoleVersion.Controllers
 {
     public class AuthorController
     {
-        private AuthorServices authorServices;
-        private BookServices bookServices;
+        private IAuthorServices authorServices;
+        private IBookServices bookServices;
 
-        public AuthorController(AuthorServices authorServices, BookServices bookServices)
+        public AuthorController(IAuthorServices authorServices, IBookServices bookServices)
         {
             this.authorServices = authorServices;
             this.bookServices = bookServices;

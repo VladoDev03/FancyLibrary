@@ -1,5 +1,6 @@
 ﻿using ConsoleVersion.Models;
 using ConsoleVersion.Services;
+using ConsoleVersion.Services.Contracts;
 using ConsoleVersion.Utils;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace ConsoleVersion.Controllers
 {
     public class UserController
     {
-        private UserServices userServices;
+        private IUserServices userServices;
 
-        public UserController(UserServices userServices)
+        public UserController(IUserServices userServices)
         {
             this.userServices = userServices;
         }

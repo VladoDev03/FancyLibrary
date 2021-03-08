@@ -1,4 +1,5 @@
 ﻿using ConsoleVersion.Models;
+using ConsoleVersion.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace ConsoleVersion.Services
 {
-    public class BookServices
+    public class BookServices : IBookServices
     {
         private FancyLibraryContext db;
 
@@ -31,6 +32,30 @@ namespace ConsoleVersion.Services
         {
             int result = db.UsersBooks.Where(ub => ub.BookId == book.Id).Count();
             return result;
+        }
+
+        // TODO
+        public Book FindBook(string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        // TODO
+        public Book FindBook(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        // TODO
+        public Author GetBookAuthor(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        // TODO
+        public int MapAuthorWithBook(string authorFullName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

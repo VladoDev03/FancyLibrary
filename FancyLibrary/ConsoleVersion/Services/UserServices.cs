@@ -1,4 +1,5 @@
 ﻿using ConsoleVersion.Models;
+using ConsoleVersion.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace ConsoleVersion.Services
 {
-    public class UserServices
+    public class UserServices : IUserServices
     {
         private FancyLibraryContext db;
 
@@ -119,7 +120,7 @@ namespace ConsoleVersion.Services
             db.SaveChanges();
         }
 
-        private LogData FindLogData(User user)
+        public LogData FindLogData(User user)
         {
             LogData logData = db.LogData.FirstOrDefault(lg => lg.Id == user.LogDataId);
             return logData;

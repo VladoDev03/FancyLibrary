@@ -1,4 +1,5 @@
 ﻿using ConsoleVersion.Models;
+using ConsoleVersion.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace ConsoleVersion.Services
 {
-    public class UserBookServices
+    public class UserBookServices : IUserBookServices
     {
         private FancyLibraryContext db;
 

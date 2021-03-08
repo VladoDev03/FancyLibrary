@@ -1,6 +1,7 @@
 ﻿using ConsoleVersion.Enums;
 using ConsoleVersion.Models;
 using ConsoleVersion.Services;
+using ConsoleVersion.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace ConsoleVersion.Controllers
 {
     public class BookController
     {
-        private BookServices bookServices;
+        private IBookServices bookServices;
 
-        public BookController(BookServices bookServices)
+        public BookController(IBookServices bookServices)
         {
             this.bookServices = bookServices;
         }

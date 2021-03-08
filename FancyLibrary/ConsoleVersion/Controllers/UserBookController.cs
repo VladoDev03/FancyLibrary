@@ -1,4 +1,5 @@
 ﻿using ConsoleVersion.Services;
+using ConsoleVersion.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,9 @@ namespace ConsoleVersion.Controllers
 {
     public class UserBookController
     {
-        private UserBookServices userBookServices;
+        private IUserBookServices userBookServices;
 
-        public UserBookController(UserBookServices userBookServices)
+        public UserBookController(IUserBookServices userBookServices)
         {
             this.userBookServices = userBookServices;
         }
