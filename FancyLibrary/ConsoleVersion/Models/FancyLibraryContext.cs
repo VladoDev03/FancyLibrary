@@ -182,10 +182,6 @@ namespace ConsoleVersion.Models
                     .HasColumnName("is_online")
                     .HasColumnType("bit(1)");
 
-                entity.Property(e => e.LastTimeLoggedIn)
-                    .HasColumnName("last_time_logged_in")
-                    .HasColumnType("date");
-
                 entity.Property(e => e.RegisterDate)
                     .HasColumnName("register_date")
                     .HasColumnType("date");
@@ -275,26 +271,21 @@ namespace ConsoleVersion.Models
                 entity.ToTable("users_books");
 
                 entity.HasIndex(e => e.BookId)
-                    .HasName("book_id")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.UserId)
-                    .HasName("user_id")
-                    .IsUnique();
+                    .HasName("book_id");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.Property(e => e.BookId).HasColumnName("book_id");
 
                 entity.HasOne(d => d.Book)
-                    .WithOne(p => p.UsersBooks)
-                    .HasForeignKey<UserBook>(d => d.BookId)
+                    .WithMany(p => p.UsersBooks)
+                    .HasForeignKey(d => d.BookId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("users_books_ibfk_2");
 
                 entity.HasOne(d => d.User)
-                    .WithOne(p => p.UsersBooks)
-                    .HasForeignKey<UserBook>(d => d.UserId)
+                    .WithMany(p => p.UsersBooks)
+                    .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("users_books_ibfk_1");
             });

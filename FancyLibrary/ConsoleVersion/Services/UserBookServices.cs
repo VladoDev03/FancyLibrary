@@ -25,10 +25,8 @@ namespace ConsoleVersion.Services
         {
             db.UsersBooks.Add(new UserBook
             {
-                User = user,
-                Book = book
-                //UserId = user.Id,
-                //BookId = book.Id
+                UserId = user.Id,
+                BookId = book.Id
             });
 
             db.SaveChanges();
@@ -58,19 +56,19 @@ namespace ConsoleVersion.Services
 
         public List<Book> GetBooksOfUser(User user)
         {
-            List<int> booksIds = db.UsersBooks
-                .Where(ub => ub.UserId == user.Id)
-                .Select(ub => ub.BookId)
+            List<int> booksId = db.UsersBooks
+                .Where(u => u.UserId == user.Id)
+                .Select(b => b.BookId)
                 .ToList();
 
             List<Book> books = new List<Book>();
 
-            foreach (var item in db.Books)
+            foreach (int item in booksId)
             {
-                if (booksIds.Contains(item.Id))
-                {
-                    books.Add(item);
-                }
+                Book book = db.Books
+                    .FirstOrDefault(b => b.Id == item);
+
+                books.Add(book);
             }
 
             return books;

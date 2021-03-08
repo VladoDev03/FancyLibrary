@@ -68,8 +68,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE users_books (
-	user_id INT UNIQUE,
-	book_id INT UNIQUE,
+	user_id INT,
+	book_id INT,
     FOREIGN KEY (user_id)
     REFERENCES users(id),
     FOREIGN KEY (book_id)

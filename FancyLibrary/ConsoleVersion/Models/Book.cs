@@ -11,18 +11,19 @@ namespace ConsoleVersion.Models
 {
     public partial class Book
     {
+        public Book()
+        {
+            InverseInspiredBy = new HashSet<Book>();
+            UsersBooks = new HashSet<UserBook>();
+        }
+
         private const int MinYear = 0;
         private const int MinLengthForTitle = 3;
         private const int MinLengthForGenre = 3;
 
         private string title;
         private string genre;
-        private int year;
-
-        public Book()
-        {
-            InverseInspiredBy = new HashSet<Book>();
-        }
+        private int? year;
 
         public int Id { get; set; }
 
@@ -60,7 +61,7 @@ namespace ConsoleVersion.Models
             }
         }
 
-        public int Year
+        public int? Year
         {
             get
             {
@@ -68,7 +69,7 @@ namespace ConsoleVersion.Models
             }
             set
             {
-                if (value < MinYear)
+                if (value < MinYear && value != null)
                 {
                     throw new ArgumentException(string.Format(ExceptionsTexts.TooOldYear, MinYear));
                 }
@@ -91,9 +92,8 @@ namespace ConsoleVersion.Models
 
         public virtual Book InspiredBy { get; set; }
 
-        public virtual UserBook UsersBooks { get; set; }
-
         public virtual ICollection<Book> InverseInspiredBy { get; set; }
+        public virtual ICollection<UserBook> UsersBooks { get; set; }
 
         public override string ToString()
         {

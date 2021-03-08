@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Tests.ServicesTests.UserBookServicesTests
 {
-    public class AddBookToUserTests
+    public class GetBooksOfUserTests
     {
         private DbContextOptions<FancyLibraryContext> options;
         private FancyLibraryContext db;
@@ -19,7 +19,7 @@ namespace Tests.ServicesTests.UserBookServicesTests
         public void Setup()
         {
             options = new DbContextOptionsBuilder<FancyLibraryContext>()
-                   .UseInMemoryDatabase(databaseName: "fancy_library_add_book_to_user")
+                   .UseInMemoryDatabase(databaseName: "fancy_library_add_book_to_user_all_books")
                    .Options;
 
             db = new FancyLibraryContext(options);
@@ -27,30 +27,38 @@ namespace Tests.ServicesTests.UserBookServicesTests
             userBookServices = new UserBookServices(db);
 
             db.Users.AddRange(FillUsers());
-            db.SaveChanges();
             db.Books.AddRange(FillBooks());
-            db.SaveChanges();
             db.UsersBooks.AddRange(FillUsersBooks());
+
             db.SaveChanges();
         }
 
         [Test]
-        public void IsAddingCorrectBookToUser()
+        public void IsFindingAllBooksOfGivenUser()
         {
-            Book book = db.Books.FirstOrDefault(b => b.Id == 4);
-            User user = db.Users.FirstOrDefault(u => u.Id == 2);
+            User user = db.Users
+                .FirstOrDefault(u => u.Id == 1);
 
-            userBookServices.AddBookToUser(user, book);
+            List<Book> actual = userBookServices.GetBooksOfUser(user);
+            List<Book> expected = new List<Book>
+            {
+                new Book
+                {
+                    Id = 2,
+                    Title = "title2",
+                    Genre = "genre2",
+                    AuthorId = 1
+                },
+                new Book
+                {
+                    Id = 4,
+                    Title = "title4",
+                    Genre = "genre4",
+                    AuthorId = 1
+                }
+            };
 
-            bool isRightBookAdded = userBookServices
-                .GetAllUsersBooks()
-                .Exists(ub => ub.UserId == user.Id &&
-                ub.BookId == book.Id);
-
-            int a = userBookServices
-                .GetAllUsersBooks().Count();
-
-            Assert.IsTrue(isRightBookAdded);
+            Assert.AreEqual(expected.Count, actual.Count);
         }
 
         private List<UserBook> FillUsersBooks()
@@ -76,6 +84,11 @@ namespace Tests.ServicesTests.UserBookServicesTests
                 {
                     UserId = 2,
                     BookId = 1
+                },
+                new UserBook
+                {
+                    UserId = 2,
+                    BookId = 4
                 }
             };
 

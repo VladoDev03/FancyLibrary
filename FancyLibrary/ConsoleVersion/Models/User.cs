@@ -20,6 +20,10 @@ namespace ConsoleVersion.Models
         private string lastName;
         private DateTime birthday;
         private int age;
+        public User()
+        {
+            UsersBooks = new HashSet<UserBook>();
+        }
 
         public int Id { get; set; }
         public string Username
@@ -138,7 +142,7 @@ namespace ConsoleVersion.Models
 
         public virtual LogData LogData { get; set; }
 
-        public virtual UserBook UsersBooks { get; set; }
+        public virtual ICollection<UserBook> UsersBooks { get; set; }
 
         public override string ToString()
         {
