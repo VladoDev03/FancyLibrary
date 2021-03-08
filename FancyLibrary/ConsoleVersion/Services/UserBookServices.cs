@@ -25,8 +25,10 @@ namespace ConsoleVersion.Services
         {
             db.UsersBooks.Add(new UserBook
             {
-                UserId = user.Id,
-                BookId = book.Id
+                User = user,
+                Book = book
+                //UserId = user.Id,
+                //BookId = book.Id
             });
 
             db.SaveChanges();
@@ -45,11 +47,11 @@ namespace ConsoleVersion.Services
 
         public void RemoveBookFromUser(User user, Book book)
         {
-            db.UsersBooks.Remove(new UserBook
-            {
-                UserId = user.Id,
-                BookId = book.Id
-            });
+            UserBook userBook = db.UsersBooks
+                .FirstOrDefault(ub => ub.BookId == book.Id && ub.UserId == user.Id);
+
+            db.UsersBooks.Remove(userBook);
+            db.SaveChanges();
 
             db.SaveChanges();
         }
@@ -63,14 +65,11 @@ namespace ConsoleVersion.Services
 
             List<Book> books = new List<Book>();
 
-            foreach (int id in booksIds)
+            foreach (var item in db.Books)
             {
-                foreach (Book book in db.Books)
+                if (booksIds.Contains(item.Id))
                 {
-                    if (id == book.Id)
-                    {
-                        books.Add(book);
-                    }
+                    books.Add(item);
                 }
             }
 
