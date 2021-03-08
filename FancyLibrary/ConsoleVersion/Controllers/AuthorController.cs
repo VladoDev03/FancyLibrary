@@ -1,5 +1,6 @@
 ﻿using ConsoleVersion.Models;
 using ConsoleVersion.Services;
+using ConsoleVersion.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,35 @@ namespace ConsoleVersion.Controllers
         // TODO
         public void AddNewAuthor(List<string> input)
         {
-            throw new NotImplementedException();
+            Author author = new Author
+            {
+                FirstName = input[0],
+                MiddleName = input[1],
+                LastName = input[2]
+            };
+
+            string fullName = NameRefactorer
+                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+            List<string> names = authorServices.GetAllAuthors()
+                .Select(x => NameRefactorer.GetFullName(x.FirstName, x.MiddleName, x.LastName))
+                .ToList();
+
+            if (names.Contains(fullName))
+            {
+                throw new ArgumentException();
+            }
+
+            authorServices.AddAuthor(author);
         }
 
         public int GetAuthorBookCount(Author author)
         {
+            if (author == null)
+            {
+                throw new ArgumentException();
+            }
+
             int count = GetAllAuthorBooks(author).Count;
 
             return count;
@@ -33,6 +58,11 @@ namespace ConsoleVersion.Controllers
 
         public List<Book> GetAllAuthorBooks(Author author)
         {
+            if (author == null)
+            {
+                throw new ArgumentException();
+            }
+
             List<Book> books = bookServices
                 .GetAllBooks()
                 .Where(b => b.AuthorId == author.Id)
