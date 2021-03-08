@@ -19,6 +19,6 @@ namespace ConsoleVersion.Services.Contracts
 
         Author GetBookAuthor(Book book);
 
-        int MapAuthorWithBook(string authorFullName);
+        int GetAuthorIdFromFullName(Book book, string authorFullName);
     }
 }

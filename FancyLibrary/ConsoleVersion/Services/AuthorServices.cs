@@ -27,16 +27,18 @@ namespace ConsoleVersion.Services
             db.SaveChanges();
         }
 
-        // TODO
         public List<Book> GetAuthorBooks(Author author)
         {
-            throw new NotImplementedException();
+            List<Book> books = db.Books
+                .Where(b => b.AuthorId == author.Id)
+                .ToList();
+
+            return books;
         }
 
-        // TODO
         public int GetAuthorBookCount(Author author)
         {
-            throw new NotImplementedException();
+            return GetAuthorBooks(author).Count;
         }
     }
 }

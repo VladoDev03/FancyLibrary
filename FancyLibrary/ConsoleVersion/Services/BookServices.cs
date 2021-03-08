@@ -1,5 +1,6 @@
 ﻿using ConsoleVersion.Models;
 using ConsoleVersion.Services.Contracts;
+using ConsoleVersion.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,28 +35,32 @@ namespace ConsoleVersion.Services
             return result;
         }
 
-        // TODO
         public Book FindBook(string title)
         {
-            throw new NotImplementedException();
+            Book book = db.Books.FirstOrDefault(b => b.Title == title);
+            return book;
         }
 
-        // TODO
         public Book FindBook(int id)
         {
-            throw new NotImplementedException();
+            Book book = db.Books.FirstOrDefault(b => b.Id == id);
+            return book;
         }
 
-        // TODO
         public Author GetBookAuthor(Book book)
         {
-            throw new NotImplementedException();
+            Author author = db.Authors
+                .FirstOrDefault(a => a.Id == book.AuthorId);
+            return author;
         }
 
-        // TODO
-        public int MapAuthorWithBook(string authorFullName)
+        public int GetAuthorIdFromFullName(Book book, string authorFullName)
         {
-            throw new NotImplementedException();
+            Author author = db.Authors
+                .FirstOrDefault(a =>
+                NameRefactorer.GetFullName(a.FirstName, a.MiddleName, a.LastName) == authorFullName);
+
+            return author.Id;
         }
     }
 }
