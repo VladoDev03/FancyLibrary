@@ -1,8 +1,5 @@
-﻿using ConsoleVersion.Utils;
+﻿using Data.Utils;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Tests.UtilsTests.PasswordManagerTests
 {

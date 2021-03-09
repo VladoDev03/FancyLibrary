@@ -1,11 +1,10 @@
-﻿using ConsoleVersion.Models;
-using ConsoleVersion.Services;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using Data.Entities;
+using Services;
 
 namespace Tests.AddUserTests.UserBookServicesTests
 {

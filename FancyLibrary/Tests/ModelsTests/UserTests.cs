@@ -1,7 +1,6 @@
-﻿using ConsoleVersion.Models;
+﻿using Data.Entities;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Tests.ModelsTests
@@ -342,96 +341,6 @@ namespace Tests.ModelsTests
             };
 
             Assert.That(user.ToString(), Is.EqualTo(correct));
-        }
-
-        [Test]
-        public void IsSettingContactIdWhenNotNull()
-        {
-            User user = new User
-            {
-                Id = 1,
-                Username = "LongUsername",
-                Password = "Salamur$12",
-                FirstName = "shoooo",
-                MiddleName = "vlado",
-                LastName = "aaaa",
-                Age = 12,
-                ContactId = 1
-            };
-
-            Assert.That(user.ContactId, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void IsSettingContactIdToNullWhenValueIsNull()
-        {
-            User user = new User
-            {
-                Id = 1,
-                Username = "LongUsername",
-                Password = "Salamur$12",
-                FirstName = "shoooo",
-                MiddleName = "vlado",
-                LastName = "aaaa",
-                Age = 12,
-                ContactId = null
-            };
-
-            Assert.That(user.ContactId, Is.EqualTo(null));
-        }
-
-        [Test]
-        public void IsSettingLogDataIdWhenNotNull()
-        {
-            User user = new User
-            {
-                Id = 1,
-                Username = "LongUsername",
-                Password = "Salamur$12",
-                FirstName = "shoooo",
-                MiddleName = "vlado",
-                LastName = "aaaa",
-                Age = 12,
-                LogDataId = 1
-            };
-
-            Assert.That(user.LogDataId, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void IsSettingCountryIdWhenNotNull()
-        {
-            User user = new User
-            {
-                Id = 1,
-                Username = "LongUsername",
-                Password = "Salamur$12",
-                FirstName = "shoooo",
-                MiddleName = "vlado",
-                LastName = "aaaa",
-                Age = 12,
-                CountryId = 1
-            };
-
-            Assert.That(user.CountryId, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void IsSettingCountryIdToNullWhenValueIsNull()
-        {
-            User user = new User
-            {
-                Id = 1,
-                Username = "LongUsername",
-                Password = "Salamur$12",
-                FirstName = "shoooo",
-                MiddleName = "vlado",
-                LastName = "aaaa",
-                Age = 12,
-                CountryId = null
-            };
-
-            Assert.That(user.CountryId, Is.EqualTo(null));
         }
     }
 }

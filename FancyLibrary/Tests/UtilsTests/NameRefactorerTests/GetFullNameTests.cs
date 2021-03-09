@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ConsoleVersion.Controllers;
-using ConsoleVersion.Models;
-using ConsoleVersion.Services;
-using ConsoleVersion.Utils;
-using Microsoft.EntityFrameworkCore;
+﻿using Data.Utils;
 using NUnit.Framework;
 
 namespace Tests.UtilsTests.NameRefactorerTests

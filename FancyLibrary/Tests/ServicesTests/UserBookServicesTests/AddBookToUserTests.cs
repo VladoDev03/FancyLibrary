@@ -1,11 +1,10 @@
-﻿using ConsoleVersion.Models;
-using ConsoleVersion.Services;
+﻿using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Tests.ServicesTests.UserBookServicesTests
 {
@@ -27,10 +26,9 @@ namespace Tests.ServicesTests.UserBookServicesTests
             userBookServices = new UserBookServices(db);
 
             db.Users.AddRange(FillUsers());
-            db.SaveChanges();
             db.Books.AddRange(FillBooks());
-            db.SaveChanges();
             db.UsersBooks.AddRange(FillUsersBooks());
+
             db.SaveChanges();
         }
 
