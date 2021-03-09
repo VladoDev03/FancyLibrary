@@ -6,8 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Factories\" />
-    <Folder Include="Views\" />
+    <Compile Remove="Factories\**" />
+    <Compile Remove="Views\**" />
+    <EmbeddedResource Remove="Factories\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Factories\**" />
+    <None Remove="Views\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,21 +23,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="LocalDatabaseFiles\Authors.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="LocalDatabaseFiles\Books.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="LocalDatabaseFiles\Contacts.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="LocalDatabaseFiles\Users.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
