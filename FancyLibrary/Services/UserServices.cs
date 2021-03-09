@@ -82,12 +82,12 @@ namespace Services
             db.SaveChanges();
         }
 
-        public void ChangesWhenLoggedIn(User user)
-        {
-            ChangeStatus(user);
-            IncreaseLogInCount(user);
-            ChangeLastLogIn(user);
-        }
+        //public void ChangesWhenLoggedIn(User user)
+        //{
+        //    ChangeStatus(user);
+        //    IncreaseLogInCount(user);
+        //    ChangeLastLogIn(user);
+        //}
 
         public void ChangeStatus(User user)
         {

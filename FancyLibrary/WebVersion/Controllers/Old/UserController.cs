@@ -41,7 +41,10 @@ namespace ConsoleVersion.Controllers
 
             CurrentLoggedInUser = user;
 
-            userServices.ChangesWhenLoggedIn(user);
+            //userServices.ChangesWhenLoggedIn(user);
+            userServices.ChangeLastLogIn(user);
+            userServices.ChangeStatus(user);
+            userServices.IncreaseLogInCount(user);
 
             return MessagesToUser.WelcomeMessage;
         }
