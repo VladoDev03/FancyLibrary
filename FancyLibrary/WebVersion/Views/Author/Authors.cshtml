@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Author";
+}
+
+<link href="~/css/AuthorsPage.css" rel="stylesheet" />
+
+<body>
+    <h1>Authors</h1>
+    <section id="order-by">
+        <h2>Order by</h2>
+        <button>Name</button>
+        <button>Country</button>
+        <button>Birthday</button>
+        <button>Number</button>
+        <button>Books</button>
+    </section>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Name</th>
+                    @*<th>Country</th>*@
+                    <th>Birthday</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1; }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.FirstName @item.MiddleName @item.LastName</td>
+                        <td>@item.Birthday</td>
+                        @{ i++; }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <form>
+            <h3>If you want to add more data abbout an author you can do it from here.</h3>
+            <label for="country">Country</label>
+            <input type="text" name="country" id="country">
+            <label for="birthday">Birthday</label>
+            <input type="date" name="birthday" id="birthday">
+            <button type="submit">Add info</button>
+        </form>
+    </div>
+</body>

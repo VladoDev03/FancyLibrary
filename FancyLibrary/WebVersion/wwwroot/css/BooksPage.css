@@ -1,0 +1,183 @@
+﻿table,
+td,
+th {
+    border: 1px solid rgb(221, 221, 221);
+}
+
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: rgb(145, 87, 0);
+    font-style: italic;
+    background-color: rgb(238, 205, 144);
+    width: 15%;
+    padding: 25px;
+    border-radius: 20px;
+    border: solid;
+    margin-bottom: 65px;
+}
+
+body {
+    padding: 50px 50px 0px 50px;
+}
+
+div table {
+    margin-top: 25px;
+}
+
+table {
+    width: 65%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+th {
+    background-color: rgb(221, 221, 221);
+    text-align: left;
+    height: 35px;
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
+}
+
+td, th {
+    padding-left: 5px;
+    border: solid 1px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgb(241, 241, 241);
+}
+
+tbody tr:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+form {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: solid;
+    border-radius: 25px;
+    border-color: chocolate;
+    width: 25%;
+    padding: 20px 30px;
+    background-color: yellowgreen;
+}
+
+    form h3 {
+        display: block;
+        margin-top: 2px;
+        padding-bottom: 10px;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 18px;
+        color: rgb(184, 82, 9);
+    }
+
+div form button {
+    background-color: rgb(131, 174, 255);
+    color: rgb(228, 94, 50);
+    font-weight: bold;
+    border-color: rgb(228, 94, 50);
+    border: solid;
+    border-radius: 10px;
+    padding: 3px 7px;
+    font-style: italic;
+    margin-left: 7px;
+}
+
+    div form button:hover {
+        text-decoration: underline;
+        background-color: rgb(228, 94, 50);
+        color: rgb(131, 174, 255);
+        font-weight: bold;
+        border-color: rgb(131, 174, 255);
+    }
+
+form input {
+    background-color: tomato;
+    border: solid;
+    border-radius: 7px;
+}
+
+    form input:hover {
+        background-color: rgb(255, 163, 147);
+    }
+
+form label {
+    display: block;
+}
+
+#title-input {
+    margin-right: 150px;
+}
+
+label {
+    color: rgb(23, 93, 139);
+    font-size: large;
+    font-style: italic;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+form {
+    margin-bottom: 100px;
+}
+
+#block-button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 25px;
+}
+
+#bolder {
+    font-weight: bolder;
+}
+
+#order-by {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255, 156, 42);
+    padding: 35px;
+    text-align: center;
+    width: 30%;
+    border: solid;
+    border-color: brown;
+    border-radius: 25px;
+}
+
+    #order-by h2 {
+        margin-top: 0;
+        font-style: italic;
+        color: rgb(133, 17, 17);
+    }
+
+    #order-by button {
+        margin-left: 15px;
+    }
+
+    #order-by button {
+        background-color: rgb(255, 166, 137);
+        color: rgb(23, 104, 255);
+        font-weight: bold;
+        border-color: rgb(23, 104, 255);
+        border: solid;
+        border-radius: 10px;
+        padding: 3px 7px;
+        font-style: italic;
+        margin-left: 12px;
+    }
+
+        #order-by button:hover {
+            text-decoration: underline;
+            background-color: rgb(23, 104, 255);
+            color: rgb(255, 166, 137);
+            border-color: rgb(255, 166, 137);
+        }

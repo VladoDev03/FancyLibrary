@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services;
+using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +33,12 @@ namespace WebVersion
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseMySQL(connectionString);
             });
+
+            services.AddScoped<IAuthorServices, AuthorServices>();
+            services.AddScoped<IBookServices, BookServices>();
+            services.AddScoped<ICountryServices, CountryServices>();
+            services.AddScoped<IUserBookServices, UserBookServices>();
+            services.AddScoped<IUserServices, UserServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

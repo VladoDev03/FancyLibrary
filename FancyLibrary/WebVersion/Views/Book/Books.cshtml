@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Book";
+}
+
+<link href="~/css/BooksPage.css" rel="stylesheet" />
+
+<body>
+    <h1>Books</h1>
+    <section id="order-by">
+        <h2>Order by</h2>
+        <button onclick="">Title</button>
+        <button>Author</button>
+        <button>Number</button>
+        <button>Year</button>
+        <button>Saved</button>
+    </section>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    @*<th>Author</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1; }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.Title</td>
+                        <td>@item.Genre</td>
+                        <td>@item.Year</td>
+                        @{ i++; }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <form>
+            <h3>Type the title or the number of the book you want to add.</h3>
+            <label for="input" id="title-input">Title<span id="bolder"> / </span>number</label>
+            <input type="text" id="input">
+            <button type="submit">Add book</button>
+        </form>
+        <form>
+            <h3>If you don't find the book you want to add, type its data in the following page.</h3>
+            <label for="title">Title</label>
+            <input type="text" id="title">
+            <label for="genre">Genre</label>
+            <input type="text" id="genre">
+            <label for="year">Year</label>
+            <input type="text" id="year">
+            <label for="author">Author</label>
+            <input type="text" id="author">
+            <button type="submit" id="block-button">Add book</button>
+        </form>
+    </div>
+</body>

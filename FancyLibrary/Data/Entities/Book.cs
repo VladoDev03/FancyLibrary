@@ -15,7 +15,7 @@ namespace Data.Entities
 
         private string title;
         private string genre;
-        private int year;
+        private int? year;
 
         public Book()
         {
@@ -59,7 +59,7 @@ namespace Data.Entities
             }
         }
 
-        public int Year
+        public int? Year
         {
             get
             {
