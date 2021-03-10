@@ -1,4 +1,6 @@
 ﻿using Data.Entities;
+using Data.Models;
+using Data.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using Services.Contracts;
@@ -11,17 +13,31 @@ namespace WebVersion.Controllers
 {
     public class BookController : Controller
     {
-        private IBookServices services;
+        private IBookServices bookServices;
+        private IAuthorServices authorServices;
 
-        public BookController(IBookServices services)
+        public BookController(IBookServices bookServices, IAuthorServices authorServices)
         {
-            this.services = services;
+            this.bookServices = bookServices;
+            this.authorServices = authorServices;
         }
 
         public IActionResult Books()
         {
-            List<Book> books = services.GetAllBooks();
+            List<Book> books = bookServices.GetAllBooks();
             return View(books);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(BookDTO book)
+        {
+            return RedirectToAction(nameof(Create));
         }
     }
 }

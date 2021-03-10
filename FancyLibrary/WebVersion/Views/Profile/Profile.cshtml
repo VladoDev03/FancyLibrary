@@ -1,0 +1,135 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<link href="~/css/ProfilePage.css" rel="stylesheet" />
+
+<body>
+    <h1>Your profile</h1>
+    <div class="profile-info">
+        <h2 class="user-title">User info</h2>
+        <div class="property">
+            Username: vladsto <a class="property-link" href="#change-user-data">Change username</a>
+        </div><br>
+        <div class="property">
+            First name: Vladimir <a class="property-link" href="#change-user-data">Change first name</a>
+        </div><br>
+        <div class="property">
+            Middle name: Rumenov <a class="property-link" href="#change-user-data">Change middle name</a>
+        </div><br>
+        <div class="property">
+            Last name: Stoyanov <a class="property-link" href="#change-user-data">Change last name</a>
+        </div><br>
+        <div class="property">
+            Password: ******* <a class="property-link" href="#change-password">Change password</a>
+        </div><br>
+        <div class="property">
+            Books count: 7 <a class="property-link" href="../BookPage/book.html">All books</a>
+        </div><br>
+    </div>
+    <div class="contact-info">
+        <h2 class="contact-title">Contacts</h2>
+        <div class="property">
+            Email: vladsto101@gmail.com <a class="property-link" href="#change-user-data">Change email</a>
+        </div><br>
+        <div class="property">
+            Phone: +359887865650 <a class="property-link" href="#change-user-data">Change phone</a>
+        </div><br>
+    </div>
+    <div>
+        <div class="remove-book">
+            <h3>Remove a book</h3>
+            <form>
+                <input name="title">
+                <button type="submit">Remove</button>
+            </form>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="4">Your books
+                    </tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Year</th>
+                <th>Author</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Matilda</td>
+                        <td>Children's literature Fantasy</td>
+                        <td>1988</td>
+                        <td>Roald Dahl</td>
+                    <tr>
+                        <td>The Secret Garden</td>
+                        <td>Children's novel</td>
+                        <td>1911</td>
+                        <td>Frances Hodgson Burnett</td>
+                    </tr>
+                    <tr>
+                        <td>The witches</td>
+                        <td>Children's fantasy Dark fantasy</td>
+                        <td>1983</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                    <tr>
+                        <td>The Twits</td>
+                        <td>Children's novel</td>
+                        <td>1980</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                    <tr>
+                        <td>Around the World in Eighty Days</td>
+                        <td>Adventure novel</td>
+                        <td>1872</td>
+                        <td>Jules Verne</td>
+                    </tr>
+                    <tr>
+                        <td>George's Marvellous Medicine</td>
+                        <td>Children's novel</td>
+                        <td>1981</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                    <tr>
+                        <td>Charlie and the Chocolate Factory</td>
+                        <td>Children's fantasy novel</td>
+                        <td>1964</td>
+                        <td>Roald Dahl</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <section>
+        <article id="change-user-data">
+            <form action="">
+                <label for="username">Username</label>
+                <input class="new-data" type="text" name="username" id="username">
+                <label for="first-name">First name</label>
+                <input class="new-data" type="text" name="first-name" id="first-name">
+                <label for="last-name">Middle name</label>
+                <input class="new-data" type="text" name="middle-name" id="middle-name">
+                <label for="last-name">Last name</label>
+                <input class="new-data" type="text" name="last-name" id="last-name">
+                <label for="email">Email</label>
+                <input class="new-data" type="email" name="email" id="email">
+                <label for="phone">Phone</label>
+                <input class="new-data" type="tel" name="phone" id="phone">
+                <button type="submit" class="submit-data">Change</button>
+            </form>
+        </article>
+        <article id="change-password">
+            <form action="">
+                <label for="old-password">Old password</label>
+                <input class="new-data" type="password" name="old-password" id="old-password">
+                <label for="new-password">New password</label>
+                <input class="new-data" type="password" name="new-password" id="new-password">
+                <button type="submit" class="submit-data">Change</button>
+            </form>
+        </article>
+    </section>
+</body>
