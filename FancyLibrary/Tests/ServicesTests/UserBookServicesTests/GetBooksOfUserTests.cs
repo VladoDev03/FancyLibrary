@@ -43,16 +43,16 @@ namespace Tests.ServicesTests.UserBookServicesTests
             {
                 new Book
                 {
-                    Id = 2,
-                    Title = "title2",
-                    Genre = "genre2",
+                    Id = 1,
+                    Title = "title1",
+                    Genre = "genre1",
                     AuthorId = 1
                 },
                 new Book
                 {
-                    Id = 4,
-                    Title = "title4",
-                    Genre = "genre4",
+                    Id = 2,
+                    Title = "title2",
+                    Genre = "genre2",
                     AuthorId = 1
                 }
             };

@@ -37,7 +37,7 @@ namespace Services
             return books;
         }
 
-        public int GetAuthorBookCount(Author author)
+        public int GetAuthorBooksCount(Author author)
         {
             return GetAuthorBooks(author).Count;
         }

@@ -13,6 +13,6 @@ namespace Services.Contracts
 
         List<Book> GetAuthorBooks(Author author);
 
-        int GetAuthorBookCount(Author author);
+        int GetAuthorBooksCount(Author author);
     }
 }
