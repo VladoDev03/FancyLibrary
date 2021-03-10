@@ -37,7 +37,37 @@ namespace WebVersion.Controllers
         [HttpPost]
         public IActionResult Create(BookDTO book)
         {
-            return RedirectToAction(nameof(Create));
+            if (bookServices.FindBook(book.Title) != null)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
+            string fullName = NameRefactorer
+                .GetFullName(book.FirstName, null, book.LastName);
+
+            Author author = authorServices.FindAuthor(fullName);
+
+            if (author == null)
+            {
+                author = new Author
+                {
+                    FirstName = book.FirstName,
+                    LastName = book.LastName
+                };
+
+                authorServices.AddAuthor(author);
+            }
+
+            Book bookToAdd = new Book
+            {
+                Title = book.Title,
+                Genre = book.Genre,
+                AuthorId = author.Id
+            };
+
+            bookServices.AddBook(bookToAdd);
+
+            return RedirectToAction(nameof(Books));
         }
     }
 }
