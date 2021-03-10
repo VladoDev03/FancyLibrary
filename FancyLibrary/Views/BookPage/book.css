@@ -22,16 +22,13 @@ body {
     padding: 50px 50px 0px 50px;
 }
 
-div table {
-    margin-top: 25px;
-}
-
 table {
     width: 65%;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
+    margin-top: 65px;
 }
 
 th {
