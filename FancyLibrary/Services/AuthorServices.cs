@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Entities;
+using Data.Utils;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,15 @@ namespace Services
         public int GetAuthorBooksCount(Author author)
         {
             return GetAuthorBooks(author).Count;
+        }
+
+        public int GetAuthorIdFromFullName(string authorFullName)
+        {
+            Author author = db.Authors
+                .FirstOrDefault(a =>
+                NameRefactorer.GetFullName(a.FirstName, a.MiddleName, a.LastName) == authorFullName);
+
+            return author.Id;
         }
     }
 }

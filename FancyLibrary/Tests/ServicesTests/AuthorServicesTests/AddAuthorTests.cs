@@ -32,7 +32,7 @@ namespace Tests.ServicesTests.AuthorServicesTests
         }
 
         [Test]
-        public void IsGettingAllAutjorsFromDatabase()
+        public void IsGettingAllAuthorsFromDatabase()
         {
             Author author = new Author
             {

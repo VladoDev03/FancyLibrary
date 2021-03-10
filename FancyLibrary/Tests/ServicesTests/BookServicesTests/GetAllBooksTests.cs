@@ -8,53 +8,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests.ServicesTests.AuthorServicesTests
+namespace Tests.ServicesTests.BookServicesTests
 {
-    public class GetAllAuthorsTests
+    public class GetAllBooksTests
     {
         private DbContextOptions<FancyLibraryContext> options;
         private FancyLibraryContext db;
-        private AuthorServices authorServices;
+        private BookServices bookServices;
 
         [SetUp]
         public void Setup()
         {
             options = new DbContextOptionsBuilder<FancyLibraryContext>()
-                   .UseInMemoryDatabase(databaseName: "fancy_library_get_all_authors")
+                   .UseInMemoryDatabase(databaseName: "fancy_library_get_all_books")
                    .Options;
 
             db = new FancyLibraryContext(options);
 
-            authorServices = new AuthorServices(db);
+            bookServices = new BookServices(db);
 
-            db.Authors.AddRange(CreateInMemoryDb());
+            db.Books.AddRange(CreateInMemoryDb());
             db.SaveChanges();
         }
 
         [Test]
-        public void IsGettingAllAuthorsFromDatabase()
+        public void IsGettingAllBooksFromDatabase()
         {
-            List<Author> actual = authorServices.GetAllAuthors();
-            List<Author> expected = db.Authors.ToList();
+            List<Book> actual = bookServices.GetAllBooks();
+            List<Book> expected = db.Books.ToList();
 
             Assert.AreEqual(actual, expected);
         }
 
-        public List<Author> CreateInMemoryDb()
+        public List<Book> CreateInMemoryDb()
         {
-            List<Author> authors = new List<Author>
+            List<Book> authors = new List<Book>
             {
-                new Author
+                new Book
                 {
                     Id = 1,
-                    FirstName = "FirstName1",
-                    LastName = "LastName1"
+                    Title = "title1",
+                    Genre = "genre1"
                 },
-                new Author
+                new Book
                 {
                     Id = 2,
-                    FirstName = "FirstName2",
-                    LastName = "LastName2"
+                    Title = "title2",
+                    Genre = "genre2"
                 }
             };
 

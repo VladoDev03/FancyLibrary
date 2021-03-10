@@ -18,7 +18,5 @@ namespace Services.Contracts
         Book FindBook(int id);
 
         Author GetBookAuthor(Book book);
-
-        int GetAuthorIdFromFullName(Book book, string authorFullName);
     }
 }

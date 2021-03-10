@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Tests.ServicesTests.AuthorServicesTests
 {
-    public class GetAllAuthorsTests
+    public class GetAuthorIdFromFullNameTests
     {
         private DbContextOptions<FancyLibraryContext> options;
         private FancyLibraryContext db;
@@ -20,7 +20,7 @@ namespace Tests.ServicesTests.AuthorServicesTests
         public void Setup()
         {
             options = new DbContextOptionsBuilder<FancyLibraryContext>()
-                   .UseInMemoryDatabase(databaseName: "fancy_library_get_all_authors")
+                   .UseInMemoryDatabase(databaseName: "fancy_library_get_author_name_from_id")
                    .Options;
 
             db = new FancyLibraryContext(options);
@@ -34,10 +34,10 @@ namespace Tests.ServicesTests.AuthorServicesTests
         [Test]
         public void IsGettingAllAuthorsFromDatabase()
         {
-            List<Author> actual = authorServices.GetAllAuthors();
-            List<Author> expected = db.Authors.ToList();
+            int result = authorServices
+                .GetAuthorIdFromFullName("FirstName1 LastName1");
 
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(1, result);
         }
 
         public List<Author> CreateInMemoryDb()
