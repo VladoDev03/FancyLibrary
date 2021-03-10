@@ -9,6 +9,10 @@ namespace Services.Contracts
     {
         List<Author> GetAllAuthors();
 
+        Author FindAuthor(string fullName);
+
+        Author FindAuthor(int id);
+
         void AddAuthor(Author author);
 
         List<Book> GetAuthorBooks(Author author);

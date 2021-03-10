@@ -45,11 +45,28 @@ namespace Services
 
         public int GetAuthorIdFromFullName(string authorFullName)
         {
-            Author author = db.Authors
-                .FirstOrDefault(a =>
-                NameRefactorer.GetFullName(a.FirstName, a.MiddleName, a.LastName) == authorFullName);
+            Author author = GetAllAuthors().FirstOrDefault(
+                a => NameRefactorer.GetFullName(
+                    a.FirstName, a.MiddleName, a.LastName) == authorFullName);
 
             return author.Id;
+        }
+
+        public Author FindAuthor(string fullName)
+        {
+            Author author = GetAllAuthors().FirstOrDefault(
+                a => NameRefactorer.GetFullName(
+                    a.FirstName, a.MiddleName, a.LastName) == fullName);
+
+            return author;
+        }
+
+        public Author FindAuthor(int id)
+        {
+            Author author = db.Authors
+                .FirstOrDefault(a => a.Id == id);
+
+            return author;
         }
     }
 }
