@@ -178,3 +178,30 @@ form {
     color: rgb(255, 166, 137);
     border-color: rgb(255, 166, 137);
 }
+
+.page {
+    font-size: larger;
+    text-decoration: none;
+    border: solid;
+    border-radius: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: rgb(252, 235, 167);
+    font-style: italic;
+    font-weight: bold;
+    color: olive;
+}
+
+.page:hover {
+    color: peru;
+    text-decoration: underline;
+}
+
+#link-to-add-book {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    text-align: center;
+}
