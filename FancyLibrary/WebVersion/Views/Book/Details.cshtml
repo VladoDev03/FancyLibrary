@@ -7,16 +7,24 @@
 <title>Book details</title>
 <link href="~/css/DetailsPage.css" rel="stylesheet" />
 
-<p>@Model</p>
-
 <div class="data-container">
-    <p>Id - 1</p>
-    <p>Title - AnyTitle</p>
-    <p>Genre - AnyGenre</p>
-    <p>Author - AnyAuthor</p>
-    <p>Year - 2021</p>
-    <p>Pages-111</p>
+    <p>Title - @Model.Title</p>
+    <p>Genre - @Model.Genre</p>
+    <p>Author - @Model.AuthorName</p>
+    @if (Model.Year == null)
+    {
+        <p>Year - Unknown</p>
+    }
+    else
+    {
+        <p>Year - @Model.Year</p>
+    }
+    @if (Model.Pages == null)
+    {
+        <p>Pages - Unknown</p>
+    }
+    else
+    {
+        <p>Pages - @Model.Pages</p>
+    }
 </div>
-
-@*<p>@Model.Title</p>
-<p>@Model.Genre</p>*@

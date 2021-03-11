@@ -106,7 +106,20 @@ namespace WebVersion.Controllers
                 return RedirectToAction(nameof(Books));
             }
 
-            return View(nameof(Details), book.ToString());
+            Author author = authorServices.FindAuthor(book.AuthorId);
+            string authorFullName = NameRefactorer
+                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+            FullBookView result = new FullBookView
+            {
+                Title = book.Title,
+                Genre = book.Genre,
+                AuthorName = authorFullName,
+                Year = book.Year,
+                Pages = book.Pages
+            };
+
+            return View(nameof(Details), result);
         }
     }
 }
