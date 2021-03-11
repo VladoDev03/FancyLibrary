@@ -68,5 +68,17 @@ namespace Services
 
             return author;
         }
+
+        public string GetAuthorCountry(Author author)
+        {
+            Country country = db.Countries.FirstOrDefault(c => c.Id == author.CountryId);
+
+            if (country != null)
+            {
+                return country.Name;
+            }
+
+            return "Unknown";
+        }
     }
 }

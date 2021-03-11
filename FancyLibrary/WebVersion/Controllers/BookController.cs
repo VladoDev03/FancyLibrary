@@ -57,6 +57,12 @@ namespace WebVersion.Controllers
         [HttpPost]
         public IActionResult Create(BookDTO book)
         {
+            if (book.Title == null || book.Genre == null ||
+                book.FirstName == null || book.LastName == null)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
             if (bookServices.FindBook(book.Title) != null)
             {
                 return RedirectToAction(nameof(Create));

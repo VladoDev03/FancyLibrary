@@ -19,6 +19,8 @@ namespace Services.Contracts
 
         int GetAuthorBooksCount(Author author);
 
-        public int GetAuthorIdFromFullName(string authorFullName);
+        int GetAuthorIdFromFullName(string authorFullName);
+
+        string GetAuthorCountry(Author author);
     }
 }
