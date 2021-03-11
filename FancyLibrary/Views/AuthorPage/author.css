@@ -76,6 +76,9 @@ h3 {
 label {
     display: block;
     margin-bottom: 5px;
+    color: rgb(155, 76, 20);
+    font-style: italic;
+    font-size: large;
 }
 
 input {
