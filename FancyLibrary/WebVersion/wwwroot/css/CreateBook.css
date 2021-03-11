@@ -1,0 +1,72 @@
+﻿.add-book {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    background-color: aquamarine;
+    padding: 15px;
+    border: solid;
+    border-radius: 25px;
+    color: rgb(175, 10, 43);
+    width: 25%;
+}
+
+    .add-book label,
+    input,
+    button {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        display: block;
+        margin-top: 5px;
+    }
+
+button {
+    margin-top: 15px;
+    border-radius: 10px;
+    border: solid;
+    background-color: rgb(245, 164, 164);
+    padding: 3px 12px 3px 12px;
+    font-style: italic;
+    color: rgb(17, 55, 126);
+    border-color: rgb(221, 110, 110);
+    font-weight: bold;
+}
+
+    button:hover {
+        margin-top: 15px;
+        border-radius: 10px;
+        border: solid;
+        border-color: rgb(255, 187, 187);
+        background-color: rgb(240, 137, 137);
+        padding: 3px 12px 3px 12px;
+        font-style: italic;
+        color: rgb(90, 133, 214);
+        text-decoration: underline;
+    }
+
+label {
+    color: rgb(175, 10, 43);
+    font-weight: bold;
+    font-style: italic;
+}
+
+input {
+    margin-bottom: 10px;
+    background-color: greenyellow;
+    border-radius: 7px;
+    border: solid;
+    border-color: rgb(230, 177, 45);
+}
+
+    input:hover {
+        background-color: rgb(230, 177, 45);
+        border-color: greenyellow;
+    }
+
+h1 {
+    margin-top: 50px;
+    text-align: center;
+    color: limegreen;
+    font-style: italic;
+    /* text-decoration: rgb(218, 100, 218) underline; */
+}

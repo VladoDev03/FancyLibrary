@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data.ViewModels;
 
 namespace WebVersion.Controllers
 {
@@ -25,7 +26,26 @@ namespace WebVersion.Controllers
         public IActionResult Books()
         {
             List<Book> books = bookServices.GetAllBooks();
-            return View(books);
+            List<BookView> booksViews = new List<BookView>();
+
+            foreach (Book item in books)
+            {
+                Author author = authorServices.FindAuthor(item.AuthorId);
+
+                string authorName = NameRefactorer
+                    .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+                BookView book = new BookView
+                {
+                    Title = item.Title,
+                    Genre = item.Genre,
+                    AuthorName = authorName
+                };
+
+                booksViews.Add(book);
+            }
+
+            return View(booksViews);
         }
 
         [HttpGet]
