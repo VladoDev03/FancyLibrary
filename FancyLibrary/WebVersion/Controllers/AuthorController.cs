@@ -29,6 +29,11 @@ namespace WebVersion.Controllers
         [HttpPost]
         public IActionResult Create(AuthorDTO author)
         {
+            //if (author == null)
+            //{
+            //    return RedirectToAction(nameof(Authors));
+            //}
+
             Author authorToAdd = new Author
             {
                 FirstName = author.FirstName,

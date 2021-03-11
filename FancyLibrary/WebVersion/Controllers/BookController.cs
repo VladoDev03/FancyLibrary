@@ -89,5 +89,24 @@ namespace WebVersion.Controllers
 
             return RedirectToAction(nameof(Books));
         }
+
+        [HttpGet]
+        public IActionResult Details()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Details(string title)
+        {
+            Book book = bookServices.FindBook(title);
+
+            if (book == null)
+            {
+                return RedirectToAction(nameof(Books));
+            }
+
+            return View(nameof(Details), book.ToString());
+        }
     }
 }

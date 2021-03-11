@@ -47,6 +47,13 @@
             <input type="text" id="input">
             <button type="submit">Add book</button>
         </form>
+        <form asp-action="Details" asp-controller="Book" method="post">
+            <h3>More info about a book.</h3>
+            <label for="input" id="title-input-info">Title</label>
+            <input type="text" id="input" name="title">
+            <button type="submit">Details</button>
+        </form>
+        <a href="/Book/Details">Details</a>
         <a href="/Book/Create">Add book</a>
         @*<form asp-controller="Book" asp-action="Create" method="post">
             <h3>If you don't find the book you want to add, type its data in the following page.</h3>

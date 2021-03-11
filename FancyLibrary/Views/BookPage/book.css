@@ -114,6 +114,10 @@ form label {
     margin-right: 150px;
 }
 
+#title-input-info {
+    margin-right: 215px;
+}
+
 label {
     color: rgb(23, 93, 139);
     font-size: large;
