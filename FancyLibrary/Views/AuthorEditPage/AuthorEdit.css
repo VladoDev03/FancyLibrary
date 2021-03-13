@@ -7,7 +7,7 @@ h1 {
     margin-top: 50px;
     text-align: center;
     font-style: italic;
-    color: rgb(124, 126, 44);
+    color: rgb(81, 126, 44);
 }
 
 input {
@@ -15,21 +15,21 @@ input {
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    background-color: violet;
+    background-color: rgb(75, 236, 148);
     border: solid;
     border-radius: 7px;
-    border-color: rgb(148, 14, 211);
+    border-color: rgb(10, 175, 46);
 }
 
 input:hover {
-    background-color: rgb(148, 14, 211);
+    background-color: rgb(10, 175, 46);
     border: solid;
     border-radius: 7px;
-    border-color: violet;
+    border-color: rgb(75, 236, 148);
 }
 
 label {
-    color: rgb(108, 128, 68);
+    color: rgb(52, 65, 7);
     font-weight: bold;
     font-style: italic;
 }
@@ -39,13 +39,13 @@ label {
     margin-left: auto;
     margin-right: auto;
     width: 15%;
-    background-color: rgb(248, 237, 136);
+    background-color: rgb(255, 124, 124);
     text-align: center;
     padding-top: 15px;
     padding-bottom: 10px;
     border: solid;
     border-radius: 25px;
-    border-color: rgb(207, 137, 5);
+    border-color: rgb(178, 236, 17);
 }
 
 button {
@@ -53,17 +53,17 @@ button {
     margin-bottom: 3px;
     border-radius: 10px;
     border: solid;
-    border-color: rgb(7, 170, 170);
-    background-color: steelblue;
-    color: rgb(237, 255, 71);
+    border-color: rgb(120, 138, 56);
+    background-color: rgb(76, 221, 71);
+    color: rgb(0, 131, 102);
     font-weight: bold;
     font-style: italic;
 }
 
 button:hover {
-    border-color: steelblue;
-    background-color: rgb(7, 170, 170);
-    color: rgb(221, 245, 6);
+    border-color: rgb(143, 202, 5);
+    background-color: rgb(120, 138, 56);
+    color: rgb(235, 241, 175);
     font-weight: bold;
     font-style: italic;
     text-decoration: underline;

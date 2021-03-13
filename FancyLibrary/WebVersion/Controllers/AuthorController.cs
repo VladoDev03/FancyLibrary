@@ -82,5 +82,11 @@ namespace WebVersion.Controllers
 
             return View(result);
         }
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
     }
 }
