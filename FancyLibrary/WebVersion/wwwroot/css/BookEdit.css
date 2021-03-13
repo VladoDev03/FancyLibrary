@@ -1,0 +1,69 @@
+﻿label,
+input {
+    display: block;
+}
+
+h1 {
+    margin-top: 50px;
+    text-align: center;
+    font-style: italic;
+    color: rgb(124, 126, 44);
+}
+
+input {
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: violet;
+    border: solid;
+    border-radius: 7px;
+    border-color: rgb(148, 14, 211);
+}
+
+    input:hover {
+        background-color: rgb(148, 14, 211);
+        border: solid;
+        border-radius: 7px;
+        border-color: violet;
+    }
+
+label {
+    color: rgb(108, 128, 68);
+    font-weight: bold;
+    font-style: italic;
+}
+
+.form-div {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+    background-color: rgb(248, 237, 136);
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border: solid;
+    border-radius: 25px;
+    border-color: rgb(207, 137, 5);
+}
+
+button {
+    margin-top: 5px;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    border: solid;
+    border-color: rgb(7, 170, 170);
+    background-color: steelblue;
+    color: rgb(237, 255, 71);
+    font-weight: bold;
+    font-style: italic;
+}
+
+    button:hover {
+        border-color: steelblue;
+        background-color: rgb(7, 170, 170);
+        color: rgb(221, 245, 6);
+        font-weight: bold;
+        font-style: italic;
+    }

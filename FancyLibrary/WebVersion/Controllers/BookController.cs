@@ -127,5 +127,11 @@ namespace WebVersion.Controllers
 
             return View(nameof(Details), result);
         }
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
     }
 }
