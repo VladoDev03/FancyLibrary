@@ -47,10 +47,9 @@ namespace WebVersion.Controllers
 
             Author authorToAdd = new Author
             {
-                Id = author.Id,
-                FirstName = author.FirstName,
-                MiddleName = author.MiddleName,
-                LastName = author.LastName
+                FirstName = authorInput.FirstName,
+                MiddleName = authorInput.MiddleName,
+                LastName = authorInput.LastName
             };
 
             if (services.FindAuthor(name) == null)
