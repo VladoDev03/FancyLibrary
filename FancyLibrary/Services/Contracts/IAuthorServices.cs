@@ -13,6 +13,8 @@ namespace Services.Contracts
 
         Author FindAuthor(int id);
 
+        Author FindAuthor(int? id);
+
         void AddAuthor(Author author);
 
         List<Book> GetAuthorBooks(Author author);

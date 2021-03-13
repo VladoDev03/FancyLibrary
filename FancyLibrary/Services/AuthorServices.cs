@@ -69,6 +69,14 @@ namespace Services
             return author;
         }
 
+        public Author FindAuthor(int? id)
+        {
+            Author author = db.Authors
+                   .FirstOrDefault(a => a.Id == id);
+
+            return author;
+        }
+
         public string GetAuthorCountry(Author author)
         {
             Country country = db.Countries.FirstOrDefault(c => c.Id == author.CountryId);

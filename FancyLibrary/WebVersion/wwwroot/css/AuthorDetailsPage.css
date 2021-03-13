@@ -1,0 +1,17 @@
+﻿div.data-container {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(237, 240, 89);
+    padding: 3px 20px;
+    text-align: center;
+    width: 35%;
+    border-radius: 25px;
+    border: solid;
+    border-color: rgb(3, 100, 32);
+}
+
+p {
+    font-size: 35px;
+    color: rgb(3, 100, 32);
+}

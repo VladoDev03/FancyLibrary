@@ -28,23 +28,26 @@ namespace WebVersion.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AuthorDTO author)
+        public IActionResult Create(AuthorDTO authorInput)
         {
-            if (author.FirstName == null || author.LastName == null)
+            if (authorInput.FirstName == null || authorInput.LastName == null)
             {
                 return RedirectToAction(nameof(Authors));
             }
 
             string name = NameRefactorer
-                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+                .GetFullName(authorInput.FirstName, authorInput.MiddleName, authorInput.LastName);
 
-            if (services.FindAuthor(name) != null)
+            Author author = services.FindAuthor(name);
+
+            if (author != null)
             {
                 return RedirectToAction(nameof(Authors));
             }
 
             Author authorToAdd = new Author
             {
+                Id = author.Id,
                 FirstName = author.FirstName,
                 MiddleName = author.MiddleName,
                 LastName = author.LastName
@@ -56,6 +59,39 @@ namespace WebVersion.Controllers
             }
 
             return RedirectToAction(nameof(Authors));
+        }
+
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Authors));
+            }
+
+            Author author = services.FindAuthor(id);
+
+            string name = NameRefactorer.GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+            if (author == null)
+            {
+                return RedirectToAction(nameof(Authors));
+            }
+
+            string countryName = services.GetAuthorCountry(author);
+            string birthday = author.Birthday.ToString() != "" ? author.Birthday.ToString() : "Unknown";
+
+            FullAuthorView result = new FullAuthorView
+            {
+                Id = id,
+                Name = name,
+                BookCount = services.GetAuthorBooksCount(author),
+                Birthday = birthday,
+                Nickname = author.Nickname != null ? author.Nickname : "Unknown",
+                Country = countryName
+            };
+
+            return View(result);
         }
 
         [HttpPost]
