@@ -71,25 +71,12 @@ namespace WebVersion.Controllers
 
             Author author = services.FindAuthor(id);
 
-            string name = NameRefactorer.GetFullName(author.FirstName, author.MiddleName, author.LastName);
+            FullAuthorView result = GetDetails(author);
 
-            if (author == null)
+            if (result == null)
             {
                 return RedirectToAction(nameof(Authors));
             }
-
-            string countryName = services.GetAuthorCountry(author);
-            string birthday = author.Birthday.ToString() != "" ? author.Birthday.ToString() : "Unknown";
-
-            FullAuthorView result = new FullAuthorView
-            {
-                Id = id,
-                Name = name,
-                BookCount = services.GetAuthorBooksCount(author),
-                Birthday = birthday,
-                Nickname = author.Nickname != null ? author.Nickname : "Unknown",
-                Country = countryName
-            };
 
             return View(result);
         }
@@ -97,24 +84,19 @@ namespace WebVersion.Controllers
         [HttpPost]
         public IActionResult Details(string name)
         {
-            Author author = services.FindAuthor(name);
-
-            if (author == null)
+            if (name == null)
             {
                 return RedirectToAction(nameof(Authors));
             }
 
-            string countryName = services.GetAuthorCountry(author);
-            string birthday = author.Birthday.ToString() != "" ? author.Birthday.ToString() : "Unknown";
+            Author author = services.FindAuthor(name);
 
-            FullAuthorView result = new FullAuthorView
+            FullAuthorView result = GetDetails(author);
+
+            if (result == null)
             {
-                Name = name,
-                BookCount = services.GetAuthorBooksCount(author),
-                Birthday = birthday,
-                Nickname = author.Nickname != null ? author.Nickname : "Unknown",
-                Country = countryName
-            };
+                return RedirectToAction(nameof(Authors));
+            }
 
             return View(result);
         }
@@ -123,6 +105,31 @@ namespace WebVersion.Controllers
         public IActionResult Edit()
         {
             return View();
+        }
+
+        private FullAuthorView GetDetails(Author author)
+        {
+            if (author == null)
+            {
+                return null;
+            }
+
+            string name = NameRefactorer.GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+            string countryName = services.GetAuthorCountry(author);
+            string birthday = author.Birthday.ToString() != "" ? author.Birthday.ToString() : "Unknown";
+
+            FullAuthorView result = new FullAuthorView
+            {
+                Id = author.Id,
+                Name = name,
+                BookCount = services.GetAuthorBooksCount(author),
+                Birthday = birthday,
+                Nickname = author.Nickname != null ? author.Nickname : "Unknown",
+                Country = countryName
+            };
+
+            return result;
         }
     }
 }
