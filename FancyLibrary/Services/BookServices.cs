@@ -47,6 +47,12 @@ namespace Services
             return book;
         }
 
+        public Book FindBook(int? id)
+        {
+            Book book = db.Books.FirstOrDefault(b => b.Id == id);
+            return book;
+        }
+
         public Author GetBookAuthor(Book book)
         {
             Author author = db.Authors

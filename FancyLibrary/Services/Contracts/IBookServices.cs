@@ -17,6 +17,8 @@ namespace Services.Contracts
 
         Book FindBook(int id);
 
+        Book FindBook(int? id);
+
         Author GetBookAuthor(Book book);
     }
 }

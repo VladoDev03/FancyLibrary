@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Data.ViewModels.BookView>
 @{
     ViewData["Title"] = "Book";
 }
@@ -23,6 +23,7 @@
                     <th>Title</th>
                     <th>Genre</th>
                     <th>Author</th>
+                    <th colspan="2">Links</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,8 @@
                         <td>@item.Title</td>
                         <td>@item.Genre</td>
                         <td>@item.AuthorName</td>
+                        <td><a type="button" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">Details</a></td>
+                        <td><a type="button" asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
                         @{ i++; }
                     </tr>
                 }

@@ -37,6 +37,7 @@ namespace WebVersion.Controllers
 
                 BookView book = new BookView
                 {
+                    Id = item.Id,
                     Title = item.Title,
                     Genre = item.Genre,
                     AuthorName = authorName
@@ -96,20 +97,52 @@ namespace WebVersion.Controllers
             return RedirectToAction(nameof(Books));
         }
 
-        [HttpGet]
-        public IActionResult Details()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult Details(string title)
+        [ActionName("Details")]
+        public IActionResult DetailsTitle(string title)
         {
-            Book book = bookServices.FindBook(title);
-
-            if (book == null)
+            if (title == null)
             {
                 return RedirectToAction(nameof(Books));
+            }
+
+            Book book = bookServices.FindBook(title);
+
+            FullBookView result = GetDetails(book);
+
+            if (result == null)
+            {
+                return RedirectToAction(nameof(Books));
+            }
+
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentException();
+            }
+
+            Book book = bookServices.FindBook(id);
+
+            FullBookView result = GetDetails(book);
+
+            if (result == null)
+            {
+                return RedirectToAction(nameof(Books));
+            }
+
+            return View(result);
+        }
+
+        private FullBookView GetDetails(Book book)
+        {
+            if (book == null)
+            {
+                return null;
             }
 
             Author author = authorServices.FindAuthor(book.AuthorId);
@@ -118,6 +151,7 @@ namespace WebVersion.Controllers
 
             FullBookView result = new FullBookView
             {
+                Id = book.Id,
                 Title = book.Title,
                 Genre = book.Genre,
                 AuthorName = authorFullName,
@@ -125,7 +159,7 @@ namespace WebVersion.Controllers
                 Pages = book.Pages
             };
 
-            return View(nameof(Details), result);
+            return result;
         }
 
         [HttpGet]
