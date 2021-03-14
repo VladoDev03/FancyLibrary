@@ -119,13 +119,13 @@ namespace WebVersion.Controllers
             }
             else if (book.FirstName == null)
             {
-                ViewData.Add("FirstNameError", "Author first name is required!");
+                ViewData.Add("AuthorFirstNameError", "Author first name is required!");
 
                 return true;
             }
             else if (book.LastName == null)
             {
-                ViewData.Add("LastNameError", "Author last name is required!");
+                ViewData.Add("AuthorLastNameError", "Author last name is required!");
 
                 return true;
             }
@@ -192,7 +192,8 @@ namespace WebVersion.Controllers
                 Genre = book.Genre,
                 AuthorName = authorFullName,
                 Year = book.Year,
-                Pages = book.Pages
+                Pages = book.Pages,
+                SavedTimes = bookServices.GetBookSavedTimes(book)
             };
 
             return result;
@@ -204,7 +205,7 @@ namespace WebVersion.Controllers
             return View();
         }
 
-        public List<BookView> OrderByStrategy(List<BookView> books, string strategy)
+        private List<BookView> OrderByStrategy(List<BookView> books, string strategy)
         {
             if (strategy == "title")
             {

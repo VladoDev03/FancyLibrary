@@ -29,17 +29,17 @@
     <label for="genre">Genre</label>
     <input type="text" name="genre" />
 
-    @if (ViewData["FirstNameError"] != null && (string)ViewData["FirstNameError"] != "")
+    @if (ViewData["AuthorFirstNameError"] != null && (string)ViewData["AuthorFirstNameError"] != "")
     {
-        <span class="text-danger">@ViewData["FirstNameError"]</span>
+        <span class="text-danger">@ViewData["AuthorFirstNameError"]</span>
     }
 
     <label for="firstName">Author first name</label>
     <input type="text" name="firstName" />
 
-    @if (ViewData["LastNameError"] != null && (string)ViewData["LastNameError"] != "")
+    @if (ViewData["AuthorLastNameError"] != null && (string)ViewData["AuthorLastNameError"] != "")
     {
-        <span class="text-danger">@ViewData["LastNameError"]</span>
+        <span class="text-danger">@ViewData["AuthorLastNameError"]</span>
     }
 
     <label for="lastName">Author last name</label>

@@ -46,12 +46,25 @@ namespace WebVersion.Controllers
             return View(result);
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Create(AuthorDTO authorInput)
         {
-            if (authorInput.FirstName == null || authorInput.LastName == null)
+            if (authorInput.FirstName == null)
             {
-                return RedirectToAction(nameof(Authors));
+                ViewData.Add("FirstNameError", "First name is required!");
+                return View();
+            }
+
+            if (authorInput.LastName == null)
+            {
+                ViewData.Add("LastNameError", "Last name is required!");
+                return View();
             }
 
             string name = NameRefactorer
@@ -150,7 +163,7 @@ namespace WebVersion.Controllers
             return result;
         }
 
-        public List<AuthorView> OrderByStrategy(List<AuthorView> authors, string strategy)
+        private List<AuthorView> OrderByStrategy(List<AuthorView> authors, string strategy)
         {
             if (strategy == "fullName")
             {

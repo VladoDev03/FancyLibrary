@@ -40,21 +40,12 @@
                 }
             </tbody>
         </table>
-        <form asp-controller="Author" asp-action="Create" method-post>
-            <h3>Add new author.</h3>
-            <label for="firstName">First name</label>
-            <input type="text" name="firstName" id="firstName">
-            <label for="middleName">Middle name</label>
-            <input type="text" name="middleName" id="middleName">
-            <label for="lastName">Last name</label>
-            <input type="text" name="lastName" id="lastName">
-            <button type="submit">Add</button>
-        </form>
         <form asp-controller="Author" asp-action="Details" method-post>
             <h3>More info about an author.</h3>
             <label for="name">Names</label>
             <input type="text" name="name" id="firstName">
             <button type="submit">Details</button>
         </form>
+        <a href="/Author/Create">Add author</a>
     </div>
 </body>

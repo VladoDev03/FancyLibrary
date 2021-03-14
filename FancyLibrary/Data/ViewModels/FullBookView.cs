@@ -20,6 +20,8 @@ namespace Data.ViewModels
 
         public int? Pages { get; set; }
 
+        public int SavedTimes { get; set; }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
