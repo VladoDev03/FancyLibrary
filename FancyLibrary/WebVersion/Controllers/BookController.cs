@@ -215,10 +215,6 @@ namespace WebVersion.Controllers
             {
                 return books.OrderBy(b => b.Genre).ToList();
             }
-            else if (strategy == "year")
-            {
-                return books.OrderBy(b => b.Year).ToList();
-            }
             else if (strategy == "author")
             {
                 return books.OrderBy(b => b.AuthorName).ToList();

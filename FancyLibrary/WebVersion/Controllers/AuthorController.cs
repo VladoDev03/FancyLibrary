@@ -156,7 +156,7 @@ namespace WebVersion.Controllers
                 Name = name,
                 BookCount = authorServices.GetAuthorBooksCount(author),
                 Birthday = birthday,
-                Nickname = author.Nickname != null ? author.Nickname : "Unknown",
+                Nickname = author.Nickname != null ? author.Nickname : "No/Unknown",
                 Country = countryName
             };
 
