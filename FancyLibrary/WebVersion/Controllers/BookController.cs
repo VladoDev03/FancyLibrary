@@ -63,34 +63,14 @@ namespace WebVersion.Controllers
         [HttpPost]
         public IActionResult Create(BookDTO book)
         {
-            if (book.Title == null)
+            if (ValidateProperties(book))
             {
-                ViewData.Add("TitleError", "Title is required!");
-
-                return View();
-            }
-            else if (book.Genre == null)
-            {
-                ViewData.Add("GenreError", "Genre is required!");
-
-                return View();
-            }
-            else if (book.FirstName == null)
-            {
-                ViewData.Add("FirstNameError", "Author first name is required!");
-
-                return View();
-            }
-            else if (book.LastName == null)
-            {
-                ViewData.Add("LastNameError", "Author last name is required!");
-
                 return View();
             }
 
             if (bookServices.FindBook(book.Title) != null)
             {
-                ViewData.Add("ExistingTitle", "Book already exists!");
+                ViewData.Add("RepeatingTitle", "Book already exists!");
 
                 return View();
             }
@@ -121,6 +101,36 @@ namespace WebVersion.Controllers
             bookServices.AddBook(bookToAdd);
 
             return RedirectToAction(nameof(Books));
+        }
+
+        private bool ValidateProperties(BookDTO book)
+        {
+            if (book.Title == null)
+            {
+                ViewData.Add("TitleError", "Title is required!");
+
+                return true;
+            }
+            else if (book.Genre == null)
+            {
+                ViewData.Add("GenreError", "Genre is required!");
+
+                return true;
+            }
+            else if (book.FirstName == null)
+            {
+                ViewData.Add("FirstNameError", "Author first name is required!");
+
+                return true;
+            }
+            else if (book.LastName == null)
+            {
+                ViewData.Add("LastNameError", "Author last name is required!");
+
+                return true;
+            }
+
+            return false;
         }
 
         [HttpPost]

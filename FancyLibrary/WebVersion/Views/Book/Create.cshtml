@@ -3,6 +3,8 @@
 @{
 }
 
+@using Services;
+
 <link href="~/css/CreateBook.css" rel="stylesheet" />
 
 <form asp-action="Create" asp-controller="Book" method="post">
@@ -10,6 +12,10 @@
     @if (ViewData["TitleError"] != null && (string)ViewData["TitleError"] != "")
     {
         <span class="text-danger">@ViewData["TitleError"]</span>
+    }
+    else @if (ViewData["RepeatingTitle"] != null && (string)ViewData["RepeatingTitle"] != "")
+    {
+        <span class="text-danger">@ViewData["RepeatingTitle"]</span>
     }
 
     <label for="title">Title</label>
