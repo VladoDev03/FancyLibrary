@@ -23,7 +23,8 @@ namespace WebVersion.Controllers
             this.authorServices = authorServices;
         }
 
-        public IActionResult Books()
+        [Route("/Book/Books/{strategy?}")]
+        public IActionResult Books(string strategy = "title")
         {
             List<Book> books = bookServices.GetAllBooks();
             List<BookView> booksViews = new List<BookView>();
@@ -40,11 +41,15 @@ namespace WebVersion.Controllers
                     Id = item.Id,
                     Title = item.Title,
                     Genre = item.Genre,
-                    AuthorName = authorName
+                    AuthorName = authorName,
+                    Year = item.Year,
+                    SavedTimes = bookServices.GetBookSavedTimes(item)
                 };
 
                 booksViews.Add(book);
             }
+
+            booksViews = OrderByStrategy(booksViews, strategy);
 
             return View(booksViews);
         }
@@ -58,15 +63,36 @@ namespace WebVersion.Controllers
         [HttpPost]
         public IActionResult Create(BookDTO book)
         {
-            if (book.Title == null || book.Genre == null ||
-                book.FirstName == null || book.LastName == null)
+            if (book.Title == null)
             {
-                return RedirectToAction(nameof(Create));
+                ViewData.Add("TitleError", "Title is required!");
+
+                return View();
+            }
+            else if (book.Genre == null)
+            {
+                ViewData.Add("GenreError", "Genre is required!");
+
+                return View();
+            }
+            else if (book.FirstName == null)
+            {
+                ViewData.Add("FirstNameError", "Author first name is required!");
+
+                return View();
+            }
+            else if (book.LastName == null)
+            {
+                ViewData.Add("LastNameError", "Author last name is required!");
+
+                return View();
             }
 
             if (bookServices.FindBook(book.Title) != null)
             {
-                return RedirectToAction(nameof(Create));
+                ViewData.Add("ExistingTitle", "Book already exists!");
+
+                return View();
             }
 
             string fullName = NameRefactorer
@@ -166,6 +192,34 @@ namespace WebVersion.Controllers
         public IActionResult Edit()
         {
             return View();
+        }
+
+        public List<BookView> OrderByStrategy(List<BookView> books, string strategy)
+        {
+            if (strategy == "title")
+            {
+                return books.OrderBy(b => b.Title).ToList();
+            }
+            else if (strategy == "genre")
+            {
+                return books.OrderBy(b => b.Genre).ToList();
+            }
+            else if (strategy == "year")
+            {
+                return books.OrderBy(b => b.Year).ToList();
+            }
+            else if (strategy == "author")
+            {
+                return books.OrderBy(b => b.AuthorName).ToList();
+            }
+            else if (strategy == "saved")
+            {
+                return books.OrderBy(b => b.SavedTimes).ToList();
+            }
+            else
+            {
+                return books;
+            }
         }
     }
 }

@@ -9,11 +9,11 @@
     <h1>Books</h1>
     <section id="order-by">
         <h2>Order by</h2>
-        <button onclick="">Title</button>
-        <button>Author</button>
-        <button>Number</button>
-        <button>Year</button>
-        <button>Saved</button>
+        <a asp-controller="Book" asp-action="Books" asp-route-strategy="title">Title</a>
+        <a asp-controller="Book" asp-action="Books" asp-route-strategy="genre">Genre</a>
+        <a asp-controller="Book" asp-action="Books" asp-route-strategy="year">Year</a>
+        <a asp-controller="Book" asp-action="Books" asp-route-strategy="author">Author</a>
+        <a asp-controller="Book" asp-action="Books" asp-route-strategy="saved">Saved times</a>
     </section>
     <div>
         <table>

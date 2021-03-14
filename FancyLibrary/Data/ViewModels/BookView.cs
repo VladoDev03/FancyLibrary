@@ -15,5 +15,9 @@ namespace Data.ViewModels
         public string Genre { get; set; }
 
         public string AuthorName { get; set; }
+
+        public int? Year { get; set; }
+
+        public int SavedTimes { get; set; }
     }
 }

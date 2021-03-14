@@ -1,19 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿    @*For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860*@
+
 @{
 }
 
 <link href="~/css/CreateBook.css" rel="stylesheet" />
 
 <form asp-action="Create" asp-controller="Book" method="post">
+
+    @if (ViewData["TitleError"] != null && (string)ViewData["TitleError"] != "")
+    {
+        <span class="text-danger">@ViewData["TitleError"]</span>
+    }
+
     <label for="title">Title</label>
     <input type="text" name="title" />
+
+    @if (ViewData["GenreError"] != null && (string)ViewData["GenreError"] != "")
+    {
+        <span class="text-danger">@ViewData["GenreError"]</span>
+    }
+
     <label for="genre">Genre</label>
     <input type="text" name="genre" />
+
+    @if (ViewData["FirstNameError"] != null && (string)ViewData["FirstNameError"] != "")
+    {
+        <span class="text-danger">@ViewData["FirstNameError"]</span>
+    }
+
     <label for="firstName">Author first name</label>
     <input type="text" name="firstName" />
+
+    @if (ViewData["LastNameError"] != null && (string)ViewData["LastNameError"] != "")
+    {
+        <span class="text-danger">@ViewData["LastNameError"]</span>
+    }
+
     <label for="lastName">Author last name</label>
     <input type="text" name="lastName" />
+
     <button type="submit">Add</button>
 </form>
