@@ -21,25 +21,27 @@ namespace WebVersion.Controllers
         }
 
         [HttpGet]
-        public IActionResult Authors()
+        [Route("/Author/Authors/{strategy?}")]
+        public IActionResult Authors(string strategy = "fullName")
         {
             List<Author> authors = authorServices.GetAllAuthors();
 
-            List<AuthorDTO> result = new List<AuthorDTO>();
+            List<AuthorView> result = new List<AuthorView>();
 
             foreach (var item in authors)
             {
-                AuthorDTO author = new AuthorDTO
+                AuthorView author = new AuthorView
                 {
                     Id = item.Id,
-                    FirstName = item.FirstName,
-                    MiddleName = item.MiddleName,
-                    LastName = item.LastName,
-                    BooksCount = authorServices.GetAuthorBooksCount(item)
+                    FullName = NameRefactorer.GetFullName(item.FirstName, item.MiddleName, item.LastName),
+                    BooksCount = authorServices.GetAuthorBooksCount(item),
+                    Country = authorServices.GetAuthorCountry(item)
                 };
 
                 result.Add(author);
             }
+
+            result = OrderByStrategy(result, strategy);
 
             return View(result);
         }
@@ -146,6 +148,35 @@ namespace WebVersion.Controllers
             };
 
             return result;
+        }
+
+        public List<AuthorView> OrderByStrategy(List<AuthorView> authors, string strategy)
+        {
+            if (strategy == "fullName")
+            {
+                return authors.OrderBy(a => a.FullName).ToList();
+            }
+            else if (strategy == "booksCount")
+            {
+                return authors.OrderBy(a => a.BooksCount).ToList();
+            }
+            else if (strategy == "country")
+            {
+                List<AuthorView> temps = authors.Where(a => a.Country == "Unknown").ToList();
+
+                authors = authors
+                    .Where(a => a.Country != "Unknown")
+                    .OrderBy(a => a.Country)
+                    .ToList();
+
+                authors.AddRange(temps);
+
+                return authors;
+            }
+            else
+            {
+                return authors;
+            }
         }
     }
 }

@@ -9,8 +9,9 @@
     <h1>Authors</h1>
     <section id="order-by">
         <h2>Order by</h2>
-        <a asp-controller="Book" asp-action="Books" asp-route-strategy="name">Title</a>
-        <a asp-controller="Book" asp-action="Books" asp-route-strategy="booksCount">Genre</a>
+        <a asp-controller="Author" asp-action="Authors" asp-route-strategy="fullName">Name</a>
+        <a asp-controller="Author" asp-action="Authors" asp-route-strategy="booksCount">Books count</a>
+        <a asp-controller="Author" asp-action="Authors" asp-route-strategy="country">Country</a>
     </section>
     <div>
         <table>
@@ -19,6 +20,7 @@
                     <th>№</th>
                     <th>Name</th>
                     <th>Books count</th>
+                    <th>Country</th>
                     <th colspan="2">Links</th>
                 </tr>
             </thead>
@@ -28,8 +30,9 @@
                 {
                     <tr>
                         <td>@i</td>
-                        <td>@item.FirstName @item.MiddleName @item.LastName</td>
+                        <td>@item.FullName</td>
                         <td>@item.BooksCount</td>
+                        <td>@item.Country</td>
                         <td><a type="button" asp-action="Details" asp-controller="Author" asp-route-id="@item.Id">Details</a></td>
                         <td><a type="button" asp-controller="Author" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
                         @{ i++; }
