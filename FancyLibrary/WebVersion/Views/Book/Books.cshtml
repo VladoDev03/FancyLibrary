@@ -23,6 +23,7 @@
                     <th>Title</th>
                     <th>Genre</th>
                     <th>Author</th>
+                    <th>Saved times</th>
                     <th colspan="2">Links</th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                         <td>@item.Title</td>
                         <td>@item.Genre</td>
                         <td>@item.AuthorName</td>
+                        <td>@item.SavedTimes</td>
                         <td><a type="button" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">Details</a></td>
                         <td><a type="button" asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
                         @{ i++; }

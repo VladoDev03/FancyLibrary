@@ -13,18 +13,35 @@ namespace WebVersion.Controllers
 {
     public class AuthorController : Controller
     {
-        private IAuthorServices services;
+        private IAuthorServices authorServices;
 
-        public AuthorController(IAuthorServices services)
+        public AuthorController(IAuthorServices authorServices)
         {
-            this.services = services;
+            this.authorServices = authorServices;
         }
 
         [HttpGet]
         public IActionResult Authors()
         {
-            List<Author> authors = services.GetAllAuthors();
-            return View(authors);
+            List<Author> authors = authorServices.GetAllAuthors();
+
+            List<AuthorDTO> result = new List<AuthorDTO>();
+
+            foreach (var item in authors)
+            {
+                AuthorDTO author = new AuthorDTO
+                {
+                    Id = item.Id,
+                    FirstName = item.FirstName,
+                    MiddleName = item.MiddleName,
+                    LastName = item.LastName,
+                    BooksCount = authorServices.GetAuthorBooksCount(item)
+                };
+
+                result.Add(author);
+            }
+
+            return View(result);
         }
 
         [HttpPost]
@@ -38,7 +55,7 @@ namespace WebVersion.Controllers
             string name = NameRefactorer
                 .GetFullName(authorInput.FirstName, authorInput.MiddleName, authorInput.LastName);
 
-            Author author = services.FindAuthor(name);
+            Author author = authorServices.FindAuthor(name);
 
             if (author != null)
             {
@@ -52,9 +69,9 @@ namespace WebVersion.Controllers
                 LastName = authorInput.LastName
             };
 
-            if (services.FindAuthor(name) == null)
+            if (authorServices.FindAuthor(name) == null)
             {
-                services.AddAuthor(authorToAdd);
+                authorServices.AddAuthor(authorToAdd);
             }
 
             return RedirectToAction(nameof(Authors));
@@ -68,7 +85,7 @@ namespace WebVersion.Controllers
                 return RedirectToAction(nameof(Authors));
             }
 
-            Author author = services.FindAuthor(id);
+            Author author = authorServices.FindAuthor(id);
 
             FullAuthorView result = GetDetails(author);
 
@@ -88,7 +105,7 @@ namespace WebVersion.Controllers
                 return RedirectToAction(nameof(Authors));
             }
 
-            Author author = services.FindAuthor(name);
+            Author author = authorServices.FindAuthor(name);
 
             FullAuthorView result = GetDetails(author);
 
@@ -115,14 +132,14 @@ namespace WebVersion.Controllers
 
             string name = NameRefactorer.GetFullName(author.FirstName, author.MiddleName, author.LastName);
 
-            string countryName = services.GetAuthorCountry(author);
+            string countryName = authorServices.GetAuthorCountry(author);
             string birthday = author.Birthday.ToString() != "" ? author.Birthday.ToString() : "Unknown";
 
             FullAuthorView result = new FullAuthorView
             {
                 Id = author.Id,
                 Name = name,
-                BookCount = services.GetAuthorBooksCount(author),
+                BookCount = authorServices.GetAuthorBooksCount(author),
                 Birthday = birthday,
                 Nickname = author.Nickname != null ? author.Nickname : "Unknown",
                 Country = countryName

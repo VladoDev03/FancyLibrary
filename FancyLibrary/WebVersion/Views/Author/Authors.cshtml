@@ -9,11 +9,8 @@
     <h1>Authors</h1>
     <section id="order-by">
         <h2>Order by</h2>
-        <button>Name</button>
-        <button>Country</button>
-        <button>Birthday</button>
-        <button>Number</button>
-        <button>Books</button>
+        <a asp-controller="Book" asp-action="Books" asp-route-strategy="name">Title</a>
+        <a asp-controller="Book" asp-action="Books" asp-route-strategy="booksCount">Genre</a>
     </section>
     <div>
         <table>
@@ -21,8 +18,7 @@
                 <tr>
                     <th>№</th>
                     <th>Name</th>
-                    @*<th>Country</th>*@
-                    <th>Birthday</th>
+                    <th>Books count</th>
                     <th colspan="2">Links</th>
                 </tr>
             </thead>
@@ -33,7 +29,7 @@
                     <tr>
                         <td>@i</td>
                         <td>@item.FirstName @item.MiddleName @item.LastName</td>
-                        <td>@item.Birthday</td>
+                        <td>@item.BooksCount</td>
                         <td><a type="button" asp-action="Details" asp-controller="Author" asp-route-id="@item.Id">Details</a></td>
                         <td><a type="button" asp-controller="Author" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
                         @{ i++; }
