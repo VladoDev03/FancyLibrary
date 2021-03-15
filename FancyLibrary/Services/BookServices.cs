@@ -1,6 +1,7 @@
 ﻿using Data;
 using Data.Entities;
 using Data.Models;
+using Data.Utils;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -83,6 +84,25 @@ namespace Services
             {
                 book.Pages = newData.Pages;
             }
+
+            Author author = db.Authors.FirstOrDefault(a => a.FirstName == newData.FirstName
+            && a.MiddleName == newData.MiddleName && a.LastName == newData.LastName);
+
+            if (author == null)
+            {
+                author = new Author
+                {
+                    FirstName = newData.FirstName,
+                    MiddleName = newData.MiddleName,
+                    LastName = newData.LastName
+                };
+
+                db.Authors.Add(author);
+
+                db.SaveChanges();
+            }
+
+            book.AuthorId = author.Id;
 
             db.SaveChanges();
         }
