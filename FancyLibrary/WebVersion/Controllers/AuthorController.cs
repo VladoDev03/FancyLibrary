@@ -133,9 +133,45 @@ namespace WebVersion.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Authors));
+            }
+
+            Author author = authorServices.FindAuthor(id);
+
+            EditAuthorDTO result = new EditAuthorDTO
+            {
+                Id = author.Id,
+                FirstName = author.FirstName,
+                MiddleName = author.MiddleName,
+                LastName = author.LastName,
+                Birthday = author.Birthday,
+                Nickname = author.Nickname
+            };
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditAuthorDTO newData)
+        {
+            string fullName = NameRefactorer
+                .GetFullName(newData.FirstName, newData.MiddleName, newData.LastName);
+
+            Author author = authorServices.FindAuthor(fullName);
+
+            if (author != null)
+            {
+                ViewData.Add("NameRepeatingError", "An author with this name already exists!");
+                return View(newData);
+            }
+
+            authorServices.UpdateAuthor(newData);
+
+            return RedirectToAction(nameof(Authors));
         }
 
         private FullAuthorView GetDetails(Author author)

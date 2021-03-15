@@ -228,7 +228,7 @@ namespace WebVersion.Controllers
 
             if (book != null)
             {
-                ViewData.Add("TitleRepeatingError", "A book with this title already exists");
+                ViewData.Add("TitleRepeatingError", "A book with this title already exists!");
                 return View(newData);
             }
 

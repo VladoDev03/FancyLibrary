@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Entities;
+using Data.Models;
 using Data.Utils;
 using Services.Contracts;
 using System;
@@ -87,6 +88,49 @@ namespace Services
             }
 
             return "Unknown";
+        }
+
+        public void UpdateAuthor(EditAuthorDTO newData)
+        {
+            Author author = FindAuthor(newData.Id);
+
+            author.Id = newData.Id;
+
+            if (newData.FirstName != null)
+            {
+                author.FirstName = newData.FirstName;
+            }
+            if (newData.MiddleName != null)
+            {
+                author.MiddleName = newData.MiddleName;
+            }
+            if (newData.LastName != null)
+            {
+                author.LastName = newData.LastName;
+            }
+            if (newData.Nickname != null)
+            {
+                author.Nickname = newData.Nickname;
+            }
+            if (newData.Birthday != null)
+            {
+                author.Birthday = newData.Birthday;
+            }
+            if (newData.Country != null)
+            {
+                Country country = db.Countries
+                    .FirstOrDefault(c => c.Name == newData.Country);
+
+                if (country == null)
+                {
+                    db.Countries.Add(country);
+                    db.SaveChanges();
+                }
+
+                author.CountryId = country.Id;
+            }
+
+            db.SaveChanges();
         }
     }
 }

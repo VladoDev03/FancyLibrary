@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,5 +25,7 @@ namespace Services.Contracts
         int GetAuthorIdFromFullName(string authorFullName);
 
         string GetAuthorCountry(Author author);
+
+        void UpdateAuthor(EditAuthorDTO book);
     }
 }
