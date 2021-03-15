@@ -224,6 +224,14 @@ namespace WebVersion.Controllers
         [HttpPost]
         public IActionResult Edit(EditBookDTO newData)
         {
+            Book book = bookServices.FindBook(newData.Title);
+
+            if (book != null)
+            {
+                ViewData.Add("TitleRepeatingError", "A book with this title already exists");
+                return View(newData);
+            }
+
             bookServices.UpdateBook(newData);
 
             return RedirectToAction(nameof(Books));
