@@ -200,9 +200,33 @@ namespace WebVersion.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Books));
+            }
+
+            Book book = bookServices.FindBook(id);
+
+            EditBookDTO result = new EditBookDTO
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Genre = book.Genre,
+                Year = book.Year,
+                Pages = book.Pages
+            };
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditBookDTO newData)
+        {
+            bookServices.UpdateBook(newData);
+
+            return RedirectToAction(nameof(Books));
         }
 
         private List<BookView> OrderByStrategy(List<BookView> books, string strategy)

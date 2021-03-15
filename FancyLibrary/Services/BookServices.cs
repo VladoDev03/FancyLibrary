@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Entities;
+using Data.Models;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,32 @@ namespace Services
             Author author = db.Authors
                 .FirstOrDefault(a => a.Id == book.AuthorId);
             return author;
+        }
+
+        public void UpdateBook(EditBookDTO newData)
+        {
+            Book book = FindBook(newData.Id);
+
+            book.Id = newData.Id;
+
+            if (newData.Title != null)
+            {
+                book.Title = newData.Title;
+            }
+            if (newData.Genre != null)
+            {
+                book.Genre = newData.Genre;
+            }
+            if (newData.Year != null)
+            {
+                book.Year = newData.Year;
+            }
+            if (newData.Pages != null)
+            {
+                book.Pages = newData.Pages;
+            }
+
+            db.SaveChanges();
         }
     }
 }
