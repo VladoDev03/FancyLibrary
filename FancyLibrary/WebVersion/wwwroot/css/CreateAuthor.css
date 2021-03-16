@@ -1,0 +1,65 @@
+﻿label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(155, 76, 20);
+    font-style: italic;
+    font-size: large;
+}
+
+input {
+    background-color: rgb(201, 77, 255);
+    margin-bottom: 15px;
+    border: solid;
+    border-radius: 7px;
+}
+
+    input:hover {
+        background-color: rgb(227, 161, 255);
+    }
+
+form button {
+    margin: 5px auto 10px auto;
+    display: block;
+    background-color: rgb(255, 56, 162);
+    color: rgb(114, 8, 160);
+    font-style: italic;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: solid;
+    border-color: rgb(114, 8, 160);
+}
+
+    form button:hover {
+        background-color: rgb(114, 8, 160);
+        color: rgb(255, 56, 162);
+        border: solid;
+        border-color: rgb(255, 56, 162);
+        text-decoration: underline;
+    }
+
+h3 {
+    margin-top: 3px;
+    color: rgb(94, 13, 170);
+    font-style: italic;
+}
+
+form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    background-color: aquamarine;
+    border: solid;
+    border-color: rgb(158, 64, 247);
+    border-radius: 25px;
+    padding: 20px 10px 15px 10px;
+    text-align: center;
+    width: 25%;
+}
+
+h1 {
+    margin-top: 50px;
+    text-align: center;
+    color: rgb(148, 50, 205);
+    font-style: italic;
+}

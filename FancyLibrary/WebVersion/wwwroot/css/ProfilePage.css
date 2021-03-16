@@ -10,9 +10,9 @@ th {
     border: 1px solid rgb(221, 221, 221);
 }
 
-body {
+/*body {
     padding: 50px 50px 0px 50px;
-}
+}*/
 
 table {
     width: 65%;
@@ -46,6 +46,7 @@ tbody tr:hover {
 }
 
 h1 {
+    margin-top: 75px;
     text-align: center;
     font-style: italic;
     color: maroon;

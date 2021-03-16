@@ -7,7 +7,9 @@
 
 <link href="~/css/CreateBook.css" rel="stylesheet" />
 
-<form asp-action="Create" asp-controller="Book" method="post">
+    <h1>Add new books from here</h1>
+
+<form class="add-book" asp-action="Create" asp-controller="Book" method="post">
 
     @if (ViewData["TitleError"] != null && (string)ViewData["TitleError"] != "")
     {

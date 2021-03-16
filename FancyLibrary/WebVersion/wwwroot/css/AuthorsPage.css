@@ -5,6 +5,7 @@ th {
 }
 
 h1 {
+    margin-top: 75px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -18,9 +19,9 @@ h1 {
     margin-bottom: 65px;
 }
 
-body {
+/*body {
     padding: 50px 50px 0px 50px;
-}
+}*/
 
 table {
     width: 65%;
@@ -150,3 +151,31 @@ form button {
             color: rgb(29, 243, 143);
             border-color: rgb(29, 243, 143);
         }
+
+.add-page {
+    font-size: larger;
+    text-decoration: none;
+    border: solid;
+    border-radius: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: rgb(167, 252, 178);
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(1, 122, 48);
+}
+
+    .add-page:hover {
+        color: rgb(0, 190, 73);
+        text-decoration: underline;
+    }
+
+#link-to-add-author {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-top: 100px;
+    text-align: center;
+}

@@ -1,0 +1,39 @@
+﻿ul.layout {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(146, 247, 247);
+    width: 635px;
+    height: 35px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid;
+    border-color: rgb(179, 199, 92);
+}
+
+li.layout {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page {
+    font-size: larger;
+    text-decoration: none;
+    border: solid;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: cornsilk;
+    font-style: italic;
+    font-weight: bold;
+}
+
+    .page:hover {
+        color: tomato;
+        text-decoration: underline;
+    }
