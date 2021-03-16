@@ -117,7 +117,7 @@ namespace Tests.ServicesTests.UserBookServicesTests
                 new User
                 {
                     Id = 1,
-                    Username = "username1",
+                    UserName = "UserName1",
                     Password = "Password!2",
                     FirstName = "FirstName1",
                     LastName = "LastName1",
@@ -126,7 +126,7 @@ namespace Tests.ServicesTests.UserBookServicesTests
                 new User
                 {
                     Id = 2,
-                    Username = "username2",
+                    UserName = "UserName2",
                     Password = "Password!2",
                     FirstName = "FirstName2",
                     LastName = "LastName2",

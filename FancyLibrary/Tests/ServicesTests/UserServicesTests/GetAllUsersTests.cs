@@ -44,7 +44,7 @@ namespace Tests.ServicesTests.UserServicesTests
             {
                 new User
                 {
-                    Username = "vladsto",
+                    UserName = "vladsto",
                     Password = "42)snncmfT",
                     FirstName = "Vladimir",
                     LastName = "Stoyanov",
@@ -59,7 +59,7 @@ namespace Tests.ServicesTests.UserServicesTests
 
                 new User
                 {
-                    Username = "hammer",
+                    UserName = "hammer",
                     Password = "42)snncmfT",
                     FirstName = "ham",
                     MiddleName = "strong",
@@ -75,7 +75,7 @@ namespace Tests.ServicesTests.UserServicesTests
 
                 new User
                 {
-                    Username = "sandwich",
+                    UserName = "sandwich",
                     Password = "42)snncmfT",
                     FirstName = "sand",
                     LastName = "wich",
@@ -90,7 +90,7 @@ namespace Tests.ServicesTests.UserServicesTests
 
                 new User
                 {
-                    Username = "telephone",
+                    UserName = "telephone",
                     Password = "42)snncmfT",
                     FirstName = "tele",
                     LastName = "phone",
@@ -105,7 +105,7 @@ namespace Tests.ServicesTests.UserServicesTests
 
                 new User
                 {
-                    Username = "InMemory",
+                    UserName = "InMemory",
                     Password = "42)snncmfT",
                     FirstName = "In1",
                     LastName = "Memeory",

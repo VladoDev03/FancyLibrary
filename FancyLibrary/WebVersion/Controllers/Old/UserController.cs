@@ -24,10 +24,10 @@ namespace ConsoleVersion.Controllers
                 throw new ArgumentException(ExceptionsTexts.AlreadyLoggedIn);
             }
 
-            string username = input[0];
+            string UserName = input[0];
             string password = PasswordManager.EncodePassword(input[1]);
 
-            User user = userServices.FindUser(username);
+            User user = userServices.FindUser(UserName);
 
             if (user == null)
             {
@@ -69,7 +69,7 @@ namespace ConsoleVersion.Controllers
                 throw new ArgumentException(ExceptionsTexts.LogInCannotRegister);
             }
 
-            string username = input[0];
+            string UserName = input[0];
             string password = input[1];
             string firstName = input[2];
             string lastName = input[3];
@@ -77,14 +77,14 @@ namespace ConsoleVersion.Controllers
 
             PasswordManager.IsPasswordValid(password);
 
-            if (userServices.FindUser(username) != null)
+            if (userServices.FindUser(UserName) != null)
             {
-                throw new ArgumentException(ExceptionsTexts.TakenUsername);
+                throw new ArgumentException(ExceptionsTexts.TakenUserName);
             }
 
             User user = new User
             {
-                Username = username,
+                UserName = UserName,
                 Password = PasswordManager.EncodePassword(password),
                 FirstName = NameRefactorer.MakeFirstLetterUpperCase(firstName),
                 LastName = NameRefactorer.MakeFirstLetterUpperCase(lastName),
@@ -102,7 +102,7 @@ namespace ConsoleVersion.Controllers
 
             userServices.AddUser(user);
 
-            LoginUser(new List<string> { username, password });
+            LoginUser(new List<string> { UserName, password });
 
             return MessagesToUser.RegisterMessage;
         }

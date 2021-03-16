@@ -9,10 +9,10 @@ namespace Data.Utils
     {
         // Register and login exceptions
         public const string NotUserLoggedIn = "You cannot logout before logging in!";
-        public const string NotExistingUser = "User with this username does not exist!";
+        public const string NotExistingUser = "User with this UserName does not exist!";
         public const string AlreadyLoggedIn = "You are already logged in!";
-        public const string WrongPassword = "Invalid username or password!";
-        public const string TakenUsername = "This username is taken!";
+        public const string WrongPassword = "Invalid UserName or password!";
+        public const string TakenUserName = "This UserName is taken!";
         public const string LogInCannotRegister = "Log out before register new profile!";
 
         // Password exceptions
@@ -31,7 +31,7 @@ namespace Data.Utils
         public const string NicknameException = "Nickname must be atleast {0} characters long!";
 
         // User exceptions
-        public const string UsernameException = "Username must be atleast {0} characters long!";
+        public const string UserNameException = "UserName must be atleast {0} characters long!";
         public const string AgeException = "You have to be at least {0} years old!";
         public const string NullBirthday = "You have to give us your birthday date so we know how old you are!";
 

@@ -39,7 +39,7 @@ namespace Tests.AddUserTests.UserBookServicesTests
 
             userServices.AddUser(new User
             {
-                Username = "programmer",
+                UserName = "programmer",
                 Password = "Sa12$15",
                 FirstName = "pro",
                 LastName = "grammer",
@@ -63,7 +63,7 @@ namespace Tests.AddUserTests.UserBookServicesTests
             {
                 new User
                 {
-                    Username = "vladsto",
+                    UserName = "vladsto",
                     Password = "42)snncmfT",
                     FirstName = "Vladimir",
                     LastName = "Stoyanov",
@@ -78,7 +78,7 @@ namespace Tests.AddUserTests.UserBookServicesTests
 
                 new User
                 {
-                    Username = "hammer",
+                    UserName = "hammer",
                     Password = "42)snncmfT",
                     FirstName = "ham",
                     MiddleName = "strong",
@@ -94,7 +94,7 @@ namespace Tests.AddUserTests.UserBookServicesTests
 
                 new User
                 {
-                    Username = "sandwich",
+                    UserName = "sandwich",
                     Password = "42)snncmfT",
                     FirstName = "sand",
                     LastName = "wich",
@@ -109,7 +109,7 @@ namespace Tests.AddUserTests.UserBookServicesTests
 
                 new User
                 {
-                    Username = "telephone",
+                    UserName = "telephone",
                     Password = "42)snncmfT",
                     FirstName = "tele",
                     LastName = "phone",
@@ -124,7 +124,7 @@ namespace Tests.AddUserTests.UserBookServicesTests
 
                 new User
                 {
-                    Username = "InMemory",
+                    UserName = "InMemory",
                     Password = "42)snncmfT",
                     FirstName = "In1",
                     LastName = "Memeory",

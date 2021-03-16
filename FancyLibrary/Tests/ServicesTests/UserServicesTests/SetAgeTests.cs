@@ -22,7 +22,7 @@ namespace Tests.ServicesTests.UserServicesTests
         {
             User user = new User
             {
-                Username = "vladsto",
+                UserName = "vladsto",
                 Password = "P$rola12",
                 FirstName = "vladko",
                 LastName = "Sladko",

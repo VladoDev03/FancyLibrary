@@ -8,14 +8,14 @@ namespace Tests.ModelsTests
     public class UserTests
     {
         [Test]
-        public void IsThrowingCorrectExceptionWhenUsernameShorterThanMinLength()
+        public void IsThrowingCorrectExceptionWhenUserNameShorterThanMinLength()
         {
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() => 
                 user = new User
                 {
-                    Username = "12",
+                    UserName = "12",
                     Password = "Salamur$12",
                     FirstName = "vlad",
                     MiddleName = "vlado",
@@ -23,18 +23,18 @@ namespace Tests.ModelsTests
                     Age = 12
                 });
 
-            Assert.That(ae.Message, Is.EqualTo("Username must be atleast 3 characters long!"));
+            Assert.That(ae.Message, Is.EqualTo("UserName must be atleast 3 characters long!"));
         }
 
         [Test]
-        public void IsThrowingCorrectExceptionWhenUsernameNullOrEmpty()
+        public void IsThrowingCorrectExceptionWhenUserNameNullOrEmpty()
         {
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "",
+                    UserName = "",
                     Password = "Salamur$12",
                     FirstName = "vlad",
                     MiddleName = "vlado",
@@ -42,18 +42,18 @@ namespace Tests.ModelsTests
                     Age = 12
                 });
 
-            Assert.That(ae.Message, Is.EqualTo("Username must be atleast 3 characters long!"));
+            Assert.That(ae.Message, Is.EqualTo("UserName must be atleast 3 characters long!"));
         }
 
         [Test]
-        public void IsThrowingCorrectExceptionWhenUsernameWiteSpace()
+        public void IsThrowingCorrectExceptionWhenUserNameWiteSpace()
         {
             User user = null;
 
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "    ",
+                    UserName = "    ",
                     Password = "Salamur$12",
                     FirstName = "vlad",
                     MiddleName = "vlado",
@@ -61,7 +61,7 @@ namespace Tests.ModelsTests
                     Age = 12
                 });
 
-            Assert.That(ae.Message, Is.EqualTo("Username must be atleast 3 characters long!"));
+            Assert.That(ae.Message, Is.EqualTo("UserName must be atleast 3 characters long!"));
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "vlad111",
+                    UserName = "vlad111",
                     Password = "Salamur$12",
                     FirstName = "vlad",
                     MiddleName = "vlado",
@@ -88,7 +88,7 @@ namespace Tests.ModelsTests
         {
             User user = new User
             {
-                Username = "vlad111",
+                UserName = "vlad111",
                 Password = "Salamur$12",
                 FirstName = "vlad",
                 MiddleName = "vlado",
@@ -104,7 +104,7 @@ namespace Tests.ModelsTests
         {
             User user = new User
             {
-                Username = "vlad111",
+                UserName = "vlad111",
                 Password = "Salamur$12",
                 FirstName = "vlad",
                 MiddleName = "vlado",
@@ -120,7 +120,7 @@ namespace Tests.ModelsTests
         {
             User user = new User
             {
-                Username = "vlad111",
+                UserName = "vlad111",
                 Password = "Salamur$12",
                 FirstName = "vlad",
                 MiddleName = "vlado",
@@ -139,7 +139,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "vlad111",
+                    UserName = "vlad111",
                     Password = "Salamur$12",
                     FirstName = "vlad",
                     MiddleName = "vlado",
@@ -158,7 +158,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "vlad111",
+                    UserName = "vlad111",
                     Password = "Salamur$12",
                     FirstName = "vlad",
                     MiddleName = "a",
@@ -174,7 +174,7 @@ namespace Tests.ModelsTests
         {
             User user = new User
             {
-                Username = "LongUsername",
+                UserName = "LongUserName",
                 Password = "Salamur$12",
                 FirstName = "longFirstName",
                 MiddleName = "vlado",
@@ -190,7 +190,7 @@ namespace Tests.ModelsTests
         {
             User user = new User
             {
-                Username = "LongUsername",
+                UserName = "LongUserName",
                 Password = "Salamur$12",
                 FirstName = "longFirstName",
                 MiddleName = null,
@@ -209,7 +209,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "vlad111",
+                    UserName = "vlad111",
                     Password = "Salamur$12",
                     FirstName = "vlad",
                     MiddleName = "aaaa",
@@ -226,7 +226,7 @@ namespace Tests.ModelsTests
         {
             User user = new User
             {
-                Username = "vlad111",
+                UserName = "vlad111",
                 Password = "Salamur$12",
                 FirstName = "vlad",
                 MiddleName = "aaaa",
@@ -246,7 +246,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "LongUsername",
+                    UserName = "LongUserName",
                     Password = "Salamur$12",
                     FirstName = "",
                     MiddleName = "vlado",
@@ -265,7 +265,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "LongUsername",
+                    UserName = "LongUserName",
                     Password = "Salamur$12",
                     FirstName = "sh",
                     MiddleName = "vlado",
@@ -284,7 +284,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "LongUsername",
+                    UserName = "LongUserName",
                     Password = "Salamur$12",
                     FirstName = "LongName",
                     MiddleName = "vlado",
@@ -303,7 +303,7 @@ namespace Tests.ModelsTests
             ArgumentException ae = Assert.Throws<ArgumentException>(() =>
                 user = new User
                 {
-                    Username = "LongUsername",
+                    UserName = "LongUserName",
                     Password = "Salamur$12",
                     FirstName = "shoooo",
                     MiddleName = "vlado",
@@ -320,7 +320,7 @@ namespace Tests.ModelsTests
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Id - {1}");
-            sb.AppendLine($"Username - LongUsername");
+            sb.AppendLine($"UserName - LongUserName");
             sb.AppendLine($"Password - Salamur$12");
             sb.AppendLine($"First name - shoooo");
             sb.AppendLine($"Middle name - vlado");
@@ -332,7 +332,7 @@ namespace Tests.ModelsTests
             User user = user = new User
             {
                 Id = 1,
-                Username = "LongUsername",
+                UserName = "LongUserName",
                 Password = "Salamur$12",
                 FirstName = "shoooo",
                 MiddleName = "vlado",

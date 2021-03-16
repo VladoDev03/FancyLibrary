@@ -27,9 +27,9 @@ namespace Services
             return db.Users.FirstOrDefault(u => u.Id == id);
         }
 
-        public User FindUser(string username)
+        public User FindUser(string UserName)
         {
-            return db.Users.FirstOrDefault(u => u.Username == username);
+            return db.Users.FirstOrDefault(u => u.UserName == UserName);
         }
 
         public void AddUser(User user)
@@ -68,9 +68,9 @@ namespace Services
             db.SaveChanges();
         }
 
-        public void ChangeUsername(User user, string username)
+        public void ChangeUserName(User user, string UserName)
         {
-            user.Username = username;
+            user.UserName = UserName;
 
             db.SaveChanges();
         }

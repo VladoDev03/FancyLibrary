@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Data.Entities
 {
-    public partial class FancyLibraryContext : DbContext
+    public partial class FancyLibraryContext : IdentityDbContext<User, Role, int>
     {
         public FancyLibraryContext()
         {
@@ -22,7 +23,7 @@ namespace Data.Entities
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<LogData> LogData { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        //public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserBook> UsersBooks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,7 +31,7 @@ namespace Data.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=T0rta@s@marmaladi7;database=fancy_library");
+                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=T0rta@s@marmaladi7;database=fancy_library_official;");
             }
         }
 
@@ -189,7 +190,7 @@ namespace Data.Entities
                 entity.HasIndex(e => e.LogDataId, "log_data_id")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Username, "username")
+                entity.HasIndex(e => e.UserName, "UserName")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -225,10 +226,10 @@ namespace Data.Entities
                     .HasMaxLength(50)
                     .HasColumnName("password");
 
-                entity.Property(e => e.Username)
+                entity.Property(e => e.UserName)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("username");
+                    .HasColumnName("UserName");
 
                 entity.HasOne(d => d.Contact)
                     .WithOne(p => p.User)
@@ -274,6 +275,7 @@ namespace Data.Entities
             });
 
             OnModelCreatingPartial(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

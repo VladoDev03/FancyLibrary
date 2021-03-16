@@ -11,7 +11,7 @@ namespace Services.Contracts
 
         User FindUser(int id);
 
-        User FindUser(string username);
+        User FindUser(string UserName);
 
         void AddUser(User user);
 
@@ -21,7 +21,7 @@ namespace Services.Contracts
 
         void AddPhone(User user, string phone);
 
-        void ChangeUsername(User user, string username);
+        void ChangeUserName(User user, string UserName);
 
         void ChangePassword(User user, string password);
 
