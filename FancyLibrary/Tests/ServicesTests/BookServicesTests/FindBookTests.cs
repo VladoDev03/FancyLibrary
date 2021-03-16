@@ -47,6 +47,16 @@ namespace Tests.ServicesTests.BookServicesTests
             Assert.AreEqual("title2", result.Title);
         }
 
+        [Test]
+        public void FindCorrectBookByGivenNullableId()
+        {
+            int? id = 2;
+
+            Book result = bookServices.FindBook(id);
+
+            Assert.AreEqual("title2", result.Title);
+        }
+
         public List<Book> CreateInMemoryDb()
         {
             List<Book> authors = new List<Book>

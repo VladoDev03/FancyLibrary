@@ -3,11 +3,7 @@ using Data.Utils;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests.ServicesTests.AuthorServicesTests
 {
@@ -44,6 +40,20 @@ namespace Tests.ServicesTests.AuthorServicesTests
         public void IsFindingCorrectAuthorById()
         {
             Author author = authorServices.FindAuthor(1);
+
+            string fullName = NameRefactorer
+                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+            Assert.AreEqual("FirstName1 LastName1", fullName);
+            //Assert.IsNotNull(author);
+        }
+
+        [Test]
+        public void IsFindingCorrectAuthorByNullableId()
+        {
+            int? id = 1;
+
+            Author author = authorServices.FindAuthor(id);
 
             string fullName = NameRefactorer
                 .GetFullName(author.FirstName, author.MiddleName, author.LastName);
