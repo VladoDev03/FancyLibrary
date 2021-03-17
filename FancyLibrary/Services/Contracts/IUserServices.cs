@@ -1,4 +1,6 @@
 ﻿using Data.Entities;
+using Data.Models;
+using Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,5 +36,9 @@ namespace Services.Contracts
         void ChangeLastLogIn(User user);
 
         LogData FindLogData(User user);
+
+        Contact FindUserContact(User user);
+
+        FullUserView GetAllData(User user);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Data;
 using Data.Entities;
+using Data.Models;
+using Data.ViewModels;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -125,6 +127,49 @@ namespace Services
         {
             LogData logData = db.LogData.FirstOrDefault(lg => lg.Id == user.LogDataId);
             return logData;
+        }
+
+        public FullUserView GetAllData(User user)
+        {
+            if (user == null)
+            {
+                return null;
+            }
+
+            FullUserView fullUserView = new FullUserView();
+
+            fullUserView.Username = user.UserName;
+            fullUserView.FirstName = user.FirstName;
+            fullUserView.MiddleName = user.MiddleName != null ? user.MiddleName : "Empty";
+            fullUserView.LastName = user.LastName;
+            fullUserView.BooksCount = db.UsersBooks
+                .Where(ub => ub.UserId == user.Id)
+                .Count();
+
+            Contact contact = FindUserContact(user);
+
+            if (contact != null)
+            {
+                fullUserView.Email = contact.Email != null ? contact.Email : "Empty";
+                fullUserView.Phone = contact.Phone != null ? contact.Phone : "Empty";
+            }
+            else
+            {
+                fullUserView.Email = "Empty";
+                fullUserView.Phone = "Empty";
+            }
+
+            return fullUserView;
+        }
+
+        public Contact FindUserContact(User user)
+        {
+            if (user == null)
+            {
+                return null;
+            }
+
+            return db.Contacts.FirstOrDefault(u => u.Id == user.Id);
         }
     }
 }

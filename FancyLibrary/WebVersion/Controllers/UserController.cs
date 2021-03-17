@@ -1,8 +1,10 @@
 ﻿using Data.Entities;
 using Data.Models;
+using Data.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Services;
+using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +16,15 @@ namespace WebVersion.Controllers
     {
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
-        //private UserServices userServices;
+        private IUserServices userServices;
 
-        public UserController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public UserController(UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            IUserServices userServices)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-        }
-
-        [HttpGet]
-        public IActionResult Profile()
-        {
-            return View();
+            this.userServices = userServices;
         }
 
         [HttpGet]
@@ -107,6 +106,16 @@ namespace WebVersion.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            User user = await userManager.GetUserAsync(User);
+
+            FullUserView fullUserView = userServices.GetAllData(user);
+
+            return View(fullUserView);
         }
     }
 }
