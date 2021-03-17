@@ -22,17 +22,23 @@
                         <li class="layout">
                             <a class="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="layout">
+                        @*<li class="layout">
                             <a class="page" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        </li>*@
                         <li class="layout">
                             <a class="page" asp-area="" asp-controller="Book" asp-action="Books">Books</a>
                         </li>
                         <li class="layout">
                             <a class="page" asp-area="" asp-controller="Author" asp-action="Authors">Authors</a>
                         </li>
+                        @*<li class="layout">
+                            <a class="page" asp-area="" asp-controller="User" asp-action="Profile">Profile</a>
+                        </li>*@
                         <li class="layout">
-                            <a class="page" asp-area="" asp-controller="Profile" asp-action="Profile">Profile</a>
+                            <a class="page" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                        </li>
+                        <li class="layout">
+                            <a class="page" asp-area="" asp-controller="User" asp-action="Login">Login</a>
                         </li>
                     </ul>
                 </div>

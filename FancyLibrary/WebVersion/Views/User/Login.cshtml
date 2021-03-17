@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<link rel="stylesheet" href="~/css/LoginPage.css" />
+
+<h1>Login</h1>
+<form asp-controller="User" asp-action="Login" method="post">
+    <label for="username">
+        <span class="label-text">Username</span>
+        <input type="text" name="username" id="username" autofocus>
+    </label>
+    <label for="password">
+        <span class="label-text">Password</span>
+        <input type="password" name="password" id="password">
+    </label>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+</form>

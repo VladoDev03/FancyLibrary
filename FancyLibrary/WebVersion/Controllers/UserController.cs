@@ -6,14 +6,22 @@ using System.Threading.Tasks;
 
 namespace WebVersion.Controllers
 {
-    public class ProfileController : Controller
+    public class UserController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Profile()
         {
             return View();
         }
 
-        public IActionResult Profile()
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login()
         {
             return View();
         }
