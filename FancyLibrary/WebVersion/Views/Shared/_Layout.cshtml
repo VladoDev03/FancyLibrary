@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<Data.Entities.User> signInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,24 +23,30 @@
                         <li class="layout">
                             <a class="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @*<li class="layout">
-                            <a class="page" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>*@
                         <li class="layout">
                             <a class="page" asp-area="" asp-controller="Book" asp-action="Books">Books</a>
                         </li>
                         <li class="layout">
                             <a class="page" asp-area="" asp-controller="Author" asp-action="Authors">Authors</a>
                         </li>
-                        @*<li class="layout">
-                            <a class="page" asp-area="" asp-controller="User" asp-action="Profile">Profile</a>
-                        </li>*@
-                        <li class="layout">
-                            <a class="page" asp-area="" asp-controller="User" asp-action="Register">Register</a>
-                        </li>
-                        <li class="layout">
-                            <a class="page" asp-area="" asp-controller="User" asp-action="Login">Login</a>
-                        </li>
+                        @if (!this.signInManager.IsSignedIn(this.User))
+                        {
+                            <li class="layout">
+                                <a class="page" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                            </li>
+                            <li class="layout">
+                                <a class="page" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="layout">
+                                <a class="page" asp-area="" asp-controller="User" asp-action="Profile">Profile</a>
+                            </li>
+                            <li class="layout">
+                                <a class="page" asp-area="" asp-controller="User" asp-action="LogOut">Logout</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

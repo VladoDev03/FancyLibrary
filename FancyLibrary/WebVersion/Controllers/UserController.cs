@@ -13,11 +13,13 @@ namespace WebVersion.Controllers
     public class UserController : Controller
     {
         private UserManager<User> userManager;
+        private SignInManager<User> signInManager;
         //private UserServices userServices;
 
-        public UserController(UserManager<User> userManager)
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         [HttpGet]
@@ -54,9 +56,11 @@ namespace WebVersion.Controllers
             newUser.FirstName = user.FirstName;
             newUser.LastName = user.LastName;
             newUser.Password = user.Password;
+            newUser.Birthday = DateTime.Parse(user.Birthday);
+            newUser.EmailConfirmed = true;
             newUser.LogData = new LogData
             {
-                TimesLoggedIn = 1,
+                TimesLoggedIn = 0,
                 RegisterDate = DateTime.Now,
                 LastTimeLoggedIn = DateTime.Now,
                 IsOnline = true
@@ -69,13 +73,40 @@ namespace WebVersion.Controllers
                 return RedirectToAction(nameof(Register));
             }
 
-            return RedirectToAction(nameof(Profile));
+            return RedirectToAction(nameof(Login));
         }
 
         [HttpGet]
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(UserDTO user)
+        {
+            if (string.IsNullOrEmpty(user.Username)
+                   || string.IsNullOrEmpty(user.Password))
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
+            // SignInResult
+            var result = await signInManager
+                .PasswordSignInAsync(user.Username, user.Password, false, false);
+
+            if (!result.Succeeded)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
+            return RedirectToAction(nameof(Profile));
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
