@@ -184,7 +184,7 @@ namespace WebVersion.Controllers
             string name = NameRefactorer.GetFullName(author.FirstName, author.MiddleName, author.LastName);
 
             string countryName = authorServices.GetAuthorCountry(author);
-            string birthday = author.Birthday.ToString() != "" ? author.Birthday.ToString() : "Unknown";
+            string birthday = author.Birthday.ToString() != "" ? ((DateTime)author.Birthday).ToLongDateString() : "Unknown";
 
             FullAuthorView result = new FullAuthorView
             {

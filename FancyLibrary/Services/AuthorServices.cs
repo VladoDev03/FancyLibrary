@@ -96,23 +96,23 @@ namespace Services
 
             author.Id = newData.Id;
 
-            if (newData.FirstName != null)
+            if (newData.FirstName != null && newData.FirstName != author.FirstName)
             {
                 author.FirstName = newData.FirstName;
             }
-            if (newData.MiddleName != null)
+            if (newData.MiddleName != null && newData.MiddleName != author.MiddleName)
             {
                 author.MiddleName = newData.MiddleName;
             }
-            if (newData.LastName != null)
+            if (newData.LastName != null && newData.LastName != author.LastName)
             {
                 author.LastName = newData.LastName;
             }
-            if (newData.Nickname != null)
+            if (newData.Nickname != null && newData.Nickname != author.Nickname)
             {
                 author.Nickname = newData.Nickname;
             }
-            if (newData.Birthday != null)
+            if (newData.Birthday != null && newData.Birthday != author.Birthday)
             {
                 author.Birthday = newData.Birthday;
             }
@@ -123,6 +123,11 @@ namespace Services
 
                 if (country == null)
                 {
+                    country = new Country
+                    {
+                        Name = newData.Country
+                    };
+
                     db.Countries.Add(country);
                     db.SaveChanges();
                 }

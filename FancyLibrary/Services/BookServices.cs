@@ -68,41 +68,22 @@ namespace Services
 
             book.Id = newData.Id;
 
-            if (newData.Title != null)
+            if (newData.Title != null && newData.Title != book.Title)
             {
                 book.Title = newData.Title;
             }
-            if (newData.Genre != null)
+            if (newData.Genre != null && newData.Genre != book.Genre)
             {
                 book.Genre = newData.Genre;
             }
-            if (newData.Year != null)
+            if (newData.Year != null && newData.Year != book.Year)
             {
                 book.Year = newData.Year;
             }
-            if (newData.Pages != null)
+            if (newData.Pages != null && newData.Pages != book.Pages)
             {
                 book.Pages = newData.Pages;
             }
-
-            Author author = db.Authors.FirstOrDefault(a => a.FirstName == newData.FirstName
-            && a.MiddleName == newData.MiddleName && a.LastName == newData.LastName);
-
-            if (author == null)
-            {
-                author = new Author
-                {
-                    FirstName = newData.FirstName,
-                    MiddleName = newData.MiddleName,
-                    LastName = newData.LastName
-                };
-
-                db.Authors.Add(author);
-
-                db.SaveChanges();
-            }
-
-            book.AuthorId = author.Id;
 
             db.SaveChanges();
         }

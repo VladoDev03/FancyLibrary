@@ -18,12 +18,6 @@ namespace Data.Models
 
         public int? Pages { get; set; }
 
-        public string FirstName { get; set; }
-
-        public string MiddleName { get; set; }
-
-        public string LastName { get; set; }
-
         //public int InspiredBy { get; set; }
     }
 }
