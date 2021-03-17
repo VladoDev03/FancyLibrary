@@ -25,7 +25,7 @@ namespace Data.Entities
             UsersBooks = new HashSet<UserBook>();
         }
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public override string UserName
         {
             get

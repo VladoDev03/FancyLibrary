@@ -85,7 +85,7 @@ namespace ConsoleVersion.Controllers
             User user = new User
             {
                 UserName = UserName,
-                Password = PasswordManager.EncodePassword(password),
+                //Password = PasswordManager.EncodePassword(password),
                 FirstName = NameRefactorer.MakeFirstLetterUpperCase(firstName),
                 LastName = NameRefactorer.MakeFirstLetterUpperCase(lastName),
                 Birthday = birthday,
