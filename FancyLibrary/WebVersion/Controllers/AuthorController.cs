@@ -207,7 +207,7 @@ namespace WebVersion.Controllers
             }
             else if (strategy == "booksCount")
             {
-                return authors.OrderBy(a => a.BooksCount).ToList();
+                return authors.OrderByDescending(a => a.BooksCount).ToList();
             }
             else if (strategy == "country")
             {

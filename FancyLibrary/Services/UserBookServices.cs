@@ -75,5 +75,10 @@ namespace Services
 
             return books;
         }
+
+        public UserBook FindUserBook(int? userId, int? bookId)
+        {
+            return db.UsersBooks.FirstOrDefault(ub => ub.UserId == userId && ub.BookId == bookId);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model List<Data.ViewModels.BookView>
+﻿@inject SignInManager<Data.Entities.User> signInManager
+@model List<Data.ViewModels.BookView>
 @{
     ViewData["Title"] = "Book";
 }
@@ -23,23 +24,30 @@
                     <th>Genre</th>
                     <th>Author</th>
                     <th>Saved times</th>
-                    <th colspan="2">Links</th>
+                    @if (this.signInManager.IsSignedIn(this.User))
+                    {
+                        <th colspan="3">Links</th>
+                    }
                 </tr>
             </thead>
             <tbody>
                 @{ int i = 1; }
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@i</td>
-                        <td>@item.Title</td>
-                        <td>@item.Genre</td>
-                        <td>@item.AuthorName</td>
-                        <td>@item.SavedTimes</td>
+                <tr>
+                    <td>@i</td>
+                    <td>@item.Title</td>
+                    <td>@item.Genre</td>
+                    <td>@item.AuthorName</td>
+                    <td>@item.SavedTimes</td>
+                    @if (this.signInManager.IsSignedIn(this.User))
+                    {
                         <td><a type="button" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">Details</a></td>
                         <td><a type="button" asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
-                        @{ i++; }
-                    </tr>
+                        <td><a type="button" asp-controller="User" asp-action="AddBook" asp-route-id="@item.Id">Add</a></td>
+                    }
+                    @{ i++; }
+                </tr>
                 }
             </tbody>
         </table>

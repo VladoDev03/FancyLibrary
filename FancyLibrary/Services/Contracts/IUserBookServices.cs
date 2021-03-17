@@ -7,14 +7,16 @@ namespace Services.Contracts
 {
     public interface IUserBookServices
     {
-        public List<UserBook> GetAllUsersBooks();
+        List<UserBook> GetAllUsersBooks();
 
-        public void AddBookToUser(User user, Book book);
+        UserBook FindUserBook(int? userId, int? bookId);
 
-        public int GetUserBooksCount(User user);
+        void AddBookToUser(User user, Book book);
 
-        public void RemoveBookFromUser(User user, Book book);
+        int GetUserBooksCount(User user);
 
-        public List<Book> GetBooksOfUser(User user);
+        void RemoveBookFromUser(User user, Book book);
+
+        List<Book> GetBooksOfUser(User user);
     }
 }

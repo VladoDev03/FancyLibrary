@@ -253,7 +253,7 @@ namespace WebVersion.Controllers
             }
             else if (strategy == "saved")
             {
-                return books.OrderBy(b => b.SavedTimes).ToList();
+                return books.OrderByDescending(b => b.SavedTimes).ToList();
             }
             else
             {
