@@ -75,6 +75,8 @@ input {
     background-color: rgb(216, 120, 120);
     border: solid;
     border-radius: 7px;
+    display: block;
+    margin: auto;
 }
 
     input:hover {

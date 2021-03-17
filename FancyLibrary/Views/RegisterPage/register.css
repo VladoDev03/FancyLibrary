@@ -48,7 +48,9 @@ body {
     font-style: italic;
     font-weight: bold;
     margin-right: 10px;
-}button {
+}
+
+button {
     background-color: rgb(126, 191, 255);
     color: rgb(0, 85, 170);
     font-weight: bold;

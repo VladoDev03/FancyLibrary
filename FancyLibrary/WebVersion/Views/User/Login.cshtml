@@ -8,16 +8,28 @@
 
 <h1>Login</h1>
 <form asp-controller="User" asp-action="Login" method="post">
+    @if (ViewData["NullUsernameLogin"] != null || (string)ViewData["NullUsernameLogin"] != "")
+    {
+        <span class="text-danger">@ViewData["NullUsernameLogin"]</span>
+    }
+    @if (ViewData["WrongPasswordError"] != null || (string)ViewData["WrongPasswordError"] != "")
+    {
+        <span class="text-danger">@ViewData["WrongPasswordError"]</span>
+    }
     <label for="username">
         <span class="label-text">Username</span>
         <input type="text" name="username" id="username" autofocus>
     </label>
 
+    @if (ViewData["NullPasswordLogin"] != null || (string)ViewData["NullPasswordLogin"] != "")
+    {
+        <span class="text-danger">@ViewData["NullPasswordLogin"]</span>
+    }
     <label for="password">
         <span class="label-text">Password</span>
         <input type="password" name="password" id="password">
     </label>
 
-    <button type="submit">Submit</button>
+    <button type="submit">Login</button>
     <button type="reset">Reset</button>
 </form>

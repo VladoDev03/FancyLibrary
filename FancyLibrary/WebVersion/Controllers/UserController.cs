@@ -43,18 +43,9 @@ namespace WebVersion.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(UserDTO user)
         {
-            if (string.IsNullOrEmpty(user.Username)
-                || string.IsNullOrEmpty(user.Password)
-                || string.IsNullOrEmpty(user.ConfirmPassword)
-                || string.IsNullOrEmpty(user.FirstName)
-                || string.IsNullOrEmpty(user.LastName))
+            if (ValidatePropertiesRegister(user))
             {
-                return RedirectToAction(nameof(Register));
-            }
-
-            if (user.Password != user.ConfirmPassword)
-            {
-                return RedirectToAction(nameof(Register));
+                return View();
             }
 
             User newUser = new User();
@@ -82,6 +73,47 @@ namespace WebVersion.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+        private bool ValidatePropertiesRegister(UserDTO user)
+        {
+            if (userServices.FindUser(user.Username) != null)
+            {
+                ViewData.Add("ExistingUserError", "Username is taken!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.Username))
+            {
+                ViewData.Add("MissingUsername", "Username is required!");
+                return true;
+            }
+
+            if (user.Password != user.ConfirmPassword || user.Password == null || user.ConfirmPassword == null)
+            {
+                ViewData.Add("NotMatchingPasswordsError", "Password must match confirm password!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.FirstName))
+            {
+                ViewData.Add("MissingFirstName", "First name is required!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.LastName))
+            {
+                ViewData.Add("MissingLastName", "Last name is required!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.Birthday))
+            {
+                ViewData.Add("MissingBirthday", "Birthday is required!");
+                return true;
+            }
+
+            return false;
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -91,10 +123,9 @@ namespace WebVersion.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserDTO user)
         {
-            if (string.IsNullOrEmpty(user.Username)
-                   || string.IsNullOrEmpty(user.Password))
+            if (ValidatePropertiesLogin(user))
             {
-                return RedirectToAction(nameof(Login));
+                return View();
             }
 
             // SignInResult
@@ -103,10 +134,27 @@ namespace WebVersion.Controllers
 
             if (!result.Succeeded)
             {
-                return RedirectToAction(nameof(Login));
+                ViewData.Add("WrongPasswordError", "Wrong username or password!");
+                return View();
             }
 
             return RedirectToAction(nameof(Profile));
+        }
+
+        private bool ValidatePropertiesLogin(UserDTO user)
+        {
+            if (string.IsNullOrEmpty(user.Username))
+            {
+                ViewData.Add("NullUsernameLogin", "Please type your username!");
+                return true;
+            }
+            if (string.IsNullOrEmpty(user.Password))
+            {
+                ViewData.Add("NullPasswordLogin", "Please type your password!");
+                return true;
+            }
+
+            return false;
         }
 
         public async Task<IActionResult> Logout()
