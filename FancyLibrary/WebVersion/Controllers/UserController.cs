@@ -1,5 +1,6 @@
 ﻿using Data.Entities;
 using Data.Models;
+using Data.Utils;
 using Data.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +18,20 @@ namespace WebVersion.Controllers
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
         private IUserServices userServices;
+        private IUserBookServices userBookServices;
+        private IBookServices bookServices;
 
         public UserController(UserManager<User> userManager,
             SignInManager<User> signInManager,
-            IUserServices userServices)
+            IUserServices userServices,
+            IUserBookServices userBookServices,
+            IBookServices bookServices)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.userServices = userServices;
+            this.userBookServices = userBookServices;
+            this.bookServices = bookServices;
         }
 
         [HttpGet]
@@ -114,6 +121,22 @@ namespace WebVersion.Controllers
             User user = await userManager.GetUserAsync(User);
 
             FullUserView fullUserView = userServices.GetAllData(user);
+            List<Book> books = userBookServices.GetBooksOfUser(user);
+
+            foreach (var item in books)
+            {
+                Author author = bookServices.GetBookAuthor(item);
+
+                BookView bookView = new BookView
+                {
+                    Title = item.Title,
+                    Genre = item.Genre,
+                    AuthorName = NameRefactorer
+                    .GetFullName(author.FirstName, author.MiddleName, author.LastName)
+                };
+
+                fullUserView.Books.Add(bookView);
+            }
 
             return View(fullUserView);
         }

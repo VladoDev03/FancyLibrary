@@ -52,56 +52,27 @@
             <table>
                 <thead>
                     <tr>
-                        <th colspan="4">Your books
+                        <th colspan="4">Your books</th>
                     </tr>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Year</th>
-                <th>Author</th>
-                </tr>
+                    <tr>
+                        <th>№</th>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Author</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Matilda</td>
-                        <td>Children's literature Fantasy</td>
-                        <td>1988</td>
-                        <td>Roald Dahl</td>
-                    <tr>
-                        <td>The Secret Garden</td>
-                        <td>Children's novel</td>
-                        <td>1911</td>
-                        <td>Frances Hodgson Burnett</td>
-                    </tr>
-                    <tr>
-                        <td>The witches</td>
-                        <td>Children's fantasy Dark fantasy</td>
-                        <td>1983</td>
-                        <td>Roald Dahl</td>
-                    </tr>
-                    <tr>
-                        <td>The Twits</td>
-                        <td>Children's novel</td>
-                        <td>1980</td>
-                        <td>Roald Dahl</td>
-                    </tr>
-                    <tr>
-                        <td>Around the World in Eighty Days</td>
-                        <td>Adventure novel</td>
-                        <td>1872</td>
-                        <td>Jules Verne</td>
-                    </tr>
-                    <tr>
-                        <td>George's Marvellous Medicine</td>
-                        <td>Children's novel</td>
-                        <td>1981</td>
-                        <td>Roald Dahl</td>
-                    </tr>
-                    <tr>
-                        <td>Charlie and the Chocolate Factory</td>
-                        <td>Children's fantasy novel</td>
-                        <td>1964</td>
-                        <td>Roald Dahl</td>
-                    </tr>
+                    @{ int i = 1; }
+                    @foreach (var item in Model.Books)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.Title</td>
+                            <td>@item.Genre</td>
+                            <td>@item.AuthorName</td>
+                            @{ i++; }
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
