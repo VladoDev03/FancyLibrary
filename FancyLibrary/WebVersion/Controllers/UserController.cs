@@ -4,7 +4,6 @@ using Data.Utils;
 using Data.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Services;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -200,32 +199,6 @@ namespace WebVersion.Controllers
             }
 
             return View(fullUserView);
-        }
-
-        public async Task<IActionResult> AddBook(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("Books", "Book");
-            }
-
-            User user = await userManager.GetUserAsync(User);
-
-            if (user == null)
-            {
-                return RedirectToAction("Books", "Book");
-            }
-
-            if (userBookServices.FindUserBook(user.Id, id) != null)
-            {
-                return RedirectToAction("Books", "Book");
-            }
-
-            Book book = bookServices.FindBook(id);
-
-            userBookServices.AddBookToUser(user, book);
-
-            return RedirectToAction("Books", "Book");
         }
 
         public async Task<IActionResult> RemoveBook(int? id)

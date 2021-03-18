@@ -2,13 +2,13 @@
 using Data.Models;
 using Data.Utils;
 using Microsoft.AspNetCore.Mvc;
-using Services;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Data.ViewModels;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebVersion.Controllers
 {
@@ -16,11 +16,19 @@ namespace WebVersion.Controllers
     {
         private IBookServices bookServices;
         private IAuthorServices authorServices;
+        private IUserBookServices userBookServices;
+        private UserManager<User> userManager;
 
-        public BookController(IBookServices bookServices, IAuthorServices authorServices)
+        public BookController(IBookServices bookServices,
+            IAuthorServices authorServices,
+            IUserBookServices userBookServices,
+            UserManager<User> userManager
+            )
         {
             this.bookServices = bookServices;
             this.authorServices = authorServices;
+            this.userBookServices = userBookServices;
+            this.userManager = userManager;
         }
 
         [Route("/Book/Books/{strategy?}")]
@@ -61,7 +69,7 @@ namespace WebVersion.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(BookDTO book)
+        public async Task<IActionResult> Create(BookDTO book)
         {
             if (ValidateProperties(book))
             {
@@ -109,8 +117,35 @@ namespace WebVersion.Controllers
             }
 
             bookServices.AddBook(bookToAdd);
+            await AddBookToUser(bookToAdd.Id);
 
             return RedirectToAction(nameof(Books));
+        }
+
+        public async Task<IActionResult> AddBookToUser(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Books", "Book");
+            }
+
+            User user = await userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Books", "Book");
+            }
+
+            if (userBookServices.FindUserBook(user.Id, id) != null)
+            {
+                return RedirectToAction("Books", "Book");
+            }
+
+            Book book = bookServices.FindBook(id);
+
+            userBookServices.AddBookToUser(user, book);
+
+            return RedirectToAction("Books", "Book");
         }
 
         private bool ValidateProperties(BookDTO book)

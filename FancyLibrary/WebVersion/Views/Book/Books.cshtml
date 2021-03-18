@@ -44,7 +44,7 @@
                     {
                         <td><a type="button" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">Details</a></td>
                         <td><a type="button" asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
-                        <td><a type="button" asp-controller="User" asp-action="AddBook" asp-route-id="@item.Id">Add</a></td>
+                        <td><a type="button" asp-controller="Book" asp-action="AddBook" asp-route-id="@item.Id">Add</a></td>
                     }
                     @{ i++; }
                 </tr>
