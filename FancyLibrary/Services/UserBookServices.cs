@@ -52,8 +52,6 @@ namespace Services
 
             db.UsersBooks.Remove(userBook);
             db.SaveChanges();
-
-            db.SaveChanges();
         }
 
         public List<Book> GetBooksOfUser(User user)

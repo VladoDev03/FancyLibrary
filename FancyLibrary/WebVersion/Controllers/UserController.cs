@@ -177,10 +177,11 @@ namespace WebVersion.Controllers
 
                 BookView bookView = new BookView
                 {
+                    Id = item.Id,
                     Title = item.Title,
                     Genre = item.Genre,
                     AuthorName = NameRefactorer
-                    .GetFullName(author.FirstName, author.MiddleName, author.LastName)
+                        .GetFullName(author.FirstName, author.MiddleName, author.LastName)
                 };
 
                 fullUserView.Books.Add(bookView);
@@ -213,6 +214,27 @@ namespace WebVersion.Controllers
             userBookServices.AddBookToUser(user, book);
 
             return RedirectToAction("Books", "Book");
+        }
+
+        public async Task<IActionResult> RemoveBook(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Profile));
+            }
+
+            User user = await userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction(nameof(Profile));
+            }
+
+            Book book = bookServices.FindBook(id);
+
+            userBookServices.RemoveBookFromUser(user, book);
+
+            return RedirectToAction(nameof(Profile));
         }
     }
 }

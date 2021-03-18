@@ -52,13 +52,14 @@
             <table>
                 <thead>
                     <tr>
-                        <th colspan="4">Your books</th>
+                        <th colspan="5">Your books</th>
                     </tr>
                     <tr>
                         <th>№</th>
                         <th>Title</th>
                         <th>Genre</th>
                         <th>Author</th>
+                        <th>Links</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,6 +71,7 @@
                             <td>@item.Title</td>
                             <td>@item.Genre</td>
                             <td>@item.AuthorName</td>
+                            <td><a type="button" asp-controller="User" asp-action="RemoveBook" asp-route-id="@item.Id">Remove</a></td>
                             @{ i++; }
                         </tr>
                     }
