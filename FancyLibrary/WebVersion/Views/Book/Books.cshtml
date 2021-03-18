@@ -53,18 +53,6 @@
         </table>
     </div>
     <div>
-        <form>
-            <h3>Type the title or the number of the book you want to add.</h3>
-            <label for="input" id="title-input">Title<span id="bolder"> / </span>number</label>
-            <input type="text" id="input">
-            <button type="submit">Add book</button>
-        </form>
-        <form asp-action="Details" asp-controller="Book" method="post">
-            <h3>More info about a book.</h3>
-            <label for="input" id="title-input-info">Title</label>
-            <input type="text" id="input" name="title">
-            <button type="submit">Details</button>
-        </form>
         <div id="link-to-add-book">
             <a class="add-page" href="/Book/Create">Add a new book</a>
         </div>

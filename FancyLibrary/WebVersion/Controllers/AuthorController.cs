@@ -121,26 +121,6 @@ namespace WebVersion.Controllers
             return View(result);
         }
 
-        [HttpPost]
-        public IActionResult Details(string name)
-        {
-            if (name == null)
-            {
-                return RedirectToAction(nameof(Authors));
-            }
-
-            Author author = authorServices.FindAuthor(name);
-
-            FullAuthorView result = GetDetails(author);
-
-            if (result == null)
-            {
-                return RedirectToAction(nameof(Authors));
-            }
-
-            return View(result);
-        }
-
         [HttpGet]
         public IActionResult Edit(int? id)
         {

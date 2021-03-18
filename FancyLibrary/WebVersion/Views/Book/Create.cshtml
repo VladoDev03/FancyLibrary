@@ -9,47 +9,48 @@
 
     <h1>Add new books from here</h1>
 
-<form class="add-book" asp-action="Create" asp-controller="Book" method="post">
+    <form class="add-book" asp-action="Create" asp-controller="Book" method="post">
 
-    @if (ViewData["ShortName"] != null && (string)ViewData["ShortName"] != "")
-    {
-        <span class="text-danger">@ViewData["ShortName"]</span>
-    }
-    @if (ViewData["TitleError"] != null && (string)ViewData["TitleError"] != "")
-    {
-        <span class="text-danger">@ViewData["TitleError"]</span>
-    }
-    @if (ViewData["RepeatingTitle"] != null && (string)ViewData["RepeatingTitle"] != "")
-    {
-        <span class="text-danger">@ViewData["RepeatingTitle"]</span>
-    }
+        @if (ViewData["ShortName"] != null && (string)ViewData["ShortName"] != "")
+        {
+            <span class="text-danger">@ViewData["ShortName"]</span>
+        }
+        @if (ViewData["TitleError"] != null && (string)ViewData["TitleError"] != "")
+        {
+            <span class="text-danger">@ViewData["TitleError"]</span>
+        }
+        @if (ViewData["RepeatingTitle"] != null && (string)ViewData["RepeatingTitle"] != "")
+        {
+            <span class="text-danger">@ViewData["RepeatingTitle"]</span>
+        }
 
-    <label for="title">Title</label>
-    <input type="text" name="title" />
+        <label for="title">Title</label>
+        <input type="text" name="title" />
 
-    @if (ViewData["GenreError"] != null && (string)ViewData["GenreError"] != "")
-    {
-        <span class="text-danger">@ViewData["GenreError"]</span>
-    }
+        @if (ViewData["GenreError"] != null && (string)ViewData["GenreError"] != "")
+        {
+            <span class="text-danger">@ViewData["GenreError"]</span>
+        }
 
-    <label for="genre">Genre</label>
-    <input type="text" name="genre" />
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" />
 
-    @if (ViewData["AuthorFirstNameError"] != null && (string)ViewData["AuthorFirstNameError"] != "")
-    {
-        <span class="text-danger">@ViewData["AuthorFirstNameError"]</span>
-    }
+        @if (ViewData["AuthorFirstNameError"] != null && (string)ViewData["AuthorFirstNameError"] != "")
+        {
+            <span class="text-danger">@ViewData["AuthorFirstNameError"]</span>
+        }
 
-    <label for="firstName">Author first name</label>
-    <input type="text" name="firstName" />
+        <label for="firstName">Author first name</label>
+        <input type="text" name="firstName" />
 
-    @if (ViewData["AuthorLastNameError"] != null && (string)ViewData["AuthorLastNameError"] != "")
-    {
-        <span class="text-danger">@ViewData["AuthorLastNameError"]</span>
-    }
+        @if (ViewData["AuthorLastNameError"] != null && (string)ViewData["AuthorLastNameError"] != "")
+        {
+            <span class="text-danger">@ViewData["AuthorLastNameError"]</span>
+        }
 
-    <label for="lastName">Author last name</label>
-    <input type="text" name="lastName" />
+        <label for="lastName">Author last name</label>
+        <input type="text" name="lastName" />
 
-    <button type="submit">Add</button>
-</form>
+        <button type="submit">Add</button>
+        <a class="btn btn-secondary" asp-controller="Book" asp-action="Books">Cancel</a>
+    </form>

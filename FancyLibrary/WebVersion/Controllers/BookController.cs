@@ -143,27 +143,6 @@ namespace WebVersion.Controllers
             return false;
         }
 
-        [HttpPost]
-        [ActionName("Details")]
-        public IActionResult DetailsTitle(string title)
-        {
-            if (title == null)
-            {
-                return RedirectToAction(nameof(Books));
-            }
-
-            Book book = bookServices.FindBook(title);
-
-            FullBookView result = GetDetails(book);
-
-            if (result == null)
-            {
-                return RedirectToAction(nameof(Books));
-            }
-
-            return View(result);
-        }
-
         [HttpGet]
         public IActionResult Details(int? id)
         {
