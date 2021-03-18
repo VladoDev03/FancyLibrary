@@ -15,5 +15,6 @@ namespace Data.Models
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string Birthday { get; set; }
+        public int Age { get; set; }
     }
 }

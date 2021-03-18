@@ -16,6 +16,10 @@
     {
         <span class="text-danger">@ViewData["MissingUsername"]</span>
     }
+    @if (ViewData["InvalidInput"] != null || (string)ViewData["InvalidInput"] != "")
+    {
+        <span class="text-danger">@ViewData["InvalidInput"]</span>
+    }
     <label for="username">
         <span class="label-text">Username</span>
         <input type="text" name="Username" id="username" autofocus>
@@ -24,6 +28,10 @@
     @if (ViewData["NotMatchingPasswordsError"] != null || (string)ViewData["NotMatchingPasswordsError"] != "")
     {
         <span class="text-danger">@ViewData["NotMatchingPasswordsError"]</span>
+    }
+    @if (ViewData["PasswordErrors"] != null || (string)ViewData["PasswordErrors"] != "")
+    {
+        <span class="text-danger">@ViewData["PasswordErrors"]</span>
     }
     <label for="password">
         <span class="label-text">Password</span>
@@ -56,6 +64,10 @@
     @if (ViewData["MissingBirthday"] != null || (string)ViewData["MissingBirthday"] != "")
     {
         <span class="text-danger">@ViewData["MissingBirthday"]</span>
+    }
+    @if (ViewData["TooYoung"] != null || (string)ViewData["TooYoung"] != "")
+    {
+        <span class="text-danger">@ViewData["TooYoung"]</span>
     }
     <label for="birthday">
         <span class="label-text">Birthday</span>

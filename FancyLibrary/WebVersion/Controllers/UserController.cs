@@ -49,6 +49,7 @@ namespace WebVersion.Controllers
             }
 
             User newUser = new User();
+
             newUser.UserName = user.Username;
             newUser.FirstName = user.FirstName;
             newUser.LastName = user.LastName;
@@ -63,11 +64,22 @@ namespace WebVersion.Controllers
                 IsOnline = true
             };
 
+            try
+            {
+                userServices.SetAge(newUser);
+            }
+            catch (ArgumentException ae)
+            {
+                ViewData.Add("TooYoung", ae.Message);
+                return View();
+            }
+
             IdentityResult result = await userManager.CreateAsync(newUser, newUser.Password);
 
             if (!result.Succeeded)
             {
-                return RedirectToAction(nameof(Register));
+                ViewData.Add("PasswordErrors", result.Errors.First().Description);
+                return View();
             }
 
             return RedirectToAction(nameof(Login));
@@ -81,9 +93,9 @@ namespace WebVersion.Controllers
                 return true;
             }
 
-            if (string.IsNullOrEmpty(user.Username))
+            if (string.IsNullOrEmpty(user.Username) || user.Username.Length < 3)
             {
-                ViewData.Add("MissingUsername", "Username is required!");
+                ViewData.Add("MissingUsername", "Username has to be minimum of 3 characters!");
                 return true;
             }
 
@@ -93,15 +105,15 @@ namespace WebVersion.Controllers
                 return true;
             }
 
-            if (string.IsNullOrEmpty(user.FirstName))
+            if (string.IsNullOrEmpty(user.FirstName) || user.FirstName.Length < 3)
             {
-                ViewData.Add("MissingFirstName", "First name is required!");
+                ViewData.Add("MissingFirstName", "First name has to be minimum of 3 characters!");
                 return true;
             }
 
-            if (string.IsNullOrEmpty(user.LastName))
+            if (string.IsNullOrEmpty(user.LastName) || user.LastName.Length < 3)
             {
-                ViewData.Add("MissingLastName", "Last name is required!");
+                ViewData.Add("MissingLastName", "Last name has to be minimum of 3 characters!");
                 return true;
             }
 
@@ -235,6 +247,24 @@ namespace WebVersion.Controllers
             userBookServices.RemoveBookFromUser(user, book);
 
             return RedirectToAction(nameof(Profile));
+        }
+
+        [HttpGet]
+        public IActionResult AddContacts()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult EditUser()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
         }
     }
 }
