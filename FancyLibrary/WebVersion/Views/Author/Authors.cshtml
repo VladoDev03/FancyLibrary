@@ -1,4 +1,4 @@
-﻿
+﻿@inject SignInManager<Data.Entities.User> signInManager
 @{
     ViewData["Title"] = "Author";
 }
@@ -21,22 +21,28 @@
                     <th>Name</th>
                     <th>Books count</th>
                     <th>Country</th>
-                    <th colspan="2">Links</th>
+                    @if (this.signInManager.IsSignedIn(this.User))
+                    {
+                        <th colspan="2">Links</th>
+                    }
                 </tr>
             </thead>
             <tbody>
                 @{ int i = 1; }
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@i</td>
-                        <td>@item.FullName</td>
-                        <td>@item.BooksCount</td>
-                        <td>@item.Country</td>
+                <tr>
+                    <td>@i</td>
+                    <td>@item.FullName</td>
+                    <td>@item.BooksCount</td>
+                    <td>@item.Country</td>
+                    @if (this.signInManager.IsSignedIn(this.User))
+                    {
                         <td><a type="button" asp-action="Details" asp-controller="Author" asp-route-id="@item.Id">Details</a></td>
                         <td><a type="button" asp-controller="Author" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
-                        @{ i++; }
-                    </tr>
+                    }
+                    @{ i++; }
+                </tr>
                 }
             </tbody>
         </table>
