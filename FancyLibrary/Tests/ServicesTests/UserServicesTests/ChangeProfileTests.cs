@@ -42,13 +42,13 @@ namespace Tests.ServicesTests.UserServicesTests
             Assert.That(user.Password, Is.EqualTo("P$roLa12"));
         }
 
-        [Test]
-        public void IsChangingUserName()
-        {
-            userServices.ChangeUserName(user, "vladrig");
+        //[Test]
+        //public void IsChangingUserName()
+        //{
+        //    userServices.ChangeUserName(user, "vladrig");
 
-            Assert.That(user.UserName, Is.EqualTo("vladrig"));
-        }
+        //    Assert.That(user.UserName, Is.EqualTo("vladrig"));
+        //}
 
         public List<User> CreateInMemoryDb()
         {

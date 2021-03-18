@@ -81,9 +81,9 @@ namespace WebVersion.Controllers
             Author author = authorServices.FindAuthor(fullName);
             Book bookToAdd = null;
 
-            if (author == null)
+            try
             {
-                try
+                if (author == null)
                 {
                     author = new Author
                     {
@@ -91,21 +91,21 @@ namespace WebVersion.Controllers
                         LastName = book.LastName
                     };
 
-                    bookToAdd = new Book
-                    {
-                        Title = book.Title,
-                        Genre = book.Genre,
-                        AuthorId = author.Id
-                    };
+                    authorServices.AddAuthor(author);
                 }
-                catch (ArgumentException ae)
+
+                bookToAdd = new Book
                 {
-                    ViewData.Add("ShortName", ae.Message);
+                    Title = book.Title,
+                    Genre = book.Genre,
+                    AuthorId = author.Id
+                };
+            }
+            catch (ArgumentException ae)
+            {
+                ViewData.Add("ShortName", ae.Message);
 
-                    return View();
-                }
-
-                authorServices.AddAuthor(author);
+                return View();
             }
 
             bookServices.AddBook(bookToAdd);

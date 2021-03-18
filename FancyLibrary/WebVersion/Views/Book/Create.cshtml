@@ -10,7 +10,10 @@
     <h1>Add new books from here</h1>
 
     <form class="add-book" asp-action="Create" asp-controller="Book" method="post">
-
+        @*@if (ViewData["ShortTitle"] != null && (string)ViewData["ShortTitle"] != "")
+        {
+            <span class="text-danger">@ViewData["ShortTitle"]</span>
+        }*@
         @if (ViewData["ShortName"] != null && (string)ViewData["ShortName"] != "")
         {
             <span class="text-danger">@ViewData["ShortName"]</span>

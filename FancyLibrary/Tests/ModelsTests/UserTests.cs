@@ -23,7 +23,7 @@ namespace Tests.ModelsTests
                     Age = 12
                 });
 
-            Assert.That(ae.Message, Is.EqualTo("UserName must be atleast 3 characters long!"));
+            Assert.That(ae.Message, Is.EqualTo("User name must be atleast 3 characters long!"));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace Tests.ModelsTests
                     Age = 12
                 });
 
-            Assert.That(ae.Message, Is.EqualTo("UserName must be atleast 3 characters long!"));
+            Assert.That(ae.Message, Is.EqualTo("User name must be atleast 3 characters long!"));
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace Tests.ModelsTests
                     Age = 12
                 });
 
-            Assert.That(ae.Message, Is.EqualTo("UserName must be atleast 3 characters long!"));
+            Assert.That(ae.Message, Is.EqualTo("User name must be atleast 3 characters long!"));
         }
 
         [Test]
