@@ -23,6 +23,8 @@ namespace Services.Contracts
 
         void AddPhone(User user, string phone);
 
+        void AddContact(User user, string email, string phone);
+
         void ChangeUserName(User user, string UserName);
 
         void ChangePassword(User user, string password);

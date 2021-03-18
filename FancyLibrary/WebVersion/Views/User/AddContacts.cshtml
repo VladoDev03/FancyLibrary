@@ -7,10 +7,13 @@
 <link href="~/css/ProfilePage.css" rel="stylesheet" />
 
 <article id="change-user-data">
-    <form action="">
+    <form asp-controller="User" asp-action="AddContacts" method="post">
+        @if (ViewData["TakenContact"] != null || (string)ViewData["TakenContact"] != "")
+        {
+            <span class="text-danger">@ViewData["TakenContact"]</span>
+        }
         <label for="email">Email</label>
         <input class="new-data" type="email" name="email" id="email">
-
         <label for="phone">Phone</label>
         <input class="new-data" type="tel" name="phone" id="phone">
 

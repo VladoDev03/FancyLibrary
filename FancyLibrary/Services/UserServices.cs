@@ -1,6 +1,7 @@
 ﻿using Data;
 using Data.Entities;
 using Data.Models;
+using Data.Utils;
 using Data.ViewModels;
 using Services.Contracts;
 using System;
@@ -56,6 +57,40 @@ namespace Services
             {
                 Email = email
             };
+
+            db.SaveChanges();
+        }
+
+        public void AddContact(User user, string email, string phone)
+        {
+            if (db.Contacts.FirstOrDefault(c => c.Email == email && email != null) != null)
+            {
+                throw new ArgumentException(ExceptionsTexts.RepeatEmail);
+            }
+
+            if (db.Contacts.FirstOrDefault(c => c.Phone == phone && phone != null) != null)
+            {
+                throw new ArgumentException(ExceptionsTexts.RepeatPhone);
+            }
+
+            Contact oldContact = FindUserContact(user);
+
+            if (oldContact == null)
+            {
+                oldContact = new Contact();
+            }
+
+            if (email != null && email != oldContact.Email)
+            {
+                oldContact.Email = email;
+            }
+
+            if (phone != null && phone != oldContact.Phone)
+            {
+                oldContact.Phone = phone;
+            }
+
+            user.Contact = oldContact;
 
             db.SaveChanges();
         }
@@ -169,7 +204,7 @@ namespace Services
                 return null;
             }
 
-            return db.Contacts.FirstOrDefault(u => u.Id == user.Id);
+            return db.Contacts.FirstOrDefault(c => c.Id == user.ContactId);
         }
     }
 }

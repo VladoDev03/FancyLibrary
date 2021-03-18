@@ -45,6 +45,8 @@ namespace Data.Utils
         // Contact exceptions
         public const string NotValidEmail = "This email is invalid, try with another one!";
         public const string NotValidPhone = "This phone number is invalid, try with another one!";
+        public const string RepeatEmail = "This email is already taken!";
+        public const string RepeatPhone = "This phone is already taken!";
 
         // Country exceptions
         public const string CountryNameException = "Country name must be atleast {0} characters long!";

@@ -255,6 +255,24 @@ namespace WebVersion.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddContacts(string email, string phone)
+        {
+            User user = await userManager.GetUserAsync(User);
+
+            try
+            {
+                userServices.AddContact(user, email, phone);
+            }
+            catch (ArgumentException ae)
+            {
+                ViewData.Add("TakenContact", ae.Message);
+                return View();
+            }
+
+            return RedirectToAction(nameof(Profile));
+        }
+
         [HttpGet]
         public IActionResult EditUser()
         {
