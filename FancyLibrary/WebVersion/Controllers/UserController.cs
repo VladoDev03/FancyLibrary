@@ -266,5 +266,22 @@ namespace WebVersion.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string oldPass, string newPass)
+        {
+            User user = await userManager.GetUserAsync(User);
+
+            IdentityResult result = await userManager
+                .ChangePasswordAsync(user, oldPass, newPass);
+
+            if (!result.Succeeded)
+            {
+                ViewData.Add("PasswordNotChanged", result.Errors.First().Description);
+                return View();
+            }
+
+            return RedirectToAction(nameof(Profile));
+        }
     }
 }
