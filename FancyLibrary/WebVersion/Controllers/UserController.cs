@@ -59,8 +59,8 @@ namespace WebVersion.Controllers
             {
                 TimesLoggedIn = 0,
                 RegisterDate = DateTime.Now,
-                LastTimeLoggedIn = DateTime.Now,
-                IsOnline = true
+                LastTimeLoggedIn = default,
+                IsOnline = false
             };
 
             try
@@ -149,6 +149,8 @@ namespace WebVersion.Controllers
                 return View();
             }
 
+            userServices.ChangesWhenLoggedIn(userServices.FindUser(user.Username));
+
             return RedirectToAction(nameof(Profile));
         }
 
@@ -170,6 +172,10 @@ namespace WebVersion.Controllers
 
         public async Task<IActionResult> Logout()
         {
+            User user = await userManager.GetUserAsync(User);
+
+            userServices.ChangeStatus(user);
+
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }

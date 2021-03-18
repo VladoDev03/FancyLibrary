@@ -29,7 +29,7 @@ namespace Services.Contracts
 
         void ChangePassword(User user, string password);
 
-        //void ChangesWhenLoggedIn(User user);
+        void ChangesWhenLoggedIn(User user);
 
         void ChangeStatus(User user);
 

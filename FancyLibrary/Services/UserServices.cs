@@ -1,5 +1,4 @@
-﻿using Data;
-using Data.Entities;
+﻿using Data.Entities;
 using Data.Models;
 using Data.Utils;
 using Data.ViewModels;
@@ -7,7 +6,6 @@ using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Services
 {
@@ -138,12 +136,12 @@ namespace Services
             db.SaveChanges();
         }
 
-        //public void ChangesWhenLoggedIn(User user)
-        //{
-        //    ChangeStatus(user);
-        //    IncreaseLogInCount(user);
-        //    ChangeLastLogIn(user);
-        //}
+        public void ChangesWhenLoggedIn(User user)
+        {
+            ChangeStatus(user);
+            IncreaseLogInCount(user);
+            ChangeLastLogIn(user);
+        }
 
         public void ChangeStatus(User user)
         {
