@@ -169,7 +169,15 @@ namespace WebVersion.Controllers
                 return View(newData);
             }
 
-            authorServices.UpdateAuthor(newData);
+            try
+            {
+                authorServices.UpdateAuthor(newData);
+            }
+            catch (ArgumentException ae)
+            {
+                ViewData.Add("ShortName", ae.Message);
+                return View(newData);
+            }
 
             return RedirectToAction(nameof(Authors));
         }

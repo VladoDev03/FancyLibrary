@@ -25,7 +25,7 @@ namespace Services.Contracts
 
         void AddContact(User user, string email, string phone);
 
-        void ChangeUserName(User user, string UserName);
+        void ChangeUser(User user, EditUserDTO newData);
 
         void ChangePassword(User user, string password);
 

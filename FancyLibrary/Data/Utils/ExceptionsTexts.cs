@@ -31,7 +31,7 @@ namespace Data.Utils
         public const string NicknameException = "Nickname must be atleast {0} characters long!";
 
         // User exceptions
-        public const string UserNameException = "UserName must be atleast {0} characters long!";
+        public const string UserNameException = "User name must be atleast {0} characters long!";
         public const string AgeException = "You have to be at least {0} years old!";
         public const string NullBirthday = "You have to give us your birthday date so we know how old you are!";
 
@@ -50,5 +50,8 @@ namespace Data.Utils
 
         // Country exceptions
         public const string CountryNameException = "Country name must be atleast {0} characters long!";
+
+        // User services exceptions
+        public const string RepeatingUsername = "This username is taken!";
     }
 }

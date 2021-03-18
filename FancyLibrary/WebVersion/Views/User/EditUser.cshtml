@@ -7,18 +7,22 @@
 <link href="~/css/ProfilePage.css" rel="stylesheet" />
 
 <article id="change-user-data">
-    <form action="">
+    <form asp-controller="User" asp-action="EditUser" method="post">
+        @if (ViewData["InvalidName"] != null || (string)ViewData["InvalidName"] != "")
+        {
+            <span class="text-danger">@ViewData["InvalidName"]</span>
+        }
         <label for="UserName">User name</label>
-        <input class="new-data" type="text" name="UserName" id="UserName">
+        <input class="new-data" type="text" name="userName" id="UserName">
 
         <label for="first-name">First name</label>
-        <input class="new-data" type="text" name="first-name" id="first-name">
+        <input class="new-data" type="text" name="firstName" id="first-name">
 
         <label for="last-name">Middle name</label>
-        <input class="new-data" type="text" name="middle-name" id="middle-name">
+        <input class="new-data" type="text" name="middleName" id="middle-name">
 
         <label for="last-name">Last name</label>
-        <input class="new-data" type="text" name="last-name" id="last-name">
+        <input class="new-data" type="text" name="lastName" id="last-name">
 
         <button type="submit" class="submit-data">Change</button>
     </form>

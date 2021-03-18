@@ -274,12 +274,6 @@ namespace WebVersion.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditUser()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
@@ -296,6 +290,30 @@ namespace WebVersion.Controllers
             if (!result.Succeeded)
             {
                 ViewData.Add("PasswordNotChanged", result.Errors.First().Description);
+                return View();
+            }
+
+            return RedirectToAction(nameof(Profile));
+        }
+
+        [HttpGet]
+        public IActionResult EditUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserDTO newData)
+        {
+            User user = await userManager.GetUserAsync(User);
+
+            try
+            {
+                userServices.ChangeUser(user, newData);
+            }
+            catch (ArgumentException ae)
+            {
+                ViewData.Add("InvalidName", ae.Message);
                 return View();
             }
 

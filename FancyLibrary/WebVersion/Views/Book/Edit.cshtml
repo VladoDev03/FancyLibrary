@@ -13,6 +13,10 @@
         {
             <span class="text-danger">@ViewData["TitleRepeatingError"]</span>
         }
+        @if (ViewData["ShortTitle"] != null || (string)ViewData["ShortTitle"] != "")
+        {
+            <span class="text-danger">@ViewData["ShortTitle"]</span>
+        }
 
         <label for="title">Title</label>
         <input type="text" name="title">

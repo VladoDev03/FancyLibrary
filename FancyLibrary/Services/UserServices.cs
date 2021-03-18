@@ -105,9 +105,28 @@ namespace Services
             db.SaveChanges();
         }
 
-        public void ChangeUserName(User user, string UserName)
+        public void ChangeUser(User user, EditUserDTO newData)
         {
-            user.UserName = UserName;
+            if (FindUser(newData.Username) != null)
+            {
+                throw new ArgumentException(ExceptionsTexts.RepeatingUsername);
+            }
+            if (newData.Username != null && newData.Username != user.UserName)
+            {
+                user.UserName = newData.Username;
+            }
+            if (newData.FirstName != null && newData.FirstName != user.FirstName)
+            {
+                user.FirstName = newData.FirstName;
+            }
+            if (newData.MiddleName != null && newData.MiddleName != user.MiddleName)
+            {
+                user.MiddleName = newData.MiddleName;
+            }
+            if (newData.LastName != null && newData.LastName != user.LastName)
+            {
+                user.LastName = newData.LastName;
+            }
 
             db.SaveChanges();
         }

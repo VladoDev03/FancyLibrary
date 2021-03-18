@@ -232,6 +232,16 @@ namespace WebVersion.Controllers
                 return View(newData);
             }
 
+            try
+            {
+                bookServices.UpdateBook(newData);
+            }
+            catch (ArgumentException ae)
+            {
+                ViewData.Add("ShortTitle", ae.Message);
+                return View(newData);
+            }
+
             bookServices.UpdateBook(newData);
 
             return RedirectToAction(nameof(Books));
