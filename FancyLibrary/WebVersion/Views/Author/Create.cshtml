@@ -9,6 +9,10 @@
 <h1>Add new authors from here</h1>
 
 <form asp-controller="Author" asp-action="Create" method-post>
+    @if (@ViewData["ShortNameError"] != null || (string)@ViewData["ShortNameError"] != "")
+    {
+        <span class="text-danger">@ViewData["ShortNameError"]</span>
+    }
     @if (@ViewData["FirstNameError"] != null || (string)@ViewData["FirstNameError"] != "")
     {
         <span class="text-danger">@ViewData["FirstNameError"]</span>

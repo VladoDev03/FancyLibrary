@@ -11,11 +11,15 @@
 
 <form class="add-book" asp-action="Create" asp-controller="Book" method="post">
 
+    @if (ViewData["ShortName"] != null && (string)ViewData["ShortName"] != "")
+    {
+        <span class="text-danger">@ViewData["ShortName"]</span>
+    }
     @if (ViewData["TitleError"] != null && (string)ViewData["TitleError"] != "")
     {
         <span class="text-danger">@ViewData["TitleError"]</span>
     }
-    else @if (ViewData["RepeatingTitle"] != null && (string)ViewData["RepeatingTitle"] != "")
+    @if (ViewData["RepeatingTitle"] != null && (string)ViewData["RepeatingTitle"] != "")
     {
         <span class="text-danger">@ViewData["RepeatingTitle"]</span>
     }

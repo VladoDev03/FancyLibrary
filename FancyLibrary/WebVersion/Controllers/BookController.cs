@@ -79,24 +79,34 @@ namespace WebVersion.Controllers
                 .GetFullName(book.FirstName, null, book.LastName);
 
             Author author = authorServices.FindAuthor(fullName);
+            Book bookToAdd = null;
 
             if (author == null)
             {
-                author = new Author
+                try
                 {
-                    FirstName = book.FirstName,
-                    LastName = book.LastName
-                };
+                    author = new Author
+                    {
+                        FirstName = book.FirstName,
+                        LastName = book.LastName
+                    };
+
+                    bookToAdd = new Book
+                    {
+                        Title = book.Title,
+                        Genre = book.Genre,
+                        AuthorId = author.Id
+                    };
+                }
+                catch (ArgumentException ae)
+                {
+                    ViewData.Add("ShortName", ae.Message);
+
+                    return View();
+                }
 
                 authorServices.AddAuthor(author);
             }
-
-            Book bookToAdd = new Book
-            {
-                Title = book.Title,
-                Genre = book.Genre,
-                AuthorId = author.Id
-            };
 
             bookServices.AddBook(bookToAdd);
 

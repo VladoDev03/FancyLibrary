@@ -71,18 +71,27 @@ namespace WebVersion.Controllers
                 .GetFullName(authorInput.FirstName, authorInput.MiddleName, authorInput.LastName);
 
             Author author = authorServices.FindAuthor(name);
+            Author authorToAdd = null;
 
             if (author != null)
             {
                 return RedirectToAction(nameof(Authors));
             }
 
-            Author authorToAdd = new Author
+            try
             {
-                FirstName = authorInput.FirstName,
-                MiddleName = authorInput.MiddleName,
-                LastName = authorInput.LastName
-            };
+                authorToAdd = new Author
+                {
+                    FirstName = authorInput.FirstName,
+                    MiddleName = authorInput.MiddleName,
+                    LastName = authorInput.LastName
+                };
+            }
+            catch (ArgumentException ae)
+            {
+                ViewData.Add("ShortNameError", ae.Message);
+                return View();
+            }
 
             if (authorServices.FindAuthor(name) == null)
             {
