@@ -47,61 +47,6 @@ namespace WebVersion.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(AuthorDTO authorInput)
-        {
-            if (authorInput.FirstName == null)
-            {
-                ViewData.Add("FirstNameError", "First name is required!");
-                return View();
-            }
-
-            if (authorInput.LastName == null)
-            {
-                ViewData.Add("LastNameError", "Last name is required!");
-                return View();
-            }
-
-            string name = NameRefactorer
-                .GetFullName(authorInput.FirstName, authorInput.MiddleName, authorInput.LastName);
-
-            Author author = authorServices.FindAuthor(name);
-            Author authorToAdd = null;
-
-            if (author != null)
-            {
-                return RedirectToAction(nameof(Authors));
-            }
-
-            try
-            {
-                authorToAdd = new Author
-                {
-                    FirstName = authorInput.FirstName,
-                    MiddleName = authorInput.MiddleName,
-                    LastName = authorInput.LastName
-                };
-            }
-            catch (ArgumentException ae)
-            {
-                ViewData.Add("ShortNameError", ae.Message);
-                return View();
-            }
-
-            if (authorServices.FindAuthor(name) == null)
-            {
-                authorServices.AddAuthor(authorToAdd);
-            }
-
-            return RedirectToAction(nameof(Authors));
-        }
-
-        [HttpGet]
         public IActionResult Details(int? id)
         {
             if (id == null)
