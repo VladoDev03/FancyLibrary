@@ -17,6 +17,8 @@ namespace Services.Contracts
 
         void AddUser(User user);
 
+        void Delete(User user);
+
         void SetAge(User user);
 
         void AddEmail(User user, string email);

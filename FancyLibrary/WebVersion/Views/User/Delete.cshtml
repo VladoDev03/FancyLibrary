@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<link href="~/css/DeleteUser.css" rel="stylesheet" />
+
+<h1>Delete account</h1>
+<form asp-controller="User" asp-action="Delete" method="post">
+    @if (ViewData["WrongPassword"] != null || (string)ViewData["WrongPassword"] != "")
+    {
+        <span class="text-danger">@ViewData["WrongPassword"]</span>
+    }
+    <label class="label-text" for="password">Type your password in order to delete your account</label>
+    <input type="password" name="password" />
+    <button type="submit">Delete</button>
+</form>

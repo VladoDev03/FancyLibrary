@@ -298,5 +298,37 @@ namespace WebVersion.Controllers
 
             return RedirectToAction(nameof(Profile));
         }
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Profile));
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string password)
+        {
+            User user = await userManager.GetUserAsync(User);
+
+            bool result = await userManager.CheckPasswordAsync(user, password);
+
+            if (!result)
+            {
+                ViewData.Add("WrongPassword", "Incorrect password!");
+                return View();
+            }
+
+            userBookServices.DeleteAllBooks(user);
+
+            await signInManager.SignOutAsync();
+            await userManager.DeleteAsync(user);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

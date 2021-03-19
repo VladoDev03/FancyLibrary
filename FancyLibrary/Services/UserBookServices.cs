@@ -78,5 +78,11 @@ namespace Services
         {
             return db.UsersBooks.FirstOrDefault(ub => ub.UserId == userId && ub.BookId == bookId);
         }
+
+        public void DeleteAllBooks(User user)
+        {
+            db.UsersBooks.RemoveRange(GetAllUsersBooks());
+            db.SaveChanges();
+        }
     }
 }

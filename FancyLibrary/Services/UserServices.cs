@@ -194,6 +194,7 @@ namespace Services
 
             FullUserView fullUserView = new FullUserView();
 
+            fullUserView.Id = user.Id;
             fullUserView.Username = user.UserName;
             fullUserView.FirstName = user.FirstName;
             fullUserView.MiddleName = user.MiddleName != null ? user.MiddleName : "Empty";
@@ -226,6 +227,11 @@ namespace Services
             }
 
             return db.Contacts.FirstOrDefault(c => c.Id == user.ContactId);
+        }
+
+        public void Delete(User user)
+        {
+            db.Users.Remove(user);
         }
     }
 }

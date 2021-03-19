@@ -18,5 +18,7 @@ namespace Services.Contracts
         void RemoveBookFromUser(User user, Book book);
 
         List<Book> GetBooksOfUser(User user);
+
+        void DeleteAllBooks(User user);
     }
 }
