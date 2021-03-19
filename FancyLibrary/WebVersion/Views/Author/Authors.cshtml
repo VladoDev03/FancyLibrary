@@ -31,23 +31,26 @@
                 @{ int i = 1; }
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>@i</td>
-                    <td>@item.FullName</td>
-                    <td>@item.BooksCount</td>
-                    <td>@item.Country</td>
-                    @if (this.signInManager.IsSignedIn(this.User))
-                    {
-                        <td><a type="button" asp-action="Details" asp-controller="Author" asp-route-id="@item.Id">Details</a></td>
-                        <td><a type="button" asp-controller="Author" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
-                    }
-                    @{ i++; }
-                </tr>
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.FullName</td>
+                        <td>@item.BooksCount</td>
+                        <td>@item.Country</td>
+                        @if (this.signInManager.IsSignedIn(this.User))
+                        {
+                            <td><a type="button" asp-action="Details" asp-controller="Author" asp-route-id="@item.Id">Details</a></td>
+                            <td><a type="button" asp-controller="Author" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                        }
+                        @{ i++; }
+                    </tr>
                 }
             </tbody>
         </table>
-        <div id="link-to-add-author">
-            <a class="add-page" href="/Author/Create">Add a new author</a>
-        </div>
+        @if (this.signInManager.IsSignedIn(this.User))
+        {
+            <div id="link-to-add-author">
+                <a class="add-page" href="/Author/Create">Add a new author</a>
+            </div>
+        }
     </div>
 </body>

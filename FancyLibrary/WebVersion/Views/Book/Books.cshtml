@@ -53,8 +53,11 @@
         </table>
     </div>
     <div>
-        <div id="link-to-add-book">
-            <a class="add-page" href="/Book/Create">Add a new book</a>
-        </div>
+        @if (this.signInManager.IsSignedIn(this.User))
+        {
+            <div id="link-to-add-book">
+                <a class="add-page" href="/Book/Create">Add a new book</a>
+            </div>
+        }
     </div>
 </body>
