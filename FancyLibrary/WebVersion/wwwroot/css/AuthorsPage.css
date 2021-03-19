@@ -129,11 +129,11 @@ form button {
         color: rgb(20, 10, 112);
     }
 
-    #order-by button {
+    #order-by a {
         margin-left: 15px;
     }
 
-    #order-by button {
+    #order-by a {
         background-color: rgb(29, 243, 143);
         color: rgb(13, 82, 212);
         font-weight: bold;
@@ -145,7 +145,7 @@ form button {
         margin-left: 12px;
     }
 
-        #order-by button:hover {
+        #order-by a:hover {
             text-decoration: underline;
             background-color: rgb(13, 82, 212);
             color: rgb(29, 243, 143);
