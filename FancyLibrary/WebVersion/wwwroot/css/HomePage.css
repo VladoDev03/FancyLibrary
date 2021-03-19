@@ -31,9 +31,32 @@ h2 {
     text-align-last: center;
     font-style: italic;
     width: 300px;
-    height: 165px;
+    height: 200px;
     padding-top: 1px;
     border-radius: 25px;
     border: solid;
     border-color: rgb(231, 156, 231);
+}
+
+i {
+    display: inline;
+    color: tomato;
+    margin-right: 5px;
+}
+
+i:hover {
+    color: rgb(13, 146, 146);
+}
+
+.icons {
+    margin-top: 10px
+}
+
+p {
+    margin-top: 125px;
+    text-align: center;
+}
+
+.icons a {
+    display: inline;
 }
