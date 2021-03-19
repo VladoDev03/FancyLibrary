@@ -61,15 +61,8 @@ namespace Services
 
         public void AddContact(User user, string email, string phone)
         {
-            if (db.Contacts.FirstOrDefault(c => c.Email == email && email != null) != null)
-            {
-                throw new ArgumentException(ExceptionsTexts.RepeatEmail);
-            }
-
-            if (db.Contacts.FirstOrDefault(c => c.Phone == phone && phone != null) != null)
-            {
-                throw new ArgumentException(ExceptionsTexts.RepeatPhone);
-            }
+            bool isFreeEmail = db.Contacts.ToList().Exists(c => c.Email == email);
+            bool isFreePhone = db.Contacts.ToList().Exists(c => c.Phone == phone);
 
             Contact oldContact = FindUserContact(user);
 
@@ -80,11 +73,21 @@ namespace Services
 
             if (email != null && email != oldContact.Email)
             {
+                if (isFreeEmail)
+                {
+                    throw new ArgumentException(ExceptionsTexts.RepeatEmail);
+                }
+
                 oldContact.Email = email;
             }
 
             if (phone != null && phone != oldContact.Phone)
             {
+                if (isFreePhone)
+                {
+                    throw new ArgumentException(ExceptionsTexts.RepeatPhone);
+                }
+
                 oldContact.Phone = phone;
             }
 
@@ -105,12 +108,13 @@ namespace Services
 
         public void ChangeUser(User user, EditUserDTO newData)
         {
-            if (FindUser(newData.Username) != null)
-            {
-                throw new ArgumentException(ExceptionsTexts.RepeatingUsername);
-            }
             if (newData.Username != null && newData.Username != user.UserName)
             {
+                if (FindUser(newData.Username) != null)
+                {
+                    throw new ArgumentException(ExceptionsTexts.RepeatingUsername);
+                }
+
                 user.UserName = newData.Username;
             }
             if (newData.FirstName != null && newData.FirstName != user.FirstName)
