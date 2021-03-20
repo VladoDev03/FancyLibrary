@@ -129,36 +129,6 @@ namespace WebVersion.Controllers
             return RedirectToAction("Books", "Book");
         }
 
-        private bool ValidateProperties(BookDTO book)
-        {
-            if (book.Title == null)
-            {
-                ViewData.Add("TitleError", "Title is required!");
-
-                return true;
-            }
-            else if (book.Genre == null)
-            {
-                ViewData.Add("GenreError", "Genre is required!");
-
-                return true;
-            }
-            else if (book.FirstName == null)
-            {
-                ViewData.Add("AuthorFirstNameError", "Author first name is required!");
-
-                return true;
-            }
-            else if (book.LastName == null)
-            {
-                ViewData.Add("AuthorLastNameError", "Author last name is required!");
-
-                return true;
-            }
-
-            return false;
-        }
-
         [HttpGet]
         public IActionResult Details(int? id)
         {
@@ -177,31 +147,6 @@ namespace WebVersion.Controllers
             }
 
             return View(result);
-        }
-
-        private FullBookView GetDetails(Book book)
-        {
-            if (book == null)
-            {
-                return null;
-            }
-
-            Author author = authorServices.FindAuthor(book.AuthorId);
-            string authorFullName = NameRefactorer
-                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
-
-            FullBookView result = new FullBookView
-            {
-                Id = book.Id,
-                Title = book.Title,
-                Genre = book.Genre,
-                AuthorName = authorFullName,
-                Year = book.Year,
-                Pages = book.Pages,
-                SavedTimes = bookServices.GetBookSavedTimes(book)
-            };
-
-            return result;
         }
 
         [HttpGet]
@@ -275,6 +220,61 @@ namespace WebVersion.Controllers
             {
                 return books;
             }
+        }
+
+        private bool ValidateProperties(BookDTO book)
+        {
+            if (book.Title == null)
+            {
+                ViewData.Add("TitleError", "Title is required!");
+
+                return true;
+            }
+            else if (book.Genre == null)
+            {
+                ViewData.Add("GenreError", "Genre is required!");
+
+                return true;
+            }
+            else if (book.FirstName == null)
+            {
+                ViewData.Add("AuthorFirstNameError", "Author first name is required!");
+
+                return true;
+            }
+            else if (book.LastName == null)
+            {
+                ViewData.Add("AuthorLastNameError", "Author last name is required!");
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private FullBookView GetDetails(Book book)
+        {
+            if (book == null)
+            {
+                return null;
+            }
+
+            Author author = authorServices.FindAuthor(book.AuthorId);
+            string authorFullName = NameRefactorer
+                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+            FullBookView result = new FullBookView
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Genre = book.Genre,
+                AuthorName = authorFullName,
+                Year = book.Year,
+                Pages = book.Pages,
+                SavedTimes = bookServices.GetBookSavedTimes(book)
+            };
+
+            return result;
         }
     }
 }

@@ -49,16 +49,6 @@ namespace Services
             db.SaveChanges();
         }
 
-        public void AddEmail(User user, string email)
-        {
-            user.Contact = new Contact
-            {
-                Email = email
-            };
-
-            db.SaveChanges();
-        }
-
         public void AddContact(User user, string email, string phone)
         {
             bool isFreeEmail = db.Contacts.ToList().Exists(c => c.Email == email);
@@ -101,6 +91,16 @@ namespace Services
             user.Contact = new Contact
             {
                 Phone = phone
+            };
+
+            db.SaveChanges();
+        }
+
+        public void AddEmail(User user, string email)
+        {
+            user.Contact = new Contact
+            {
+                Email = email
             };
 
             db.SaveChanges();

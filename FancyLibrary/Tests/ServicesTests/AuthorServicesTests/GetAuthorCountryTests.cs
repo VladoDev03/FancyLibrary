@@ -1,5 +1,4 @@
 ﻿using Data.Entities;
-using Data.Utils;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Services;

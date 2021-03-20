@@ -3,11 +3,8 @@ using Data.Utils;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests.ServicesTests.BookServicesTests
 {

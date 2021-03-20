@@ -1,6 +1,5 @@
 ﻿using Data.Entities;
 using Data.Models;
-using Data.Utils;
 using Data.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -84,47 +83,6 @@ namespace WebVersion.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        private bool ValidatePropertiesRegister(UserDTO user)
-        {
-            if (userServices.FindUser(user.Username) != null)
-            {
-                ViewData.Add("ExistingUserError", "Username is taken!");
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(user.Username) || user.Username.Length < 3)
-            {
-                ViewData.Add("MissingUsername", "Username has to be minimum of 3 characters!");
-                return true;
-            }
-
-            if (user.Password != user.ConfirmPassword || user.Password == null || user.ConfirmPassword == null)
-            {
-                ViewData.Add("NotMatchingPasswordsError", "Password must match confirm password!");
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(user.FirstName) || user.FirstName.Length < 3)
-            {
-                ViewData.Add("MissingFirstName", "First name has to be minimum of 3 characters!");
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(user.LastName) || user.LastName.Length < 3)
-            {
-                ViewData.Add("MissingLastName", "Last name has to be minimum of 3 characters!");
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(user.Birthday))
-            {
-                ViewData.Add("MissingBirthday", "Birthday is required!");
-                return true;
-            }
-
-            return false;
-        }
-
         [HttpGet]
         public IActionResult Login()
         {
@@ -152,22 +110,6 @@ namespace WebVersion.Controllers
             userServices.ChangesWhenLoggedIn(userServices.FindUser(user.Username));
 
             return RedirectToAction(nameof(Profile));
-        }
-
-        private bool ValidatePropertiesLogin(UserDTO user)
-        {
-            if (string.IsNullOrEmpty(user.Username))
-            {
-                ViewData.Add("NullUsernameLogin", "Please type your username!");
-                return true;
-            }
-            if (string.IsNullOrEmpty(user.Password))
-            {
-                ViewData.Add("NullPasswordLogin", "Please type your password!");
-                return true;
-            }
-
-            return false;
         }
 
         public async Task<IActionResult> Logout()
@@ -327,6 +269,63 @@ namespace WebVersion.Controllers
             LogData data = userServices.FindLogData(user);
 
             return View(data);
+        }
+
+        private bool ValidatePropertiesRegister(UserDTO user)
+        {
+            if (userServices.FindUser(user.Username) != null)
+            {
+                ViewData.Add("ExistingUserError", "Username is taken!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.Username) || user.Username.Length < 3)
+            {
+                ViewData.Add("MissingUsername", "Username has to be minimum of 3 characters!");
+                return true;
+            }
+
+            if (user.Password != user.ConfirmPassword || user.Password == null || user.ConfirmPassword == null)
+            {
+                ViewData.Add("NotMatchingPasswordsError", "Password must match confirm password!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.FirstName) || user.FirstName.Length < 3)
+            {
+                ViewData.Add("MissingFirstName", "First name has to be minimum of 3 characters!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.LastName) || user.LastName.Length < 3)
+            {
+                ViewData.Add("MissingLastName", "Last name has to be minimum of 3 characters!");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(user.Birthday))
+            {
+                ViewData.Add("MissingBirthday", "Birthday is required!");
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool ValidatePropertiesLogin(UserDTO user)
+        {
+            if (string.IsNullOrEmpty(user.Username))
+            {
+                ViewData.Add("NullUsernameLogin", "Please type your username!");
+                return true;
+            }
+            if (string.IsNullOrEmpty(user.Password))
+            {
+                ViewData.Add("NullPasswordLogin", "Please type your password!");
+                return true;
+            }
+
+            return false;
         }
     }
 }
