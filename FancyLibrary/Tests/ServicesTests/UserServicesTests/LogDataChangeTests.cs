@@ -71,6 +71,29 @@ namespace Tests.ServicesTests.UserServicesTests
             Assert.That(user.LogData.IsOnline, Is.EqualTo(true));
         }
 
+        [Test]
+        public void IsLogDataAllChangesMethodIsSettingEverythingCorrectly()
+        {
+            User user = userServices.FindUser("vladsto");
+            LogData logData = userServices.FindLogData(user);
+
+            int timesLoggedInAfter = logData.TimesLoggedIn + 1;
+
+            logData.IsOnline = false;
+
+            userServices.ChangesWhenLoggedIn(user);
+
+            bool result = user.LogData.LastTimeLoggedIn.ToLongTimeString() == DateTime.Now.ToLongTimeString()
+                && user.LogData.IsOnline == true
+                && user.LogData.TimesLoggedIn == timesLoggedInAfter;
+
+            Assert.IsTrue(result);
+
+            //Assert.AreEqual(logData.LastTimeLoggedIn.ToLongTimeString(), DateTime.Now.ToLongTimeString());
+            //Assert.IsTrue(logData.IsOnline);
+            //Assert.AreEqual(logData.TimesLoggedIn, timesLoggedInAfter);
+        }
+
         public List<User> CreateInMemoryDb()
         {
             List<User> users = new List<User>

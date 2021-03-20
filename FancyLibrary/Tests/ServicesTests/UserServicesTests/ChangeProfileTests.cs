@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Data.Models;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Services;
@@ -53,13 +54,38 @@ namespace Tests.ServicesTests.UserServicesTests
             Assert.IsFalse(result);
         }
 
-        //[Test]
-        //public void IsChangingUserName()
-        //{
-        //    userServices.ChangeUserName(user, "vladrig");
+        [Test]
+        public void IsChangingUserName()
+        {
+            EditUserDTO editUserDTO = new EditUserDTO
+            {
+                Username = "sirMadam",
+                FirstName = "FirsteName",
+                MiddleName = "MidleName",
+                LastName = "LasteName"
+            };
 
-        //    Assert.That(user.UserName, Is.EqualTo("vladrig"));
-        //}
+            userServices.ChangeUser(user, editUserDTO);
+
+            Assert.That(user.UserName, Is.EqualTo("sirMadam"));
+        }
+
+        [Test]
+        public void IsThrowingExceptionWhenUserNameIsTaken()
+        {
+            EditUserDTO editUserDTO = new EditUserDTO
+            {
+                Username = "sandwich",
+                FirstName = "FirsteName",
+                MiddleName = "MidleName",
+                LastName = "LasteName"
+            };
+
+            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
+            userServices.ChangeUser(user, editUserDTO));
+
+            Assert.That("This username is taken!", Is.EqualTo(ae.Message));
+        }
 
         public List<User> CreateInMemoryDb()
         {
