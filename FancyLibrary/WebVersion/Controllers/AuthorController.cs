@@ -95,18 +95,16 @@ namespace WebVersion.Controllers
             string fullName = NameRefactorer
                 .GetFullName(newData.FirstName, newData.MiddleName, newData.LastName);
 
-            Author author = authorServices.FindAuthor(fullName);
+            Author newAuthor = authorServices.FindAuthor(fullName);
+            Author oldAuthor = authorServices.FindAuthor(newData.Id);
 
-            if (author != null)
+            string oldFullName = NameRefactorer
+                .GetFullName(oldAuthor.FirstName, oldAuthor.MiddleName, oldAuthor.LastName);
+
+            if (newAuthor != null && fullName != oldFullName)
             {
-                string oldName = NameRefactorer
-                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
-
-                if (fullName != oldName)
-                {
-                    ViewData.Add("NameRepeatingError", "An author with this name already exists!");
-                    return View(newData);
-                }
+                ViewData.Add("NameRepeatingError", "An author with this name already exists!");
+                return View(newData);
             }
 
             try
