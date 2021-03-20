@@ -1,4 +1,5 @@
-﻿@*
+﻿@model Data.Models.EditAuthorDTO;
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -19,22 +20,22 @@
         }
 
         <label for="firstName">First name</label>
-        <input type="text" name="firstName">
+        <input type="text" name="firstName" value="@Model.FirstName">
 
         <label for="middleName">Middle name</label>
-        <input type="text" name="middleName">
+        <input type="text" name="middleName" value="@Model.MiddleName">
 
         <label for="lastName">Last name</label>
-        <input type="text" name="lastName">
+        <input type="text" name="lastName" value="@Model.LastName">
 
         <label for="birthday">Birthday</label>
-        <input type="date" name="birthday">
+        <input type="date" name="birthday" value="@Model.Birthday">
 
         <label for="nickname">Nickname</label>
-        <input type="text" name="nickname">
+        <input type="text" name="nickname" value="@Model.Nickname">
 
         <label for="country">Country</label>
-        <input type="text" name="country">
+        <input type="text" name="country" value="@Model.Country">
 
         <button type="submit" asp-route-id="@Model.Id">Change</button>
         <button asp-controller="Author" asp-action="Authors">Cancel</button>

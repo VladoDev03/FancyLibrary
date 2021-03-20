@@ -178,6 +178,7 @@ form {
         padding: 3px 7px;
         font-style: italic;
         margin-left: 12px;
+        text-decoration: none;
     }
 
         #order-by a:hover {

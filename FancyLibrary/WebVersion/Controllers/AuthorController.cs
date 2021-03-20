@@ -7,7 +7,6 @@ using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebVersion.Controllers
 {
@@ -83,7 +82,8 @@ namespace WebVersion.Controllers
                 MiddleName = author.MiddleName,
                 LastName = author.LastName,
                 Birthday = author.Birthday,
-                Nickname = author.Nickname
+                Nickname = author.Nickname,
+                Country = authorServices.GetAuthorCountry(author)
             };
 
             return View(result);
@@ -99,8 +99,14 @@ namespace WebVersion.Controllers
 
             if (author != null)
             {
-                ViewData.Add("NameRepeatingError", "An author with this name already exists!");
-                return View(newData);
+                string oldName = NameRefactorer
+                .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+                if (fullName != oldName)
+                {
+                    ViewData.Add("NameRepeatingError", "An author with this name already exists!");
+                    return View(newData);
+                }
             }
 
             try
