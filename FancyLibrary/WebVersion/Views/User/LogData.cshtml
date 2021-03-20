@@ -1,0 +1,28 @@
+﻿@model Data.Entities.LogData;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<link href="~/css/ProfilePage.css" rel="stylesheet" />
+
+<div class="profile-info">
+    <br>
+    <br>
+    <br>
+    <h2 class="user-title">Log data</h2>
+    <div class="property">
+        @{
+            DateTime dateTime = (DateTime)Model.RegisterDate;
+            string date = dateTime.ToLongDateString();
+        }
+        Register date: <a class="property-link" href="">@date</a>
+    </div><br>
+    <div class="property">
+        First name:  <a class="property-link" href="">@Model.LastTimeLoggedIn</a>
+    </div><br>
+    <div class="property">
+        Middle name:  <a class="property-link" href="">@Model.TimesLoggedIn</a>
+    </div><br>
+</div>

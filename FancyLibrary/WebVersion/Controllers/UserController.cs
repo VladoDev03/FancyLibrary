@@ -330,5 +330,15 @@ namespace WebVersion.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> LogData()
+        {
+            User user = await userManager.GetUserAsync(User);
+
+            LogData data = userServices.FindLogData(user);
+
+            return View(data);
+        }
     }
 }
