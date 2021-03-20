@@ -1,5 +1,7 @@
 ﻿using Data;
 using Data.Entities;
+using Data.Utils;
+using Data.ViewModels;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -83,6 +85,29 @@ namespace Services
         {
             db.UsersBooks.RemoveRange(GetAllUsersBooks());
             db.SaveChanges();
+        }
+
+        public List<BookView> GetBooksOfUserViews(List<Book> books)
+        {
+            List<BookView> result = new List<BookView>();
+
+            foreach (var item in books)
+            {
+                Author author = db.Authors.FirstOrDefault(a => a.Id == item.AuthorId);
+
+                BookView bookView = new BookView
+                {
+                    Id = item.Id,
+                    Title = item.Title,
+                    Genre = item.Genre,
+                    AuthorName = NameRefactorer
+                        .GetFullName(author.FirstName, author.MiddleName, author.LastName)
+                };
+
+                result.Add(bookView);
+            }
+
+            return result;
         }
     }
 }

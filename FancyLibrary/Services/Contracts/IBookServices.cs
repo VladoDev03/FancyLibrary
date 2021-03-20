@@ -1,8 +1,7 @@
 ﻿using Data.Entities;
 using Data.Models;
-using System;
+using Data.ViewModels;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Services.Contracts
 {
@@ -23,5 +22,7 @@ namespace Services.Contracts
         Author GetBookAuthor(Book book);
 
         void UpdateBook(EditBookDTO book);
+
+        List<BookView> GetBookList(List<Book> books);
     }
 }

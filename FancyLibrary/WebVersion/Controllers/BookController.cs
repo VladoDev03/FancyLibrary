@@ -35,27 +35,8 @@ namespace WebVersion.Controllers
         public IActionResult Books(string strategy = "title")
         {
             List<Book> books = bookServices.GetAllBooks();
-            List<BookView> booksViews = new List<BookView>();
 
-            foreach (Book item in books)
-            {
-                Author author = authorServices.FindAuthor(item.AuthorId);
-
-                string authorName = NameRefactorer
-                    .GetFullName(author.FirstName, author.MiddleName, author.LastName);
-
-                BookView book = new BookView
-                {
-                    Id = item.Id,
-                    Title = item.Title,
-                    Genre = item.Genre,
-                    AuthorName = authorName,
-                    Year = item.Year,
-                    SavedTimes = bookServices.GetBookSavedTimes(item)
-                };
-
-                booksViews.Add(book);
-            }
+            List<BookView> booksViews = bookServices.GetBookList(books);
 
             booksViews = OrderByStrategy(booksViews, strategy);
 

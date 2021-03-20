@@ -1,8 +1,7 @@
 ﻿using Data.Entities;
 using Data.Models;
-using System;
+using Data.ViewModels;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Services.Contracts
 {
@@ -27,5 +26,7 @@ namespace Services.Contracts
         string GetAuthorCountry(Author author);
 
         void UpdateAuthor(EditAuthorDTO book);
+
+        List<AuthorView> GetAuthorList(List<Author> authors);
     }
 }

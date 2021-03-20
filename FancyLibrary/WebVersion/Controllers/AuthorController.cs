@@ -25,20 +25,7 @@ namespace WebVersion.Controllers
         {
             List<Author> authors = authorServices.GetAllAuthors();
 
-            List<AuthorView> result = new List<AuthorView>();
-
-            foreach (var item in authors)
-            {
-                AuthorView author = new AuthorView
-                {
-                    Id = item.Id,
-                    FullName = NameRefactorer.GetFullName(item.FirstName, item.MiddleName, item.LastName),
-                    BooksCount = authorServices.GetAuthorBooksCount(item),
-                    Country = authorServices.GetAuthorCountry(item)
-                };
-
-                result.Add(author);
-            }
+            List<AuthorView> result = authorServices.GetAuthorList(authors);
 
             result = OrderByStrategy(result, strategy);
 

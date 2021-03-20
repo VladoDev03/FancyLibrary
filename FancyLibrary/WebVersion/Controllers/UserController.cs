@@ -186,23 +186,11 @@ namespace WebVersion.Controllers
             User user = await userManager.GetUserAsync(User);
 
             FullUserView fullUserView = userServices.GetAllData(user);
+
             List<Book> books = userBookServices.GetBooksOfUser(user);
+            List<BookView> booksViews = userBookServices.GetBooksOfUserViews(books);
 
-            foreach (var item in books)
-            {
-                Author author = bookServices.GetBookAuthor(item);
-
-                BookView bookView = new BookView
-                {
-                    Id = item.Id,
-                    Title = item.Title,
-                    Genre = item.Genre,
-                    AuthorName = NameRefactorer
-                        .GetFullName(author.FirstName, author.MiddleName, author.LastName)
-                };
-
-                fullUserView.Books.Add(bookView);
-            }
+            fullUserView.Books.AddRange(booksViews);
 
             return View(fullUserView);
         }

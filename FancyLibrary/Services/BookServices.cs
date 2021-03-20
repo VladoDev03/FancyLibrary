@@ -1,12 +1,10 @@
-﻿using Data;
-using Data.Entities;
+﻿using Data.Entities;
 using Data.Models;
 using Data.Utils;
+using Data.ViewModels;
 using Services.Contracts;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Services
 {
@@ -86,6 +84,33 @@ namespace Services
             }
 
             db.SaveChanges();
+        }
+
+        public List<BookView> GetBookList(List<Book> books)
+        {
+            List<BookView> booksViews = new List<BookView>();
+
+            foreach (Book item in books)
+            {
+                Author author = db.Authors.FirstOrDefault(a => a.Id == item.AuthorId);
+
+                string authorName = NameRefactorer
+                    .GetFullName(author.FirstName, author.MiddleName, author.LastName);
+
+                BookView book = new BookView
+                {
+                    Id = item.Id,
+                    Title = item.Title,
+                    Genre = item.Genre,
+                    AuthorName = authorName,
+                    Year = item.Year,
+                    SavedTimes = GetBookSavedTimes(item)
+                };
+
+                booksViews.Add(book);
+            }
+
+            return booksViews;
         }
     }
 }

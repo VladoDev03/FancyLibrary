@@ -1,12 +1,10 @@
-﻿using Data;
-using Data.Entities;
+﻿using Data.Entities;
 using Data.Models;
 using Data.Utils;
+using Data.ViewModels;
 using Services.Contracts;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Services
 {
@@ -136,6 +134,26 @@ namespace Services
             }
 
             db.SaveChanges();
+        }
+
+        public List<AuthorView> GetAuthorList(List<Author> authors)
+        {
+            List<AuthorView> result = new List<AuthorView>();
+
+            foreach (var item in authors)
+            {
+                AuthorView author = new AuthorView
+                {
+                    Id = item.Id,
+                    FullName = NameRefactorer.GetFullName(item.FirstName, item.MiddleName, item.LastName),
+                    BooksCount = GetAuthorBooksCount(item),
+                    Country = GetAuthorCountry(item)
+                };
+
+                result.Add(author);
+            }
+
+            return result;
         }
     }
 }

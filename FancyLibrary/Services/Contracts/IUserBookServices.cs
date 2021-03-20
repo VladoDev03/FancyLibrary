@@ -1,7 +1,6 @@
 ﻿using Data.Entities;
-using System;
+using Data.ViewModels;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Services.Contracts
 {
@@ -20,5 +19,7 @@ namespace Services.Contracts
         List<Book> GetBooksOfUser(User user);
 
         void DeleteAllBooks(User user);
+
+        List<BookView> GetBooksOfUserViews(List<Book> books);
     }
 }
