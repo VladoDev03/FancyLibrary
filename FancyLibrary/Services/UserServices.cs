@@ -232,6 +232,7 @@ namespace Services
         public void Delete(User user)
         {
             db.Users.Remove(user);
+            db.SaveChanges();
         }
     }
 }

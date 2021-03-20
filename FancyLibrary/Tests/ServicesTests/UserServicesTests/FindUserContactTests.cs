@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Tests.ServicesTests.UserServicesTests
 {
-    public class AddContactsTests
+    public class FindUserContactTests
     {
         private DbContextOptions<FancyLibraryContext> options;
         private FancyLibraryContext db;
@@ -19,7 +19,7 @@ namespace Tests.ServicesTests.UserServicesTests
         public void Setup()
         {
             options = new DbContextOptionsBuilder<FancyLibraryContext>()
-                   .UseInMemoryDatabase(databaseName: "fancy_library_add_contact")
+                   .UseInMemoryDatabase(databaseName: "fancy_library_find_contact")
                    .Options;
 
             db = new FancyLibraryContext(options);
@@ -28,7 +28,7 @@ namespace Tests.ServicesTests.UserServicesTests
 
             users = CreateInMemoryDb();
             db.Users.AddRange(users);
-            db.Contacts.AddRange(FillContacts());
+            db.Contacts.AddRange(CreateInMemoryDb1());
             db.SaveChanges();
         }
 
@@ -39,99 +39,39 @@ namespace Tests.ServicesTests.UserServicesTests
         }
 
         [Test]
-        public void IsSettingEmailCorrectly()
-        {
-            User user = db.Users.FirstOrDefault();
-
-            userServices.AddEmail(user, "emaill@some.email");
-
-            Assert.That(user.Contact.Email, Is.EqualTo("emaill@some.email"));
-        }
-
-        [Test]
-        public void IsSettingPhoneCorrectly()
-        {
-            User user = db.Users.FirstOrDefault();
-
-            userServices.AddPhone(user, "0123456789");
-
-            Assert.That(user.Contact.Phone, Is.EqualTo("0123456789"));
-        }
-
-        [Test]
-        public void IsAddingContactWhenContactIsValid()
+        public void IsFindingCorrectContactWhenUserExists()
         {
             User user = db.Users.FirstOrDefault(u => u.UserName == "vladsto");
 
-            userServices.AddContact(user, "vlado@dev.git", "0123456789");
-            bool result = user.Contact.Email == "vlado@dev.git" && user.Contact.Phone == "0123456789";
+            Contact contact = userServices.FindUserContact(user);
+            bool result = contact.Email == "vlado@dev.git" && contact.Phone == "1234567890";
 
             Assert.IsTrue(result);
         }
 
         [Test]
-        public void IsNotAddingContactWhenEmailIsTaken()
+        public void IsReturningNullWhenUserIsNull()
         {
-            User user = db.Users.FirstOrDefault(u => u.UserName == "vladsto");
+            User user = db.Users.FirstOrDefault(u => u.UserName == "null:)");
 
-            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
-            userServices.AddContact(user, "afqawf@segesg.aef", "2527957388"));
+            Contact contact = userServices.FindUserContact(user);
+            bool result = contact == null;
 
-            Assert.AreEqual("This email is already taken!", ae.Message);
+            Assert.IsTrue(result);
         }
 
         [Test]
-        public void IsNotAddingContactWhenPhoneTaken()
+        public void IsReturningNullWhenUserHasNoContact()
         {
-            User user = db.Users.FirstOrDefault(u => u.UserName == "vladsto");
+            User user = db.Users.FirstOrDefault(u => u.UserName == "hammer");
 
-            ArgumentException ae = Assert.Throws<ArgumentException>(() =>
-            userServices.AddContact(user, "vlado@dev.git", "2527957388"));
+            Contact contact = userServices.FindUserContact(user);
+            bool result = contact == null;
 
-            Assert.AreEqual("This phone is already taken!", ae.Message);
+            Assert.IsTrue(result);
         }
 
-        [Test]
-        public void IsNotSettingContactWhenEmailIsEqualToOldEmail()
-        {
-            User user = db.Users.FirstOrDefault(u => u.UserName == "vladsto");
-
-            userServices.AddContact(user, "vladodot@dev.git", "9573880962");
-
-            Assert.AreEqual(user.Contact.Email, user.Contact.Email);
-        }
-
-        [Test]
-        public void IsNotSettingContactWhenPhoneIsEqualToOldPhone()
-        {
-            User user = db.Users.FirstOrDefault(u => u.UserName == "vladsto");
-
-            userServices.AddContact(user, "vladodot@dev.git", "9573880962");
-
-            Assert.AreEqual(user.Contact.Phone, user.Contact.Phone);
-        }
-
-        [Test]
-        public void IsNotSettingContactWhenEmailIsNull()
-        {
-            User user = db.Users.FirstOrDefault(u => u.UserName == "vladsto");
-
-            userServices.AddContact(user, null, "9573880962");
-
-            Assert.AreEqual(user.Contact.Email, user.Contact.Email);
-        }
-
-        [Test]
-        public void IsNotSettingContactWhenPhoneIsNull()
-        {
-            User user = db.Users.FirstOrDefault(u => u.UserName == "vladsto");
-
-            userServices.AddContact(user, "vladodot@dev.git", null);
-
-            Assert.AreEqual(user.Contact.Phone, user.Contact.Phone);
-        }
-
-        private List<User> CreateInMemoryDb()
+        public List<User> CreateInMemoryDb()
         {
             List<User> users = new List<User>
             {
@@ -141,12 +81,13 @@ namespace Tests.ServicesTests.UserServicesTests
                     Password = "42)snncmfT",
                     FirstName = "Vladimir",
                     LastName = "Stoyanov",
+                    ContactId = 1,
                     LogData = new LogData
                     {
                         LastTimeLoggedIn = DateTime.Now,
                         RegisterDate = DateTime.Now,
                         TimesLoggedIn = 1,
-                        IsOnline = true
+                        IsOnline = true,
                     }
                 },
 
@@ -157,7 +98,6 @@ namespace Tests.ServicesTests.UserServicesTests
                     FirstName = "ham",
                     MiddleName = "strong",
                     LastName = "mer",
-                    ContactId = 2,
                     LogData = new LogData
                     {
                         LastTimeLoggedIn = DateTime.Now,
@@ -216,15 +156,15 @@ namespace Tests.ServicesTests.UserServicesTests
             return users;
         }
 
-        private List<Contact> FillContacts()
+        private List<Contact> CreateInMemoryDb1()
         {
             List<Contact> contacts = new List<Contact>
             {
                 new Contact
                 {
-                    Id = 2,
-                    Email = "afqawf@segesg.aef",
-                    Phone = "2527957388"
+                    Id = 1,
+                    Email = "vlado@dev.git",
+                    Phone = "1234567890"
                 }
             };
 

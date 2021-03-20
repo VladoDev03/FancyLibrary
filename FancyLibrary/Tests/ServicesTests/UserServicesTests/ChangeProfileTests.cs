@@ -42,6 +42,17 @@ namespace Tests.ServicesTests.UserServicesTests
             Assert.That(user.Password, Is.EqualTo("P$roLa12"));
         }
 
+        [Test]
+        public void IsDeleteingUserProfile()
+        {
+            User user = db.Users.FirstOrDefault();
+
+            userServices.Delete(user);
+            bool result = userServices.GetAllUsers().Exists(u => u.Id == user.Id);
+
+            Assert.IsFalse(result);
+        }
+
         //[Test]
         //public void IsChangingUserName()
         //{
