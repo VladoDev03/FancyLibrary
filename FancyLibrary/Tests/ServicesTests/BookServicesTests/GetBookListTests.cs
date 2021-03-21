@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Services;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Tests.ServicesTests.BookServicesTests
 {
