@@ -35,6 +35,10 @@ namespace WebVersion
             services.AddScoped<ICountryServices, CountryServices>();
             services.AddScoped<IUserBookServices, UserBookServices>();
             services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<IXmlServices, XmlServices>();
+            services.AddScoped<ICsvServices, CsvServices>();
+            services.AddScoped<IJsonServices, JsonServices>();
+            services.AddScoped<IQrCodeServices, QrCodeServices>();
 
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<FancyLibraryContext>()
