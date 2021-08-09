@@ -1,7 +1,12 @@
-﻿namespace Data.ViewModels
+﻿using System.Text.Json.Serialization;
+using System.Xml.Serialization;
+
+namespace Data.ViewModels
 {
     public class BookView
     {
+        [XmlIgnore]
+        [JsonIgnore]
         public int? Id { get; set; }
 
         public string Title { get; set; }
@@ -13,5 +18,10 @@
         public int? Year { get; set; }
 
         public int SavedTimes { get; set; }
+
+        public override string ToString()
+        {
+            return $"Title: {Title}; Genre: {Genre}; Author: {AuthorName}; Year: {Year}; Saved times: {SavedTimes}.";
+        }
     }
 }

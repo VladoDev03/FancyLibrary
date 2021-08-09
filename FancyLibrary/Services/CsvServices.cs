@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using Data.ViewModels;
 
 namespace Services
 {
@@ -16,7 +17,7 @@ namespace Services
             File.WriteAllText(path, content);
         }
 
-        public string BookListToCsv(List<Book> books)
+        public string BookListToCsv(List<BookView> books)
         {
             StringWriter writer = new StringWriter();
             using CsvWriter csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture);

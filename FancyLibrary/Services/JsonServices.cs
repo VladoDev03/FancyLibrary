@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using Data.ViewModels;
 
 namespace Services
 {
@@ -15,11 +16,23 @@ namespace Services
             File.WriteAllText(path, content);
         }
 
-        public string BookListToJson(List<Book> books)
+        public string BookListToJson(List<BookView> books)
         {
             string result = JsonSerializer.Serialize(books, new JsonSerializerOptions()
             {
-                WriteIndented = true
+                WriteIndented = true,
+                IgnoreNullValues = true
+            });
+
+            return result;
+        }
+
+        public string BookListToJson(List<BookView> books, bool isNull)
+        {
+            string result = JsonSerializer.Serialize(books, new JsonSerializerOptions()
+            {
+                WriteIndented = true,
+                IgnoreNullValues = isNull
             });
 
             return result;

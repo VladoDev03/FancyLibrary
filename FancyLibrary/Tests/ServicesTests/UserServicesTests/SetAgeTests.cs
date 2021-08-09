@@ -31,7 +31,7 @@ namespace Tests.ServicesTests.UserServicesTests
 
             userServices.SetAge(user);
 
-            Assert.That(user.Age, Is.EqualTo(17));
+            Assert.That(user.Age, Is.EqualTo(18));
         }
     }
 }

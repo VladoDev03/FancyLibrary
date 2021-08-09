@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,6 @@ namespace Services.Contracts
     {
         void MakeCsvFileBook(string content, string path);
 
-        string BookListToCsv(List<Book> books);
+        string BookListToCsv(List<BookView> books);
     }
 }

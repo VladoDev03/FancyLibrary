@@ -7,12 +7,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
+using Data.ViewModels;
 
 namespace Services
 {
     public class QrCodeServices : IQrCodeServices
     {
-        public void MakeQrCode(string content, string path)
+        public string MakeQrCode(string content/*, string path*/)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -22,19 +23,19 @@ namespace Services
 
                 using (Bitmap map = code.GetGraphic(20))
                 {
-                    //map.Save(ms, ImageFormat.Png);
-                    map.Save(path, ImageFormat.Png);
+                    map.Save(ms, ImageFormat.Png);
+                    //map.Save(path, ImageFormat.Png);
                 }
 
-                //return "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+                return "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
             }
         }
 
-        public string BookListToQrCode(List<Book> books)
+        public string BookListToQrCode(List<BookView> books)
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Book book in books)
+            foreach (BookView book in books)
             {
                 sb.AppendLine(book.ToString());
             }
